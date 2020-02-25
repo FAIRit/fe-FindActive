@@ -1,19 +1,19 @@
 import React from "react";
 import styles from "../styles/Showcase.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import Logo from "./Logo";
+import LoginBtn from "./LoginBtn";
+import RegisterBtn from "./RegisterBtn";
 
 const Showcase = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.logo}>
-        <FontAwesomeIcon
-          icon={faDumbbell}
-          size={"2x"}
-          className={styles.dumbbell}
-        />
-        <span className={styles.logoText}>FindActive</span>
-      </div>
+      <nav>
+        <Logo />
+        <div className={styles.btns}>
+          <LoginBtn />
+          <RegisterBtn />
+        </div>
+      </nav>
       <div className={styles.showcase}></div>
     </div>
   );

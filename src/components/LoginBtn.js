@@ -1,9 +1,11 @@
 import React from "react";
+import styles from '../styles/LoginBtn.module.css'
+
 
 const LoginBtn = () => {
     return(
-        <button>
-            Zaloguj się
+        <button className={styles.loginBtn}>
+            Login
         </button>
     )
 }

@@ -15,12 +15,15 @@
     background-color: rgba(0, 0, 0, 0.9);
 }
 
-.logo {
-    color: white;
+nav{
     display: flex;
+    justify-content: space-between;
 }
 
-.logoText {
-    font-size: 26px;
-    font-weight: bold;
+.btns{
+    padding: 5px;
 }
+
+
+
+
