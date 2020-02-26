@@ -1,10 +1,23 @@
 .topCategories {
-  background: rgb(120, 168, 250);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.categoriesContainer{
+    display: flex;
+    flex-direction: row;
+}
 
 .categoriePhoto{
     width: 130px;
     height: 130px;
     border-radius: 50%;
 }
+
+.categorie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
