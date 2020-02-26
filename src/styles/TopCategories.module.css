@@ -1,3 +1,10 @@
 .topCategories {
   background: rgb(120, 168, 250);
 }
+
+
+.categoriePhoto{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
