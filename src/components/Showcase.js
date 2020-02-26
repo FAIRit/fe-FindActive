@@ -3,18 +3,29 @@ import styles from "../styles/Showcase.module.css";
 import Logo from "./Logo";
 import LoginBtn from "./LoginBtn";
 import RegisterBtn from "./RegisterBtn";
+import MainInfo from './MainInfo';
+import TopCategories from './TopCategories';
 
 const Showcase = () => {
   return (
+    <div>
     <div className={styles.container}>
-      <nav>
-        <Logo />
-        <div className={styles.btns}>
-          <LoginBtn />
-          <RegisterBtn />
-        </div>
-      </nav>
-      <div className={styles.showcase}></div>
+      <div className={styles.showcase}>
+        <nav>
+          <Logo />
+          <div className={styles.btns}>
+            <LoginBtn />
+            <RegisterBtn />
+          </div>
+        </nav>
+        <span className={styles.title}>
+          {" "}
+          Search for sports clubs. Get that workout in, wherever you are.{" "}
+        </span>
+      </div>
+    </div>
+    <MainInfo/>
+    <TopCategories/>
     </div>
   );
 };
