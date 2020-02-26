@@ -8,8 +8,9 @@ function App() {
     <div>
       <Router>
         <AppRouter />
+        <Footer/>
+
       </Router>
-      <Footer/>
     </div>
   );
 }

@@ -16,7 +16,6 @@ const AppRouter = () => (
       <Route path="/privacy" component={PrivacyPolicy} exact />
       <Route path="/terms" component={TermsAndConditions} exact />
     </Switch>
-    <Footer />
     </BrowserRouter>
 );
 
