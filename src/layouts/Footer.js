@@ -7,9 +7,20 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
       <Logo />
-      <NavLink to="/terms">Terms and conditions</NavLink>
-      <NavLink to="/privacy">Privacy Policy</NavLink>
-      <NavLink to="/faq">FAQ</NavLink>
+      <div className={styles.links}>
+        <NavLink to="/terms" className={styles.link}>
+          Terms and conditions
+        </NavLink>
+        {" "}  {" "}
+        <NavLink to="/privacy" className={styles.link}>
+          Privacy Policy
+        </NavLink>
+        {" "}  {" "}
+        <NavLink to="/faq" className={styles.link}>
+          FAQ
+        </NavLink>
+      </div>
+      Copyright FindActive &copy; 2020
     </div>
   );
 };
