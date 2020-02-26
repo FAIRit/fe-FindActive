@@ -4,8 +4,8 @@ import styles from "../styles/Footer.module.css";
 import Logo from "../components/Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faInstagramSquare,
-  faFacebookSquare
+  faInstagram,
+  faFacebook
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -13,8 +13,10 @@ const Footer = () => {
     <div className={styles.footer}>
       <Logo />
       <div>FOLLOW US</div>
-      <FontAwesomeIcon icon={faFacebookSquare} size={"2x"} />
-      <FontAwesomeIcon icon={faInstagramSquare} size={"2x"} />
+      <div className={styles.socialLogos}>
+        <NavLink to='#' className={styles.link}><FontAwesomeIcon icon={faFacebook} size={"2x"} /></NavLink>
+        <NavLink to='#' className={styles.link}><FontAwesomeIcon icon={faInstagram} size={"2x"} /></NavLink>
+      </div>
       <div className={styles.links}>
         <NavLink to="/terms" className={styles.link}>
           Terms and conditions
