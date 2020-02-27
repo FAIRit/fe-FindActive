@@ -1,3 +1,27 @@
 .mainInfo {
   background: rgb(120, 168, 250);
+  text-align: center;
+  padding: 30px;
+}
+
+.mainInfoText{
+  font-size: 1.5rem;
+  padding-top: 20px;
+}
+
+.mainInfoButton{
+  color: white;
+  background: rgb(12, 35, 76);
+  outline: none;
+  border: none;
+  width: 170px;
+  height: 70px;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.mainInfoButton:hover{
+  color: rgb(120, 168, 250);
+  background: black;
 }

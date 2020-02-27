@@ -2,7 +2,7 @@ import React from "react";
 import Faq from "react-faq-component";
 
 const data = {
-  title: "FAQ",
+  title: "FAQs",
   rows: [
     {
       title: "What is FindActive?",
