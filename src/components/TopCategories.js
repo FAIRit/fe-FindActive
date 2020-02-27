@@ -4,6 +4,7 @@ import pole from "../img/pole3.png";
 import yoga from "../img/yog.png";
 import gym from "../img/gym0.jpg";
 
+
 const TopCategories = () => {
   return (
     <div className={styles.topCategories}>
