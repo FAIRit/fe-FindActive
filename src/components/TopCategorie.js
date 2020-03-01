@@ -8,13 +8,15 @@ import gym from "../img/gymgym.png";
 import fight from "../img/fight.png";
 import styles from "../styles/TopCategories.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
 
 function SampleNextArrow(props) {
   const { style, onClick } = props;
   return (
     <FontAwesomeIcon
-      icon={faInstagram}
+      icon={faChevronRight}
       size={"2x"}
       style={{ ...style, display: "block" }}
       onClick={onClick}
@@ -26,7 +28,7 @@ function SamplePrevArrow(props) {
   const { style, onClick } = props;
   return (
     <FontAwesomeIcon
-      icon={faInstagram}
+      icon={faChevronLeft}
       size={"2x"}
       style={{ ...style, display: "block" }}
       onClick={onClick}
