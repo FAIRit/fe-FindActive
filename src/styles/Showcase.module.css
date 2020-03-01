@@ -18,13 +18,6 @@
     text-align: center;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 10px 0 10px;
-}
-
-
 .title{
     display: inline-block;
     font-size: 2rem;

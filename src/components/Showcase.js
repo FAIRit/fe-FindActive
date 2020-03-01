@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "../styles/Showcase.module.css";
-import Logo from "./Logo";
-import LoginBtn from "./LoginBtn";
-import RegisterBtn from "./RegisterBtn";
+import Navbar from "../layouts/Navbar";
 import MainInfo from "./MainInfo";
 import Faq from "./Faq";
 import CenterMode from "./TopCategorie";
@@ -12,13 +10,7 @@ const Showcase = () => {
     <div>
       <div className={styles.container}>
         <div className={styles.showcase}>
-          <nav>
-            <Logo />
-            <div className={styles.btns}>
-              <LoginBtn />
-              <RegisterBtn />
-            </div>
-          </nav>
+          <Navbar/>
           <span className={styles.title}>
             {" "}
             Search for sports clubs. Get that workout in, wherever you are.{" "}
