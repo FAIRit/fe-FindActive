@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import pole from "../img/polepole.png";
+import yoga from "../img/yogayoga.png";
+import gym from "../img/gymgym.png";
+import fight from "../img/fight.png";
+import styles from "../styles/TopCategories.module.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -26,49 +31,46 @@ function SamplePrevArrow(props) {
 }
 
 export default class CenterMode extends Component {
-    render() {
-      const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
-      };
-      return (
-        <div>
-          <h2> Multiple items </h2>
-          <Slider {...settings}>
-            <div>
-              <h3>1</h3>
+  render() {
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />
+    };
+    return (
+      <div>
+        <h2> Top categories </h2>
+        <Slider {...settings}>
+          <div>
+            <div className={styles.categorie}>
+              <img src={gym} className={styles.categoriePhoto} />
+              <span>Gym</span>
             </div>
-            <div>
-              <h3>2</h3>
+          </div>
+          <div>
+            <div className={styles.categorie}>
+              <img src={yoga} className={styles.categoriePhoto} />
+              <span>Yoga</span>
             </div>
-            <div>
-              <h3>3</h3>
+          </div>
+          <div>
+            <div className={styles.categorie}>
+              <img src={fight} className={styles.categoriePhoto} />
+              <span>Martial arts</span>
             </div>
-            <div>
-              <h3>4</h3>
+          </div>
+          <div>
+            <div className={styles.categorie}>
+              <img src={pole} className={styles.categoriePhoto} />
+              <span>Pole dance</span>
             </div>
-            <div>
-              <h3>5</h3>
-            </div>
-            <div>
-              <h3>6</h3>
-            </div>
-            <div>
-              <h3>7</h3>
-            </div>
-            <div>
-              <h3>8</h3>
-            </div>
-            <div>
-              <h3>9</h3>
-            </div>
-          </Slider>
-        </div>
-      );
-    }
+          </div>
+        </Slider>
+      </div>
+    );
   }
+}

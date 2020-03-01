@@ -6,8 +6,7 @@ import RegisterBtn from "./RegisterBtn";
 import MainInfo from "./MainInfo";
 import TopCategories from "./TopCategories";
 import Faq from "./Faq";
-import CenterMode from './CenterMode'
-
+import CenterMode from "./CenterMode";
 
 const Showcase = () => {
   return (
@@ -28,9 +27,11 @@ const Showcase = () => {
         </div>
       </div>
       <MainInfo />
-      <TopCategories />
+      <div style={{ width: "60%", margin: "0 auto" }}>
+        {" "}
+        <CenterMode />{" "}
+      </div>
       <Faq />
-      <CenterMode/>
     </div>
   );
 };
