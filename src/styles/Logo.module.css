@@ -9,3 +9,11 @@
     font-weight: bold;
     padding-left: 3px;
 }
+
+
+@media (min-width: 768px){
+    .logoText{
+        font-size: 24px;
+    }
+  }
+  
