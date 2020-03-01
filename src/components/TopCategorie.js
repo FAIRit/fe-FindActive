@@ -22,7 +22,7 @@ function SampleNextArrow(props) {
         display: "block",
         cursor: "pointer"
       }}
-       onClick={onClick}
+      onClick={onClick}
       className={styles.next}
     />
   );
@@ -35,11 +35,10 @@ function SamplePrevArrow(props) {
       icon={faChevronLeft}
       size={"2x"}
       style={{
-        ...style,
+        ...style
       }}
       className={styles.prev}
       onClick={onClick}
-
     />
   );
 }
@@ -56,11 +55,11 @@ export default class CenterMode extends Component {
       prevArrow: <SamplePrevArrow />,
       responsive: [
         {
-          breakpoint: 500,
+          breakpoint: 769,
           settings: {
             slidesToShow: 1
           }
-        },
+        }
       ]
     };
     return (

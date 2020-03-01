@@ -7,6 +7,7 @@
 .topCategorieContainer {
   background: #acfcd9;
   padding: 40px 0;
+  width: 100%;
 }
 
 .categoriesContainer {
@@ -30,7 +31,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
 }
 
 .title {

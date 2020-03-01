@@ -28,7 +28,7 @@ const Showcase = () => {
       <MainInfo />
       <div>
         {" "}
-        <CenterMode />{" "}
+        <CenterMode/>
       </div>
       <Faq />
     </div>

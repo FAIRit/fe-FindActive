@@ -5,7 +5,8 @@ import Logo from "../components/Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
-  faFacebook
+  faFacebook,
+  faTwitter
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -16,6 +17,7 @@ const Footer = () => {
       <div className={styles.socialLogos}>
         <NavLink to='#' className={styles.link}><FontAwesomeIcon icon={faFacebook} size={"2x"} /></NavLink>
         <NavLink to='#' className={styles.link}><FontAwesomeIcon icon={faInstagram} size={"2x"} /></NavLink>
+        <NavLink to='#' className={styles.link}><FontAwesomeIcon icon={faTwitter} size={"2x"} /></NavLink>
       </div>
       <div className={styles.links}>
         <NavLink to="/terms" className={styles.link}>
