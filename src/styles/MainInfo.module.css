@@ -1,7 +1,9 @@
 .mainInfo {
   background: wihite;
   text-align: center;
-  padding: 30px;
+  padding: 40px 0 40px 0;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .mainInfoText{

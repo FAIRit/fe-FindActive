@@ -53,10 +53,18 @@ export default class CenterMode extends Component {
       slidesToShow: 3,
       slidesToScroll: 1,
       nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
+      prevArrow: <SamplePrevArrow />,
+      responsive: [
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1
+          }
+        },
+      ]
     };
     return (
-      <div style={{ background: "#acfcd9", padding: "40px 0" }}>
+      <div className={styles.topCategorieContainer}>
         <h2 className={styles.title}>Top categories</h2>
         <div className={styles.topCategories}>
           <Slider className={styles.slider} {...settings}>
