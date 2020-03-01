@@ -19,3 +19,9 @@
     align-items: center;
 }
 
+.slider{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+

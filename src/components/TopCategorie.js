@@ -20,9 +20,6 @@ function SampleNextArrow(props) {
       style={{
         ...style,
         display: "block",
-        position: "absolute",
-        top: "50%",
-        right: "0",
         cursor: "pointer"
       }}
       onClick={onClick}
@@ -31,7 +28,7 @@ function SampleNextArrow(props) {
 }
 
 function SamplePrevArrow(props) {
-  const { style, onClick } = props;
+  const { onClick, style } = props;
   return (
     <FontAwesomeIcon
       icon={faChevronLeft}
@@ -39,9 +36,6 @@ function SamplePrevArrow(props) {
       style={{
         ...style,
         display: "block",
-        position: "absolute",
-        top: "50%",
-        left: "0",
         cursor: "pointer"
       }}
       onClick={onClick}
@@ -63,7 +57,7 @@ export default class CenterMode extends Component {
     return (
       <div className={styles.topCategories}>
         <h2> Top categories </h2>
-        <Slider {...settings}>
+        <Slider className={styles.slider} {...settings}>
           <div>
             <div className={styles.categorie}>
               <img src={gym} className={styles.categoriePhoto} />
