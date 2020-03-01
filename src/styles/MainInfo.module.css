@@ -10,8 +10,8 @@
 }
 
 .mainInfoButton{
-  color: white;
-  background: rgb(12, 35, 76);
+  color: #acfcd9;
+  background: #190933;
   outline: none;
   border: none;
   width: 170px;
@@ -19,9 +19,11 @@
   font-size: 1.5rem;
   margin-top: 20px;
   border-radius: 5px;
+  cursor: pointer
 }
 
 .mainInfoButton:hover{
-  color: rgb(120, 168, 250);
-  background: black;
+  background: #5dd9c1;
+  color: #190933;
+  transition: 0.5s
 }

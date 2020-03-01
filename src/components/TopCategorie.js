@@ -22,7 +22,8 @@ function SampleNextArrow(props) {
         display: "block",
         cursor: "pointer"
       }}
-      onClick={onClick}
+       onClick={onClick}
+      className={styles.next}
     />
   );
 }
@@ -35,10 +36,10 @@ function SamplePrevArrow(props) {
       size={"2x"}
       style={{
         ...style,
-        display: "block",
-        cursor: "pointer"
       }}
+      className={styles.prev}
       onClick={onClick}
+
     />
   );
 }
@@ -55,7 +56,7 @@ export default class CenterMode extends Component {
       prevArrow: <SamplePrevArrow />
     };
     return (
-      <div style={{ background: "rgb(183, 203, 238)", padding: "40px 10px" }}>
+      <div style={{ background: "#acfcd9", padding: "40px 10px" }}>
         <h2 className={styles.title}>Top categories</h2>
         <div className={styles.topCategories}>
           <Slider className={styles.slider} {...settings}>

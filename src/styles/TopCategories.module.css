@@ -1,31 +1,45 @@
 .topCategories {
-    background: rgb(183, 203, 238);
+  background: #acfcd9;
 }
 
-.categoriesContainer{
-    display: flex;
-    flex-direction: column;
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
 }
 
-.categoriePhoto{
-    width: 220px;
-    height: 130px;
-    border-radius: 10px;
+.categoriePhoto {
+  width: 220px;
+  height: 130px;
+  border-radius: 10px;
 }
 
-.categorie{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.categorie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.slider{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.title{
-    padding: 0 0 30px 0;
-    text-align: center;
+.title {
+  padding: 0 0 30px 0;
+  text-align: center;
+  color: #190933;
+}
+
+.prev,
+.next {
+  display: block;
+  cursor: pointer;
+  color: #190933;
+}
+
+.prev:hover,
+.next:hover {
+  color: #5dd9c1;
+  transition: 0.5s
 }
