@@ -56,7 +56,7 @@ export default class CenterMode extends Component {
       prevArrow: <SamplePrevArrow />
     };
     return (
-      <div style={{ background: "#acfcd9", padding: "40px 10px" }}>
+      <div style={{ background: "#acfcd9", padding: "40px 0" }}>
         <h2 className={styles.title}>Top categories</h2>
         <div className={styles.topCategories}>
           <Slider className={styles.slider} {...settings}>
