@@ -6,6 +6,8 @@ import RegisterBtn from "./RegisterBtn";
 import MainInfo from "./MainInfo";
 import TopCategories from "./TopCategories";
 import Faq from "./Faq";
+import CenterMode from './CenterMode'
+
 
 const Showcase = () => {
   return (
@@ -28,6 +30,7 @@ const Showcase = () => {
       <MainInfo />
       <TopCategories />
       <Faq />
+      <CenterMode/>
     </div>
   );
 };
