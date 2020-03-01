@@ -7,7 +7,7 @@
 
 .container {
     height: 100vh;
-    background: rgba(0, 0, 0, .4) url('../img/sport2.jpg') no-repeat center center/cover;
+    background: rgba(0, 0, 0, .4) url('../img/sport1.jpg') no-repeat center center/cover;
     background-blend-mode: darken;
 }
 
@@ -21,7 +21,7 @@
 .title{
     display: inline-block;
     font-size: 2rem;
-    color: white;
+    color: #f0f3bd;
     font-weight: bold;
     margin-top: 180px;
 }

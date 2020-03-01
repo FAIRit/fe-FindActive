@@ -1,11 +1,11 @@
 .topCategories {
-  background: #acfcd9;
+  background: #00bfb2;
   width: 70%;
   margin: 0 auto;
 }
 
 .topCategorieContainer {
-  background: #acfcd9;
+  background: #00bfb2;
   padding: 40px 0;
   width: 100%;
 }
@@ -27,6 +27,10 @@
   align-items: center;
 }
 
+.categorieName{
+  color: black
+}
+
 .slider {
   display: flex;
   flex-direction: row;
@@ -36,18 +40,18 @@
 .title {
   padding: 0 0 30px 0;
   text-align: center;
-  color: #190933;
+  color: #f0f3bd;
 }
 
 .prev,
 .next {
   display: block;
   cursor: pointer;
-  color: #190933;
+  color: #f0f3bd;
 }
 
 .prev:hover,
 .next:hover {
-  color: #5dd9c1;
+  color: #c64191;
   transition: 0.5s;
 }
