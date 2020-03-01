@@ -11,14 +11,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-
 function SampleNextArrow(props) {
   const { style, onClick } = props;
   return (
     <FontAwesomeIcon
       icon={faChevronRight}
       size={"2x"}
-      style={{ ...style, display: "block" }}
+      style={{
+        ...style,
+        display: "block",
+        position: "absolute",
+        top: "50%",
+        right: "0",
+        cursor: "pointer"
+      }}
       onClick={onClick}
     />
   );
@@ -30,7 +36,14 @@ function SamplePrevArrow(props) {
     <FontAwesomeIcon
       icon={faChevronLeft}
       size={"2x"}
-      style={{ ...style, display: "block" }}
+      style={{
+        ...style,
+        display: "block",
+        position: "absolute",
+        top: "50%",
+        left: "0",
+        cursor: "pointer"
+      }}
       onClick={onClick}
     />
   );
@@ -41,7 +54,7 @@ export default class CenterMode extends Component {
     const settings = {
       dots: false,
       infinite: true,
-      speed: 500,
+      speed: 300,
       slidesToShow: 3,
       slidesToScroll: 1,
       nextArrow: <SampleNextArrow />,
