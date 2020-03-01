@@ -55,34 +55,36 @@ export default class CenterMode extends Component {
       prevArrow: <SamplePrevArrow />
     };
     return (
-      <div className={styles.topCategories}>
-        <h2> Top categories </h2>
-        <Slider className={styles.slider} {...settings}>
-          <div>
-            <div className={styles.categorie}>
-              <img src={gym} className={styles.categoriePhoto} />
-              <span>Gym</span>
+      <div style={{ background: "rgb(183, 203, 238)", padding: "40px 10px" }}>
+        <h2 className={styles.title}>Top categories</h2>
+        <div className={styles.topCategories}>
+          <Slider className={styles.slider} {...settings}>
+            <div>
+              <div className={styles.categorie}>
+                <img src={gym} className={styles.categoriePhoto} />
+                <span>Gym</span>
+              </div>
             </div>
-          </div>
-          <div>
-            <div className={styles.categorie}>
-              <img src={yoga} className={styles.categoriePhoto} />
-              <span>Yoga</span>
+            <div>
+              <div className={styles.categorie}>
+                <img src={yoga} className={styles.categoriePhoto} />
+                <span>Yoga</span>
+              </div>
             </div>
-          </div>
-          <div>
-            <div className={styles.categorie}>
-              <img src={fight} className={styles.categoriePhoto} />
-              <span>Martial arts</span>
+            <div>
+              <div className={styles.categorie}>
+                <img src={fight} className={styles.categoriePhoto} />
+                <span>Martial arts</span>
+              </div>
             </div>
-          </div>
-          <div>
-            <div className={styles.categorie}>
-              <img src={pole} className={styles.categoriePhoto} />
-              <span>Pole dance</span>
+            <div>
+              <div className={styles.categorie}>
+                <img src={pole} className={styles.categoriePhoto} />
+                <span>Pole dance</span>
+              </div>
             </div>
-          </div>
-        </Slider>
+          </Slider>
+        </div>
       </div>
     );
   }
