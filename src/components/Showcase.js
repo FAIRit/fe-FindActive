@@ -4,9 +4,8 @@ import Logo from "./Logo";
 import LoginBtn from "./LoginBtn";
 import RegisterBtn from "./RegisterBtn";
 import MainInfo from "./MainInfo";
-import TopCategories from "./TopCategories";
 import Faq from "./Faq";
-import CenterMode from "./CenterMode";
+import CenterMode from "./TopCategorie";
 
 const Showcase = () => {
   return (

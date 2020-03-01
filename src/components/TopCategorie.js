@@ -7,24 +7,28 @@ import yoga from "../img/yogayoga.png";
 import gym from "../img/gymgym.png";
 import fight from "../img/fight.png";
 import styles from "../styles/TopCategories.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+  const { style, onClick } = props;
   return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "red" }}
+    <FontAwesomeIcon
+      icon={faInstagram}
+      size={"2x"}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     />
   );
 }
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { style, onClick } = props;
   return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
+    <FontAwesomeIcon
+      icon={faInstagram}
+      size={"2x"}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     />
   );
@@ -42,7 +46,7 @@ export default class CenterMode extends Component {
       prevArrow: <SamplePrevArrow />
     };
     return (
-      <div>
+      <div className={styles.topCategories}>
         <h2> Top categories </h2>
         <Slider {...settings}>
           <div>
