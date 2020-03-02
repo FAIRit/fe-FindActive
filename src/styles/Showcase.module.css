@@ -26,6 +26,12 @@
     margin-top: 180px;
 }
 
+.secondTitle{
+    font-size: 1.3rem;
+    color: #f0f3bd;
+    margin-top: 20px;
+}
+
 @media (min-width: 768px){
     .title{
         font-size: 2.5rem;

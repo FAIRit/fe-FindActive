@@ -6,17 +6,18 @@
   overflow: hidden;
   outline: none;
   color: #f0f3bd;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   margin-right: 15px;
-  width: 90px;
-  height: 35px;
+  width: 80px;
+  height: 32px;
   border-radius: 5px;
 }
 
 .loginBtn:hover{
   color: #c64191;
   transition: 0.5s;
+  border: 2px solid #c64191;
 }
 
 @media (min-width: 768px){

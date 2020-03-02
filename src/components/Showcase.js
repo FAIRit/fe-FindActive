@@ -16,6 +16,9 @@ const Showcase = () => {
             {" "}
             Search for sports clubs. Get that workout in, wherever you are.{" "}
           </span>
+          <span className={styles.secondTitle}>
+            Working out has never been easier.
+          </span>
           <SearchBar />
         </div>
       </div>
