@@ -4,6 +4,7 @@ import Navbar from "../layouts/Navbar";
 import MainInfo from "./MainInfo";
 import Faq from "./Faq";
 import CenterMode from "./slider/CenterMode";
+import SearchBar from './SearchBar'
 
 const Showcase = () => {
   return (
@@ -15,6 +16,7 @@ const Showcase = () => {
             {" "}
             Search for sports clubs. Get that workout in, wherever you are.{" "}
           </span>
+          <SearchBar />
         </div>
       </div>
       <MainInfo />
