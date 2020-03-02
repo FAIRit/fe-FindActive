@@ -4,6 +4,7 @@ import SearchBar from "../SearchBar";
 import ListElement from "./ListElement";
 import premium from "../../img/premium.jpg";
 import tonezone from "../../img/tonezone.jpg";
+import { Link } from "react-router-dom";
 
 export let list = [
   {
@@ -11,14 +12,14 @@ export let list = [
     name: "Premium Gym Rumia",
     location: "Rumia, pomorskie",
     type: "siłownia",
-    photo:  premium 
+    photo: premium
   },
   {
     id: 2,
     name: "ToneZone",
     location: "Gdańsk, pomorskie",
     type: "siłownia",
-    photo:  tonezone 
+    photo: tonezone
   }
 ];
 

@@ -3,6 +3,7 @@ import styles from '../styles/App.module.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import AppRouter from "../routers/AppRouter";
 import Footer from "./Footer";
+import Navbar from './Navbar'
 
 function App() {
   return (
