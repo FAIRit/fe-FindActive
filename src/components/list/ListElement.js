@@ -14,6 +14,6 @@ const ListElement = props => {
       </Link>
     </div>
   );
-};
+}
 
 export default ListElement;
