@@ -11,23 +11,21 @@ export let list = [
     name: "Premium Gym Rumia",
     location: "Rumia, pomorskie",
     type: "siłownia",
-    photo: { premium }
+    photo:  premium 
   },
   {
     id: 2,
     name: "ToneZone",
     location: "Gdańsk, pomorskie",
     type: "siłownia",
-    photo: { tonezone }
+    photo:  tonezone 
   }
 ];
 
 const List = () => {
   const gymList = list.map(el => (
     <div key={el.id}>
-      <img src={el.photo} alt="gym photo"></img>
         <ListElement {...el} />
-     
     </div>
   ));
   return (
@@ -35,7 +33,6 @@ const List = () => {
       <Navbar />
       <SearchBar />
       {gymList}
-
     </div>
   );
 };
