@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../../layouts/Navbar";
 import SearchBar from "../SearchBar";
-import ListElement from "./ListElement";
 import premium from "../../img/premium.jpg";
 import tonezone from "../../img/tonezone.jpg";
 import { Link } from "react-router-dom";
@@ -23,10 +22,19 @@ export let list = [
   }
 ];
 
-const List = () => {
+const ProductListPage = () => {
   const gymList = list.map(el => (
     <div key={el.id}>
-        <ListElement {...el} />
+      <Link to={`product/${el.id}`}>
+        <img
+          src={el.photo}
+          style={{ width: "500px", height: "300px" }}
+          alt="gym photo"
+        ></img>
+        <div>{el.name}</div>
+        <div>{el.type}</div>
+        <div>{el.location}</div>
+      </Link>
     </div>
   ));
   return (
@@ -38,4 +46,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default ProductListPage;
