@@ -3,7 +3,7 @@ import styles from "../styles/Showcase.module.css";
 import Navbar from "../layouts/Navbar";
 import MainInfo from "./MainInfo";
 import Faq from "./Faq";
-import CenterMode from "./TopCategorie";
+import CenterMode from "./slider/CenterMode";
 
 const Showcase = () => {
   return (
