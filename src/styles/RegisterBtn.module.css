@@ -15,8 +15,8 @@
 
 .registerBtn:hover {
   transition: 0.5s;
-  color: #c64191;
-  border: 2px solid #c64191;
+  color: #9FFFCB;
+  border: 2px solid #9FFFCB;
 }
 
 @media (min-width: 768px) {

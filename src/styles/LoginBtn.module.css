@@ -15,9 +15,9 @@
 }
 
 .loginBtn:hover{
-  color: #c64191;
+  color: #9FFFCB;
   transition: 0.5s;
-  border: 2px solid #c64191;
+  border: 2px solid #9FFFCB;
 }
 
 @media (min-width: 768px){

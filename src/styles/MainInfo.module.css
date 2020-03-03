@@ -1,5 +1,5 @@
 .mainInfo {
-  background: #f0f3bd;
+  background: rgb(184, 253, 215);
   text-align: center;
   padding: 40px 0 40px 0;
   width: 70%;
@@ -12,8 +12,8 @@
 }
 
 .mainInfoButton{
-  color: #f0f3bd;
-  background: #028090;
+  color: #9FFFCB;
+  background: #004E64;
   outline: none;
   border: none;
   width: 170px;
@@ -25,7 +25,7 @@
 }
 
 .mainInfoButton:hover{
-  background: #c64191;
-  color: black;
+  background: #25A18E;
+  color: #9FFFCB;
   transition: 0.5s
 }

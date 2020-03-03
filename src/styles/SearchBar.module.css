@@ -20,7 +20,7 @@
     height: 50px;
     border: none;
     color: #f0f3bd;
-    background: #00bfb2;
+    background: #00A5CF;
     cursor: pointer;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -28,8 +28,8 @@
 
 .searchButton:hover{
     border: none;
-    color: #00bfb2;
-    background: #f0f3bd;
+    color: #00A5CF;
+    background: #9FFFCB;
     transition: 0.5s;
 }
 

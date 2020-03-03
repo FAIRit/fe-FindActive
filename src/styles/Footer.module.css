@@ -1,8 +1,8 @@
 .footer {
-  background: #1a5e63;
+  background: #004E64;
   padding: 20px 0 0 0;
   height: 300px;
-  color: #f0f3bd;
+  color: #9FFFCB;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -23,12 +23,12 @@
 }
 
 .link {
-  color: #f0f3bd;
+  color: #9FFFCB;
   text-decoration: none;
 }
 
 .link:hover {
-  color: #c64191;
+  color: #00A5CF;
   transition: 0.5s
 }
 

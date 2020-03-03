@@ -38,7 +38,7 @@ const ProductListPage = () => {
     </div>
   ));
   return (
-    <div>
+    <div style={{background: '#25A18E'}}>
       <Navbar />
       <SearchBar />
       {gymList}
