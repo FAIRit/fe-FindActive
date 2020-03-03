@@ -1,20 +1,15 @@
 import React from "react";
 import Product from "./Product";
 import { Link } from "react-router-dom";
-import Navbar from "../../layouts/Navbar";
 
-
-const ProductPage = ({ match }) => {
+const ProductPage = props => {
   return (
     <>
-      <Navbar />
       <div>Strona produktu</div>
-      <Product id={match.params.id} />
+      <Product name={props.name} />
       <Link to="/products">back to list</Link>
     </>
   );
 };
-
-
 
 export default ProductPage;
