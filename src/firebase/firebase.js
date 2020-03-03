@@ -11,5 +11,13 @@ var firebaseConfig = {
   };
 
 
+
 firebase.initializeApp(firebaseConfig);
 
+const database = firebase.database()
+
+database.ref().set({
+    name: "Premium Gym Rumia",
+    location: "Rumia, pomorskie",
+    type: "siłownia",
+}) 
