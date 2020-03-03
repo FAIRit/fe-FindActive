@@ -11,7 +11,7 @@ const AppRouter = () => (
     <BrowserRouter>
     <Switch>
       <Route path="/" component={Showcase} exact />
-      <Route path="/list" component={ProductListPage} />
+      <Route path="/products" component={ProductListPage} />
       <Route path="/product/:id" component={ProductPage} />
       <Route path="/faq" component={Faq} exact />
       <Route path="/privacy" component={PrivacyPolicy} exact />
