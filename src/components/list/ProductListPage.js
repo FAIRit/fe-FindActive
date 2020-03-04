@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../layouts/Navbar";
-import premium from "../../img/premium.jpg";
-import tonezone from "../../img/tonezone.jpg";
 import { Link } from "react-router-dom";
 import { displayClubs, stopClubs } from "../services/ClubService";
-import Product from './Product'
+import Product from "./Product";
 import SearchBar from "../SearchBar";
-
+import styles from "../../styles/ProductListPage.module.css";
 
 const ProductListPage = () => {
   const [clubsFB, setClubsFB] = useState([]);
@@ -20,23 +18,26 @@ const ProductListPage = () => {
     };
   }, []);
 
-const list = clubsFB.map(product => (
-    <div key={product.id}>
-    <Link to={`/product/${product.id}`}>
-    <img src={product.photo} style={{width: '400px', height: "200px"}} alt='club photo'/>
-    <Product {...product} src={product.imageUrl} />
-    </Link>
+  const list = clubsFB.map(product => (
+    <div key={product.id} className={styles.productContainer}>
+        <Link to={`/product/${product.id}`} className={styles.singleProduct}>
+          <img
+            src={product.photo}
+            className={styles.gymImage}
+            alt="club photo"
+          />
+          <Product {...product} src={product.imageUrl} />
+        </Link>
     </div>
-))
+  ));
 
-return (
-    <div>
-        <Navbar/>
-        <SearchBar/>
-        <div>{list}</div>
+  return (
+    <div className={styles.productList}>
+      <Navbar />
+      <SearchBar />
+      <div>{list}</div>
     </div>
-);
-}
-
+  );
+};
 
 export default ProductListPage;

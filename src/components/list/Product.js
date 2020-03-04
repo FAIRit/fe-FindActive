@@ -1,13 +1,16 @@
 import React from "react";
+import styles from "../../styles/Product.module.css";
 
-const ProductPage = props => {
+const Product = props => {
   return (
     <>
-      <div>{props.name}</div>
-
-      
+      <div className={styles.product}>
+        <div className={styles.productName}>{props.name}</div>
+        <div className={styles.productType}> {props.type}</div>
+        <div className={styles.productLocation}>{props.location}</div>
+      </div>
     </>
   );
 };
 
-export default ProductPage;
+export default Product;

@@ -1,0 +1,23 @@
+.productList{
+    display: flex;
+    flex-direction: column;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.singleProduct {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  align-items: flex-start;
+}
+
+.gymImage {
+  width: 90%;
+  margin-bottom: 5px;
+}
