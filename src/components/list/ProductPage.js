@@ -1,6 +1,8 @@
 import React from "react";
 import { displayClubs, stopClubs } from "../services/ClubService";
-
+import styles from "../../styles/ProductPage.module.css";
+import SearchBar from "../SearchBar";
+import Navbar from "../../layouts/Navbar";
 class ProductPage extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,19 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    return <div>{this.state.product.name}</div>;
+    return (
+      <div>
+        <Navbar />
+        <SearchBar />
+        <div className={styles.container}>
+          <img src={this.state.product.photo} alt={this.state.product.name} />
+          <div>{this.state.product.name}</div>
+          <div>{this.state.product.type}</div>
+          <div>{this.state.product.location}</div>
+          {/* <div>{this.state.product.description}</div> */}
+        </div>
+      </div>
+    );
   }
 }
 
