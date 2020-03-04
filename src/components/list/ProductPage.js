@@ -1,15 +1,39 @@
 import React from "react";
-import Product from "./Product";
-import { Link } from "react-router-dom";
+import { displayClubs, stopClubs } from '../services/ClubService'
 
-const ProductPage = props => {
-  return (
-    <>
-      <div>Strona produktu</div>
-      <Product name={props.name} />
-      <Link to="/products">back to list</Link>
-    </>
-  );
-};
+// const ProductPage = ({match}) => {
+//   return(
+//     <div>{match.params.id}</div>
+//   )
+// }
 
-export default ProductPage;
+// export default ProductPage;
+
+
+
+class ProductPage extends React.Component{
+  constructor(props){
+      super(props)
+      this.state={
+         list:[],
+         id:this.props.match.params.id,
+         product:""
+      }
+  }
+  componentDidMount(){
+      displayClubs(list => {
+          this.setState({product:list.find(product=>product.id===this.state.id)})})
+  }
+  componentWillUnmount(){
+      stopClubs();
+  }
+
+  render(){
+      return (
+        <div>
+          {this.state.product.name}
+        </div>
+      )
+  }}
+
+  export default ProductPage

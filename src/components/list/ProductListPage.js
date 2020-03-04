@@ -1,49 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../layouts/Navbar";
-import SearchBar from "../SearchBar";
 import premium from "../../img/premium.jpg";
 import tonezone from "../../img/tonezone.jpg";
 import { Link } from "react-router-dom";
+import { displayClubs, stopClubs } from "../services/ClubService";
+import Product from './Product'
+import SearchBar from "../SearchBar";
 
-export let list = [
-  {
-    id: 1,
-    name: "Premium Gym Rumia",
-    location: "Rumia, pomorskie",
-    type: "siłownia",
-    photo: premium
-  },
-  {
-    id: 2,
-    name: "ToneZone",
-    location: "Gdańsk, pomorskie",
-    type: "siłownia",
-    photo: tonezone
-  }
-];
 
 const ProductListPage = () => {
-  const gymList = list.map(el => (
-    <div key={el.id}>
-      <Link to={`product/${el.id}`}>
-        <img
-          src={el.photo}
-          style={{ width: "500px", height: "300px" }}
-          alt="gym photo"
-        ></img>
-        <div>{el.name}</div>
-        <div>{el.type}</div>
-        <div>{el.location}</div>
-      </Link>
+  const [clubsFB, setClubsFB] = useState([]);
+  useEffect(() => {
+    displayClubs(clubsFB => {
+      setClubsFB(clubsFB);
+    });
+
+    return () => {
+      stopClubs();
+    };
+  }, []);
+
+const list = clubsFB.map(product => (
+    <div key={product.id}>
+    <Link to={`/product/${product.id}`}>
+    <img src={product.photo} style={{width: '400px', height: "200px"}} alt='club photo'/>
+    <Product {...product} src={product.imageUrl} />
+    </Link>
     </div>
-  ));
-  return (
-    <div style={{background: '#25A18E'}}>
-      <Navbar />
-      <SearchBar />
-      {gymList}
+))
+
+return (
+    <div>
+        <Navbar/>
+        <SearchBar/>
+        <div>{list}</div>
     </div>
-  );
-};
+);
+}
+
 
 export default ProductListPage;

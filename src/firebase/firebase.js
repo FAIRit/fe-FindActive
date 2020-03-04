@@ -16,8 +16,11 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database()
 
-database.ref().set({
-    name: "Premium Gym Rumia",
-    location: "Rumia, pomorskie",
-    type: "siłownia",
-}) 
+// database.ref('clubs').push({
+//     name: "Studio Joga Park",
+//     location: "Gdańsk, pomorskie",
+//     type: "yoga",
+//     photo: 'https://static1.s-trojmiasto.pl/zdj/c/n/1/1448/1200x800/1448636.jpg'
+// }) 
+
+export default firebase
