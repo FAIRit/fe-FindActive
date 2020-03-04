@@ -33,7 +33,7 @@ class ProductPage extends React.Component {
           <div>{this.state.product.name}</div>
           <div>{this.state.product.type}</div>
           <div>{this.state.product.location}</div>
-          {/* <div>{this.state.product.description}</div> */}
+          <div>{this.state.product.description}</div>
         </div>
       </div>
     );
