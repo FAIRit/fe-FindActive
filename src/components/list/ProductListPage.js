@@ -19,23 +19,16 @@ const ProductListPage = () => {
   }, []);
 
   const list = clubsFB.map(product => (
-    <div key={product.id} className={styles.productContainer}>
-        <Link to={`/product/${product.id}`} className={styles.singleProduct}>
-          <img
-            src={product.photo}
-            className={styles.gymImage}
-            alt="club photo"
-          />
-          <Product {...product} src={product.imageUrl} />
-        </Link>
-    </div>
+    <Link to={`/product/${product.id}`} className={styles.listLink}>
+      <Product {...product} src={product.imageUrl} />
+    </Link>
   ));
 
   return (
-    <div className={styles.productList}>
+    <div>
       <Navbar />
       <SearchBar />
-      <div>{list}</div>
+      <div className={styles.list}>{list}</div>
     </div>
   );
 };

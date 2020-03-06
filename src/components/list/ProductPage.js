@@ -24,16 +24,23 @@ class ProductPage extends React.Component {
   }
 
   render() {
+    const { name, type, location, description, photo } = this.state.product;
     return (
       <div>
         <Navbar />
         <SearchBar />
-        <div className={styles.container}>
-          <img src={this.state.product.photo} alt={this.state.product.name} />
-          <div>{this.state.product.name}</div>
-          <div>{this.state.product.type}</div>
-          <div>{this.state.product.location}</div>
-          <div>{this.state.product.description}</div>
+        <div className={styles.singleProductContainer}>
+          <div className={styles.singleProductItem}>
+            <img src={photo} className={styles.singleProductPhoto} alt={name} />
+            <div className={styles.singleProductDetails}>
+              <div className={styles.singleProductName}>{name}</div>
+              <div className={styles.singleProductType}>{type}</div>
+              <div className={styles.singleProductLocation}>{location}</div>
+              <div className={styles.singleProductDescription}>
+                {description}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

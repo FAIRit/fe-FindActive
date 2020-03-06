@@ -1,23 +1,7 @@
-.productList{
-    display: flex;
-    flex-direction: column;
+.list{
+  margin-bottom: 40px
 }
 
-.productContainer {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
-
-.singleProduct {
-  display: flex;
-  flex-direction: column;
-  color: white;
+.listLink{
   text-decoration: none;
-  align-items: flex-start;
-}
-
-.gymImage {
-  width: 90%;
-  margin-bottom: 5px;
 }
