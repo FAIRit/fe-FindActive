@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styles/LoginBtn.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+import LoginForm from './forms/LoginForm'
 
 function getModalStyle() {
   return {
@@ -57,8 +58,7 @@ export default function RegisterModal() {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2>Log in</h2>
-          <p>Lorem ipsum dolor sit amet...</p>
+          <LoginForm/>
         </div>
       </Modal>
     </div>

@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../styles/RegisterBtn.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+import RegisterForm from './forms/RegisterForm'
+
 
 
 function getModalStyle() {
@@ -35,7 +37,7 @@ export default function RegisterModal() {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-
+  
   const handleOpen = () => {
     setOpen(true);
   };
@@ -59,10 +61,7 @@ export default function RegisterModal() {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2>Create your account</h2>
-          <p>
-            Lorem ipsum dolor sit amet...
-          </p>
+          <RegisterForm/>
         </div>
       </Modal>
     </div>
