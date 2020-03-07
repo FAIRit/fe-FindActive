@@ -21,9 +21,13 @@ const useStyles = makeStyles(theme => ({
   paper: {
     position: "absolute",
     width: '80vw',
+    [theme.breakpoints.up('md')]: {
+      width: '40vw'
+    },
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3)
+  
   }
 }));
 
