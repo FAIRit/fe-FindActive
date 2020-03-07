@@ -1,9 +1,4 @@
-
 import React from "react";
-
-import styles from "../styles/RegisterBtn.module.css";
-
-
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
@@ -52,14 +47,9 @@ export default function RegisterModal() {
 
     return (
         <div>
-            <div>
-        <button
-          className={styles.registerBtn}
-          onClick={handleOpen}
-        >
-          Sign Up
-        </button>
-      </div>
+            <Button variant="contained" color="primary" onClick={handleOpen}>
+                Open Modal
+            </Button>
 
             <Modal
                 aria-labelledby="simple-modal-title"
@@ -77,38 +67,3 @@ export default function RegisterModal() {
         </div>
     );
 }
-
-
-
-
-
-
-// import React from "react";
-// import styles from "../styles/RegisterBtn.module.css";
-// import RegisterModal from "./RegisterModal";
-// class RegisterBtn extends React.Component {
-//   state = {
-//     showRegisterPopup: false
-//   };
-
-//   displayRegisterPopup = () => {
-//     this.setState({
-//       showRegisterPopup: true
-//     });
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <button
-//           className={styles.registerBtn}
-//         >
-//           Sign Up
-//         </button>
-//         {this.state.showRegisterPopup ? <RegisterModal /> : ""}
-//       </div>
-//     );
-//   }
-// }
-
-// export default RegisterBtn;
