@@ -1,14 +1,13 @@
 import React from "react";
-import styles from '../styles/LoginBtn.module.css'
+import styles from "../styles/LoginBtn.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 
-
 function getModalStyle() {
   return {
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
   };
 }
 
@@ -20,14 +19,13 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     position: "absolute",
-    width: '80vw',
-    [theme.breakpoints.up('md')]: {
-      width: '40vw'
+    width: "80vw",
+    [theme.breakpoints.up("md")]: {
+      width: "40vw"
     },
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3)
-  
   }
 }));
 
@@ -60,9 +58,7 @@ export default function RegisterModal() {
       >
         <div style={modalStyle} className={classes.paper}>
           <h2>Log in</h2>
-          <p>
-            Lorem ipsum dolor sit amet...
-          </p>
+          <p>Lorem ipsum dolor sit amet...</p>
         </div>
       </Modal>
     </div>
