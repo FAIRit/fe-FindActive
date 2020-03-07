@@ -8,7 +8,7 @@ class RegisterForm extends React.Component {
       <div>
         <h1>Create your account</h1>
         <Formik
-          initialValues={{ email: "", password: "", name: ''}}
+          initialValues={{ email: "", password: "", name: "" }}
           validate={values => {
             const errors = {};
             if (!values.email) {
@@ -20,14 +20,12 @@ class RegisterForm extends React.Component {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={values => {
             const auth = firebase.auth();
             const name = values.name;
             const email = values.email;
             const password = values.password;
-            auth
-            .createUserWithEmailAndPassword(email, password)
-            .then(value => {
+            auth.createUserWithEmailAndPassword(email, password).then(() => {
               const user = firebase.auth().currentUser;
               user
                 .updateProfile({
@@ -39,11 +37,10 @@ class RegisterForm extends React.Component {
                     .ref(`/users/${user.uid}`)
                     .set({
                       name,
-                      email,
-                    })
+                      email
+                    });
                 });
             });
-
           }}
         >
           {({
@@ -57,7 +54,7 @@ class RegisterForm extends React.Component {
             /* and other goodies */
           }) => (
             <form onSubmit={handleSubmit}>
-                <input
+              <input
                 type="text"
                 name="name"
                 onChange={handleChange}
@@ -92,64 +89,3 @@ class RegisterForm extends React.Component {
 }
 
 export default RegisterForm;
-
-// import React from 'react';
-// import { Formik } from 'formik';
-
-// const RegisterForm = () => (
-//   <div>
-//     <h1>Create your account</h1>
-//     <Formik
-//       initialValues={{ email: '', password: '' }}
-//       validate={values => {
-//         const errors = {};
-//         if (!values.email) {
-//           errors.email = 'Required';
-//         } else if (
-//           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-//         ) {
-//           errors.email = 'Invalid email address';
-//         }
-//         return errors;
-//       }}
-//       onSubmit={(values, { setSubmitting }) => {
-//         console.log(values)
-//       }}
-//     >
-//       {({
-//         values,
-//         errors,
-//         touched,
-//         handleChange,
-//         handleBlur,
-//         handleSubmit,
-//         isSubmitting,
-//         /* and other goodies */
-//       }) => (
-//         <form onSubmit={handleSubmit}>
-//           <input
-//             type="email"
-//             name="email"
-//             onChange={handleChange}
-//             onBlur={handleBlur}
-//             value={values.email}
-//           />
-//           {errors.email && touched.email && errors.email}
-//           <input
-//             type="password"
-//             name="password"
-//             onChange={handleChange}
-//             onBlur={handleBlur}
-//             value={values.password}
-//           />
-//           {errors.password && touched.password && errors.password}
-//           <button type="submit" disabled={isSubmitting}>
-//             Submit
-//           </button>
-//         </form>
-//       )}
-//     </Formik>
-//   </div>
-// );
-
-// export default RegisterForm;
