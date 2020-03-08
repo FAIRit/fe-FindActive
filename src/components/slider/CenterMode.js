@@ -37,25 +37,25 @@ export default class CenterMode extends Component {
             <Slider className={styles.slider} {...settings}>
               <div>
                 <div className={styles.categorie}>
-                  <img src={gym} className={styles.categoriePhoto} />
+                  <img src={gym} className={styles.categoriePhoto} alt="gym"/>
                   <span className={styles.categorieName}>Gym</span>
                 </div>
               </div>
               <div>
                 <div className={styles.categorie}>
-                  <img src={yoga} className={styles.categoriePhoto} />
+                  <img src={yoga} className={styles.categoriePhoto} alt="yoga"/>
                   <span className={styles.categorieName}>Yoga</span>
                 </div>
               </div>
               <div>
                 <div className={styles.categorie}>
-                  <img src={fight} className={styles.categoriePhoto} />
+                  <img src={fight} className={styles.categoriePhoto} alt="fight"/>
                   <span className={styles.categorieName}>Martial arts</span>
                 </div>
               </div>
               <div>
                 <div className={styles.categorie}>
-                  <img src={pole} className={styles.categoriePhoto} />
+                  <img src={pole} className={styles.categoriePhoto} alt="pole dance"/>
                   <span className={styles.categorieName}>Pole dance</span>
                 </div>
               </div>

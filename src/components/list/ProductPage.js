@@ -27,7 +27,7 @@ class ProductPage extends React.Component {
     const { name, type, location, description, photo } = this.state.product;
     return (
       <div>
-        <Navbar />
+        <Navbar/>
         <SearchBar />
         <div className={styles.singleProductContainer}>
           <div className={styles.singleProductItem}>
