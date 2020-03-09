@@ -6,7 +6,7 @@ import Faq from "../components/Faq";
 import PrivacyPolicy from "../components/PrivacyPolicy";
 import TermsAndConditions from "../components/TermsAndConditions";
 import ProductPage from '../components/list/ProductPage'
-
+import UserProfile from '../components/UserProfile'
 const AppRouter = () => (
     <BrowserRouter>
     <Switch>
@@ -16,6 +16,7 @@ const AppRouter = () => (
       <Route path="/faq" component={Faq} exact />
       <Route path="/privacy" component={PrivacyPolicy} exact />
       <Route path="/terms" component={TermsAndConditions} exact />
+      <Route path="/profile" component={UserProfile} exact />
     </Switch>
     </BrowserRouter>
 );
