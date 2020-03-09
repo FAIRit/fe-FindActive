@@ -22,7 +22,19 @@ const LoginForm = () => (
         const auth = firebase.auth();
         const email = values.email;
         const password = values.password;
-        auth.signInWithEmailAndPassword(email, password);
+        auth
+          .signInWithEmailAndPassword(email, password)
+          .catch(error => {
+            if (
+              error.code === "auth/wrong-password"){
+                console.log('wrong password')
+              } else if(
+              error.code === "auth/user-not-found"){
+                console.log('user now found')
+              }
+
+            }
+          )
       }}
     >
       {({
