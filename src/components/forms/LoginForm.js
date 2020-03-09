@@ -1,28 +1,28 @@
-import React from 'react';
-import { Formik } from 'formik';
+import React from "react";
+import { Formik } from "formik";
+import firebase from "../../firebase/firebase";
 
 const LoginForm = () => (
   <div>
     <h1>Log in</h1>
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{ email: "", password: "" }}
       validate={values => {
         const errors = {};
         if (!values.email) {
-          errors.email = 'Required';
+          errors.email = "Required";
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
         ) {
-          errors.email = 'Invalid email address';
+          errors.email = "Invalid email address";
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        // setTimeout(() => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   setSubmitting(false);
-        // }, 400);
-        console.log(values)
+      onSubmit={values => {
+        const auth = firebase.auth();
+        const email = values.email;
+        const password = values.password;
+        auth.signInWithEmailAndPassword(email, password);
       }}
     >
       {({
@@ -32,8 +32,7 @@ const LoginForm = () => (
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting,
-        /* and other goodies */
+        isSubmitting
       }) => (
         <form onSubmit={handleSubmit}>
           <input
