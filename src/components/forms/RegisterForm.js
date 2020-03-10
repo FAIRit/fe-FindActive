@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import firebase from "../../firebase/firebase";
+import values from "./userFormValidate";
 
 class RegisterForm extends React.Component {
   render() {
@@ -9,17 +10,7 @@ class RegisterForm extends React.Component {
         <h1>Create your account</h1>
         <Formik
           initialValues={{ email: "", password: "", name: "" }}
-          validate={values => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "Invalid email address";
-            }
-            return errors;
-          }}
+          validate={values}
           onSubmit={values => {
             const auth = firebase.auth();
             const name = values.name;
