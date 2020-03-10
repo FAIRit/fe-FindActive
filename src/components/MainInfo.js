@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/MainInfo.module.css";
-import Modal from './RegisterBtn'
+import Modal from './btns/RegisterBtn'
 
 const MainInfo = () => {
   return (
