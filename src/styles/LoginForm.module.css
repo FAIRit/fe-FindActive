@@ -26,14 +26,11 @@
 .passwordInput {
   width: 80vw;
   height: 50px;
-}
-
-.loginInput,
-.passwordInput {
   border: 1px solid #00a5cf;
   border-bottom: 2px solid #00a5cf;
   margin-top: 20px;
 }
+
 
 .loginConfirmBtn {
   border: none;
@@ -77,6 +74,10 @@
 .loginWithGoogleBtn:hover {
   background: #004e64;
   transition: 0.5s;
+}
+
+.error{
+  color: red
 }
 
 @media (min-width: 768px) {

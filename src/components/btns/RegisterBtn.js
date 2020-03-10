@@ -44,7 +44,7 @@ export default function RegisterModal() {
     <div>
       <div>
         <button className={styles.registerBtn} onClick={handleOpen}>
-          Sign Up
+         Zarejestruj się
         </button>
       </div>
 

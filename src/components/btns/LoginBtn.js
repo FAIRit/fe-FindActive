@@ -46,7 +46,7 @@ export default function RegisterModal() {
     <div>
       <div>
         <button className={styles.loginBtn} onClick={handleOpen}>
-          Login
+          Zaloguj się
         </button>
       </div>
 
