@@ -1,13 +1,25 @@
-.navbar{
+.navbarContainer{
     background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5px;
-    width: 95vw
+    padding: 10px 30px;
+    width: 100vw
+
 }
 
 .navLinks{
     display: flex;
     flex-direction: row;
 }
+
+.burgerButton{
+    outline: none;
+    border: none
+}
+
