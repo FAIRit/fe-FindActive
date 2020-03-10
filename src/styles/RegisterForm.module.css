@@ -50,6 +50,10 @@
   padding-left: 10px;
 }
 
+.error{
+    color: red
+}
+
 .registerConfirmBtn:hover {
   background: #004e64;
   transition: 0.5s;
