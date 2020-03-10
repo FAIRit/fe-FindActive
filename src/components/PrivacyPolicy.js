@@ -1,5 +1,5 @@
 import React from "react";
 
-const PrivacyPolicy = () => <div>PrivacyPolicy</div>;
+const PrivacyPolicy = () => <div>Polityka prywatności</div>;
 
 export default PrivacyPolicy;

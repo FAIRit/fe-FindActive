@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
       <Logo />
-      <div>FOLLOW US</div>
+      <div>MEDIA SPOŁECZNOŚCIOWE</div>
       <div className={styles.socialLogos}>
         <NavLink to='#' className={styles.link}><FontAwesomeIcon icon={faFacebook} size={"2x"} /></NavLink>
         <NavLink to='#' className={styles.link}><FontAwesomeIcon icon={faInstagram} size={"2x"} /></NavLink>
@@ -21,10 +21,10 @@ const Footer = () => {
       </div>
       <div className={styles.links}>
         <NavLink to="/terms" className={styles.link}>
-          Terms and conditions
+          Regulamin
         </NavLink>{" "}
         <NavLink to="/privacy" className={styles.link}>
-          Privacy Policy
+          Polityka prywatności
         </NavLink>{" "}
         <NavLink to="/faq" className={styles.link}>
           FAQ

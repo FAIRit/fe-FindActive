@@ -32,9 +32,9 @@ const LoginForm = () => {
             const password = values.password;
             auth.signInWithEmailAndPassword(email, password).catch(error => {
               if (error.code === "auth/wrong-password") {
-                setMessage('Błędne hasło')
+                setMessage('Błędny login lub hasło')
               } else if (error.code === "auth/user-not-found") {
-                setMessage('Użytkownik nie istnieje');
+                setMessage('Błędny login lub hasło');
               }
             });
           }}
