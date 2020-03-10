@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import firebase from "../../firebase/firebase";
 import values from "./userFormValidate";
 import styles from "../../styles/LoginForm.module.css";
+import { NavLink } from "react-router-dom"; 
 
 const LoginForm = () => (
   <div className={styles.loginFormContainer}>
@@ -40,6 +41,8 @@ const LoginForm = () => (
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
+              className={styles.loginInput}
+              placeholder="e-mail"
             />
             {errors.email && touched.email && errors.email}
             <input
@@ -48,10 +51,20 @@ const LoginForm = () => (
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
+              className={styles.passwordInput}
+              placeholder="hasło"
             />
             {errors.password && touched.password && errors.password}
-            <button type="submit" disabled={isSubmitting}>
+            <NavLink className={styles.forgotPasswordLink} to="#">Nie pamiętasz hasła?</NavLink>
+            <button
+              type="submit"
+              className={styles.loginConfirmBtn}
+              disabled={isSubmitting}
+            >
               Zaloguj się
+            </button>
+            <button type="submit" className={styles.loginWithGoogleBtn}>
+              Kontynuuj z Google
             </button>
           </form>
         )}

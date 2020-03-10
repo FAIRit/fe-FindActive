@@ -1,6 +1,6 @@
 .loginFormContainer {
   height: 400px;
-  width: 250px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,12 +11,59 @@
     height: 90%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .loginInputs {
-    height: 25%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding-top: 30px
+}
 
+.loginInput,
+.passwordInput{
+  width: 80vw;
+  height: 50px;
+}
+
+.loginInput,
+.passwordInput{
+  border: 1px solid #00A5CF;
+  border-bottom: 2px solid #00A5CF;
+  margin-top: 20px;
+}
+
+.loginConfirmBtn{
+  border: none;
+  background: #00A5CF;
+  color: white;
+  margin-top: 35px;
+  width: 80vw;
+  height: 50px;
+  font-size: 1.2rem
+}
+
+.loginInput::placeholder,
+.passwordInput::placeholder{
+  color: #00A5CF;
+  font-size: 1.2rem;
+  padding-left: 10px
+}
+
+.loginWithGoogleBtn{
+  border: none;
+  background: rgb(4, 131, 163);
+  color: white;
+  margin-top: 20px;
+  width: 80vw;
+  height: 50px;
+  font-size: 1.2rem
+}
+
+.forgotPasswordLink{
+  text-decoration: none;
+  color: #00A5CF;
+  padding-top: 15px;
 }
