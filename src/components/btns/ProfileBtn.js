@@ -101,9 +101,9 @@ export default function MenuListComposition() {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose}>
-                      <NavLink to="/profile">My profile</NavLink>
+                      <NavLink to="/profile">Mój profil</NavLink>
                     </MenuItem>
-                    <MenuItem onClick={signOut}>Logout</MenuItem>
+                    <MenuItem onClick={signOut}>Wyloguj się</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
