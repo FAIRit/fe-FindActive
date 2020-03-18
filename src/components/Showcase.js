@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar";
 import firebase from "../firebase/firebase";
 import LoggedNavbar from "../layouts/LoggedNavbar";
 
+
 const Showcase = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("");
 
@@ -17,6 +18,8 @@ const Showcase = () => {
       setIsLoggedIn(true);
     } else {setIsLoggedIn(false)};
   });
+
+  
   return (
     <div>
       <div className={styles.container}>

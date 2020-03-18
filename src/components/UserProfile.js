@@ -5,14 +5,11 @@ import LoggedNavbar from "../layouts/LoggedNavbar";
 import styles from "../styles/UserProfile.module.css";
 import userPlaceholder from "../img/user.jpg";
 
-
 const UserProfile = () => {
   const auth = firebase.auth();
   const user = firebase.auth().currentUser;
   const storage = firebase.storage();
   const [isLoggedIn, setIsLoggedIn] = useState("");
-
-
 
   auth.onAuthStateChanged(user => {
     if (user) {
@@ -22,44 +19,71 @@ const UserProfile = () => {
     }
   });
 
-  var [profilePicture, updateProfilePicture] = useState(userPlaceholder);
+  const allInputs = {
+    imgUrl: ""
+  };
+  const [imageAsFile, setImageAsFile] = useState("");
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs);
 
-updateProfilePicture = e => {
-    if (e.target.files[0]){
-      user
-      .updateProfile({
-        imageURL: e.target.files[0]
-        })
-      }
+  console.log(imageAsFile);
+  const handleImageAsFile = e => {
+    const image = e.target.files[0];
+    setImageAsFile(image);
+  };
+
+  const handleFireBaseUpload = e => {
+    e.preventDefault();
+    console.log("start of upload");
+    if (imageAsFile === "") {
+      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
     }
-
-    return (
-      <div className={styles.userProfile}>
-        {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
-        {isLoggedIn ? (
-          <div>
-            <div>Witaj, {user.displayName}!</div>
-            <img
-              src={profilePicture}
-              className={styles.profileImg}
-              alt="profile image"
-            />
-            <div>
-              <label for="file">Zmień zdjęcie</label>
-              <input
-                onChange={updateProfilePicture}
-                type="file"
-                accept="image/*"
-                name="file"
-                id="file"
-              />
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
+    const uploadTask = storage
+      .ref(`/images/${imageAsFile.name}`)
+      .put(imageAsFile);
+    uploadTask.on(
+      "state_changed",
+      snapShot => {
+        console.log(snapShot);
+      },
+      err => {
+        console.log(err);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(imageAsFile.name)
+          .getDownloadURL()
+          .then(fireBaseUrl => {
+            setImageAsUrl(prevObject => ({
+              ...prevObject,
+              imgUrl: fireBaseUrl
+            }));
+          });
+      }
     );
   };
+
+  return (
+    <div className={styles.userProfile}>
+      {" "}
+      {isLoggedIn ? <LoggedNavbar /> : <Navbar />}{" "}
+      {isLoggedIn ? (
+        <div>
+          <div> Witaj, {user.displayName}! </div>{" "}
+          <img src={imageAsUrl.imgUrl} alt="image tag" />
+          <div>
+            <form onSubmit={handleFireBaseUpload}>
+              <label htmlFor="file"> Zmień zdjęcie </label>{" "}
+              <input type="file" onChange={handleImageAsFile} />{" "}
+              <button> upload to firebase </button>{" "}
+            </form>{" "}
+          </div>{" "}
+        </div>
+      ) : (
+        ""
+      )}{" "}
+    </div>
+  );
+};
 
 export default UserProfile;
