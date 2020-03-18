@@ -4,6 +4,7 @@ import Navbar from "../layouts/Navbar";
 import LoggedNavbar from "../layouts/LoggedNavbar";
 import styles from "../styles/UserProfile.module.css";
 import userPlaceholder from "../img/user.jpg";
+import "firebase/storage";
 
 const UserProfile = () => {
   const auth = firebase.auth();
@@ -31,11 +32,6 @@ const UserProfile = () => {
     setImageAsFile(image);
   };
 
-
-
-
-
-  
   const handleFireBaseUpload = e => {
     e.preventDefault();
     console.log("start of upload");
@@ -60,19 +56,16 @@ const UserProfile = () => {
               ...prevObject,
               imgUrl: fireBaseUrl
             }));
-            updateProfilePicture(fireBaseUrl)
+
+            const currentUser = firebase.auth().currentUser;
+            const id = currentUser.uid;
+            firebase
+              .database()
+              .ref(`/users/${id}/profilePicture`)
+              .set(fireBaseUrl);
           });
       }
     );
-  };
-
-  const updateProfilePicture = fireBaseUrl => {
-    const currentUser = firebase.auth().currentUser;
-    const id = currentUser.uid;
-    firebase
-      .database()
-      .ref(`/users/${id}/profilePicture`)
-      .set(fireBaseUrl);
   };
 
   return (
@@ -86,7 +79,12 @@ const UserProfile = () => {
           <div>
             <form onSubmit={handleFireBaseUpload}>
               <label htmlFor="file"> Zmień zdjęcie </label>{" "}
-              <input type="file" name="file" id="file" onChange={handleImageAsFile} />{" "}
+              <input
+                type="file"
+                name="file"
+                id="file"
+                onChange={handleImageAsFile}
+              />{" "}
               <button> upload to firebase </button>{" "}
             </form>{" "}
           </div>{" "}
