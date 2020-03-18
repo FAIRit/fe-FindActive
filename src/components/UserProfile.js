@@ -31,12 +31,14 @@ const UserProfile = () => {
     setImageAsFile(image);
   };
 
+
+
+
+
+  
   const handleFireBaseUpload = e => {
     e.preventDefault();
     console.log("start of upload");
-    if (imageAsFile === "") {
-      console.error(`not an image, the image file is a ${typeof imageAsFile}`);
-    }
     const uploadTask = storage
       .ref(`/images/${imageAsFile.name}`)
       .put(imageAsFile);
@@ -58,9 +60,19 @@ const UserProfile = () => {
               ...prevObject,
               imgUrl: fireBaseUrl
             }));
+            updateProfilePicture(fireBaseUrl)
           });
       }
     );
+  };
+
+  const updateProfilePicture = fireBaseUrl => {
+    const currentUser = firebase.auth().currentUser;
+    const id = currentUser.uid;
+    firebase
+      .database()
+      .ref(`/users/${id}/profilePicture`)
+      .set(fireBaseUrl);
   };
 
   return (
@@ -74,7 +86,7 @@ const UserProfile = () => {
           <div>
             <form onSubmit={handleFireBaseUpload}>
               <label htmlFor="file"> Zmień zdjęcie </label>{" "}
-              <input type="file" onChange={handleImageAsFile} />{" "}
+              <input type="file" name="file" id="file" onChange={handleImageAsFile} />{" "}
               <button> upload to firebase </button>{" "}
             </form>{" "}
           </div>{" "}
