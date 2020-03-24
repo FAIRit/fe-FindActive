@@ -1,24 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../styles/Showcase.module.css";
 import Navbar from "../layouts/Navbar";
 import MainInfo from "./MainInfo";
 import Faq from "./Faq";
 import CenterMode from "./slider/CenterMode";
 import SearchBar from "./SearchBar";
-import firebase from "../firebase/firebase";
 import LoggedNavbar from "../layouts/LoggedNavbar";
+import { useAuth } from '../hooks/useAuth'
 
 
 const Showcase = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState("");
-
-  const auth = firebase.auth();
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      setIsLoggedIn(true);
-    } else {setIsLoggedIn(false)};
-  });
-
+  const isLoggedIn = useAuth();
   
   return (
     <div>
