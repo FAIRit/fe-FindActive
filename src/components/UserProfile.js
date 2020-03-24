@@ -3,7 +3,6 @@ import firebase from "../firebase/firebase";
 import Navbar from "../layouts/Navbar";
 import LoggedNavbar from "../layouts/LoggedNavbar";
 import styles from "../styles/UserProfile.module.css";
-import userPlaceholder from "../img/user.jpg";
 import "firebase/storage";
 
 const UserProfile = () => {
@@ -61,7 +60,7 @@ const UserProfile = () => {
             const id = currentUser.uid;
             firebase
               .database()
-              .ref(`/users/${id}/profilePicture`)
+              .ref(`/users/${id}/photoURL`)
               .set(fireBaseUrl);
           });
       }
@@ -74,8 +73,15 @@ const UserProfile = () => {
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />}{" "}
       {isLoggedIn ? (
         <div>
-          <div> Witaj, {user.displayName}! </div>{" "}
-          <img src={imageAsUrl.imgUrl} alt="image tag" />
+          <div> Witaj, {user.displayName}! </div> <div></div>
+          <img
+            src={
+              imageAsUrl.imgUrl ||
+              "https://semantic-ui.com/images/wireframe/image.png"
+            }
+            className={styles.profileImg}
+            alt="image tag"
+          />
           <div>
             <form onSubmit={handleFireBaseUpload}>
               <label htmlFor="file"> Zmień zdjęcie </label>{" "}
@@ -83,6 +89,7 @@ const UserProfile = () => {
                 type="file"
                 name="file"
                 id="file"
+                accept="image/*"
                 onChange={handleImageAsFile}
               />{" "}
               <button> upload to firebase </button>{" "}
