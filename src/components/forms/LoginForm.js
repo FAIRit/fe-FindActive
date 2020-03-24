@@ -4,6 +4,7 @@ import firebase from "../../firebase/firebase";
 import styles from "../../styles/LoginForm.module.css";
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
+import { googleLoginRedirect } from "../../services/AuthService";
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -16,21 +17,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
-  const googleLoginRedirect = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().languageCode = "pl";
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(function(result) {
-        const user = result.user;
-        const database = firebase.database();
-
-        database.ref(`/users/${user.uid}/name`).set(user.displayName);
-        database.ref(`/users/${user.uid}/email`).set(user.email);
-      });
-  };
-
   const [message, setMessage] = useState(null);
 
   return (
