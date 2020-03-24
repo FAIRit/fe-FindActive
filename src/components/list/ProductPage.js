@@ -1,5 +1,5 @@
 import React from "react";
-import { displayClubs, stopClubs } from "../services/ClubService";
+import { displayClubs, stopClubs } from "../../services/ClubService";
 import styles from "../../styles/ProductPage.module.css";
 import SearchBar from "../SearchBar";
 import Navbar from "../../layouts/Navbar";

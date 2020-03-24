@@ -4,20 +4,12 @@ import Navbar from "../layouts/Navbar";
 import LoggedNavbar from "../layouts/LoggedNavbar";
 import styles from "../styles/UserProfile.module.css";
 import "firebase/storage";
+import { useAuth } from '../hooks/useAuth'
 
 const UserProfile = () => {
-  const auth = firebase.auth();
   const user = firebase.auth().currentUser;
   const storage = firebase.storage();
-  const [isLoggedIn, setIsLoggedIn] = useState("");
-
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  });
+  const isLoggedIn = useAuth();
 
   const allInputs = {
     imgUrl: ""
@@ -92,7 +84,7 @@ const UserProfile = () => {
                 accept="image/*"
                 onChange={handleImageAsFile}
               />{" "}
-              <button> upload to firebase </button>{" "}
+              <button>zmień zdjęcie</button>{" "}
             </form>{" "}
           </div>{" "}
         </div>
