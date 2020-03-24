@@ -9,10 +9,9 @@ import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser as farFaUser } from "@fortawesome/free-regular-svg-icons";
-import styles from "../styles/ProfileBtn.module.css";
-import firebase from "../firebase/firebase";
+import styles from "../../styles/ProfileBtn.module.css";
+import firebase from "../../firebase/firebase";
 import { NavLink } from "react-router-dom";
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -101,8 +100,10 @@ export default function MenuListComposition() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}><NavLink to="/profile">My profile</NavLink></MenuItem>
-                    <MenuItem onClick={signOut}>Logout</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <NavLink to="/profile">Mój profil</NavLink>
+                    </MenuItem>
+                    <MenuItem onClick={signOut}>Wyloguj się</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

@@ -1,0 +1,94 @@
+.loginFormContainer {
+  height: 400px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 30px;
+}
+
+.loginInput,
+.passwordInput {
+  width: 80vw;
+  height: 50px;
+  border: 1px solid #00a5cf;
+  border-bottom: 2px solid #00a5cf;
+  margin-top: 20px;
+}
+
+
+.loginConfirmBtn {
+  border: none;
+  background: #00a5cf;
+  color: white;
+  margin-top: 35px;
+  width: 80vw;
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+.loginInput::placeholder,
+.passwordInput::placeholder {
+  color: #00a5cf;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+
+.loginWithGoogleBtn {
+  border: none;
+  background: rgb(4, 131, 163);
+  color: white;
+  margin-top: 20px;
+  width: 80vw;
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+.forgotPasswordLink {
+  text-decoration: none;
+  color: #00a5cf;
+  padding-top: 15px;
+}
+
+.forgotPasswordLink:hover{
+  color: #004e64;
+  transition: 0.5s;
+}
+
+.loginConfirmBtn:hover,
+.loginWithGoogleBtn:hover {
+  background: #004e64;
+  transition: 0.5s;
+}
+
+.error{
+  color: red
+}
+
+@media (min-width: 768px) {
+  .loginFormContainer {
+    width: 30vw;
+  }
+
+  .loginInput,
+  .passwordInput,
+  .loginConfirmBtn,
+  .loginWithGoogleBtn {
+    width: 28vw;
+  }
+}

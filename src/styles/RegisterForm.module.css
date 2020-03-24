@@ -1,0 +1,73 @@
+.registerFormContainer {
+  height: 400px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 30px;
+}
+
+.nameInput,
+.registerEmailInput,
+.registerPasswordInput {
+  width: 80vw;
+  height: 50px;
+  border: 1px solid #00a5cf;
+  border-bottom: 2px solid #00a5cf;
+  margin-top: 20px;
+}
+
+.registerConfirmBtn {
+  border: none;
+  background: #00a5cf;
+  color: white;
+  margin-top: 35px;
+  width: 80vw;
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+.nameInput::placeholder,
+.registerEmailInput::placeholder,
+.registerPasswordInput::placeholder {
+  color: #00a5cf;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+
+.error{
+    color: red
+}
+
+.registerConfirmBtn:hover {
+  background: #004e64;
+  transition: 0.5s;
+}
+
+@media (min-width: 768px) {
+  .registerFormContainer {
+    width: 30vw;
+  }
+
+  .nameInput,
+  .registerEmailInput,
+  .registerPasswordInput,
+  .registerConfirmBtn {
+    width: 28vw;
+  }
+}

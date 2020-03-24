@@ -32,25 +32,25 @@ export default class CenterMode extends Component {
       };
       return (
         <div className={styles.topCategorieContainer}>
-          <h2 className={styles.title}>Top categories</h2>
+          <h2 className={styles.title}>Najpopularniejsze kategorie</h2>
           <div className={styles.topCategories}>
             <Slider className={styles.slider} {...settings}>
               <div>
                 <div className={styles.categorie}>
                   <img src={gym} className={styles.categoriePhoto} alt="gym"/>
-                  <span className={styles.categorieName}>Gym</span>
+                  <span className={styles.categorieName}>Siłownia</span>
                 </div>
               </div>
               <div>
                 <div className={styles.categorie}>
                   <img src={yoga} className={styles.categoriePhoto} alt="yoga"/>
-                  <span className={styles.categorieName}>Yoga</span>
+                  <span className={styles.categorieName}>Joga</span>
                 </div>
               </div>
               <div>
                 <div className={styles.categorie}>
                   <img src={fight} className={styles.categoriePhoto} alt="fight"/>
-                  <span className={styles.categorieName}>Martial arts</span>
+                  <span className={styles.categorieName}>Sztuki walki</span>
                 </div>
               </div>
               <div>
