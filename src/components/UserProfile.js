@@ -84,7 +84,7 @@ const UserProfile = () => {
                 accept="image/*"
                 onChange={handleImageAsFile}
               />{" "}
-              <button> upload to firebase </button>{" "}
+              <button>zmień zdjęcie</button>{" "}
             </form>{" "}
           </div>{" "}
         </div>
