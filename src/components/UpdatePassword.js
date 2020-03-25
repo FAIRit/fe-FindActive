@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import firebase from "../firebase/firebase";
 
-class UpdatePassword extends React.Component {
-  state = {
-    currentPassword: "",
-    newPassword: ""
-  };
+const UpdatePassword = () => {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
 
-  reauthenticate = currentPassword => {
+  const reauthenticate = currentPassword => {
     const user = firebase.auth().currentUser;
     const credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
@@ -16,46 +14,41 @@ class UpdatePassword extends React.Component {
     return user.reauthenticateWithCredential(credential);
   };
 
-  changePassword = () => {
+  const changePassword = () => {
     const user = firebase.auth().currentUser;
-    this.reauthenticate(this.state.currentPassword)
+    reauthenticate(currentPassword)
       .then(() => {
         user
-          .updatePassword(this.state.newPassword)
+          .updatePassword(newPassword)
           .then(() => {
             console.log("zmieniono hasło");
           })
           .catch(error => {
-            console.log('nie zmieniono hasła' + error.message);
+            console.log("nie zmieniono hasła" + error.message);
           });
       })
       .catch(error => {
         console.log(error.message);
       });
   };
-  render() {
-    return (
-      <div style={{padding: '60px'}}>
-        <input
-          type="password"
-          value={this.state.currentPassword}
-          onChange={e => {
-            this.setState({ currentPassword: e.target.value });
-          }}
-          placeholder="obecne hasło"
-        />
-        <input
-          type="password"
-          value={this.state.newPassword}
-          onChange={e => {
-            this.setState({ newPassword: e.target.value });
-          }}
-          placeholder="nowe hasło"
-        />
-        <button onClick={this.changePassword}>zmień hasło</button>
-      </div>
-    );
-  }
-}
+
+  return (
+    <div style={{ padding: "60px" }}>
+      <input
+        type="password"
+        value={currentPassword}
+        onChange={e => setCurrentPassword(e.target.value)}
+        placeholder="obecne hasło"
+      />
+      <input
+        type="password"
+        value={newPassword}
+        onChange={e => setNewPassword(e.target.value)}
+        placeholder="nowe hasło"
+      />
+      <button onClick={changePassword}>zmień hasło</button>
+    </div>
+  );
+};
 
 export default UpdatePassword;
