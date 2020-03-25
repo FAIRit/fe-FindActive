@@ -4,12 +4,14 @@ import Navbar from "../layouts/Navbar";
 import LoggedNavbar from "../layouts/LoggedNavbar";
 import styles from "../styles/UserProfile.module.css";
 import "firebase/storage";
-import { useAuth } from '../hooks/useAuth'
+import { useAuth } from "../hooks/useAuth";
+import UpdatePassword from './UpdatePassword'
 
 const UserProfile = () => {
   const user = firebase.auth().currentUser;
   const storage = firebase.storage();
   const isLoggedIn = useAuth();
+
 
   const allInputs = {
     imgUrl: ""
@@ -17,15 +19,13 @@ const UserProfile = () => {
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
 
-  console.log(imageAsFile);
   const handleImageAsFile = e => {
     const image = e.target.files[0];
     setImageAsFile(image);
   };
 
-  const handleFireBaseUpload = e => {
+  const handleFirebaseUpload = e => {
     e.preventDefault();
-    console.log("start of upload");
     const uploadTask = storage
       .ref(`/images/${imageAsFile.name}`)
       .put(imageAsFile);
@@ -42,22 +42,35 @@ const UserProfile = () => {
           .ref("images")
           .child(imageAsFile.name)
           .getDownloadURL()
-          .then(fireBaseUrl => {
+          .then(firebaseUrl => {
             setImageAsUrl(prevObject => ({
               ...prevObject,
-              imgUrl: fireBaseUrl
+              imgUrl: firebaseUrl
             }));
 
             const currentUser = firebase.auth().currentUser;
             const id = currentUser.uid;
+
             firebase
               .database()
               .ref(`/users/${id}/photoURL`)
-              .set(fireBaseUrl);
+              .set(firebaseUrl);
           });
       }
     );
   };
+
+  // const removeProfile = () => {
+  //   const user = firebase.auth().currentUser;
+  //   const credential = firebase.auth.EmailAuthProvider.credential(
+  //       user.email
+  //   );
+  //   user.reauthenticateWithCredential(credential);
+  //   console.log(credential)
+  // }
+
+
+
 
   return (
     <div className={styles.userProfile}>
@@ -65,17 +78,17 @@ const UserProfile = () => {
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />}{" "}
       {isLoggedIn ? (
         <div>
-          <div> Witaj, {user.displayName}! </div> <div></div>
+          <div> Witaj, {user.displayName}! </div> 
           <img
             src={
               imageAsUrl.imgUrl ||
               "https://semantic-ui.com/images/wireframe/image.png"
             }
             className={styles.profileImg}
-            alt="image tag"
+            alt="user photo"
           />
           <div>
-            <form onSubmit={handleFireBaseUpload}>
+            <form onSubmit={handleFirebaseUpload}>
               <label htmlFor="file"> Zmień zdjęcie </label>{" "}
               <input
                 type="file"
@@ -87,6 +100,7 @@ const UserProfile = () => {
               <button>zmień zdjęcie</button>{" "}
             </form>{" "}
           </div>{" "}
+              <UpdatePassword/>
         </div>
       ) : (
         ""
