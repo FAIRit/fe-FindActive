@@ -1,10 +1,9 @@
 import React from "react";
 import firebase from "../firebase/firebase";
 
-class UpdatePassword extends React.Component {
+class RemoveAccount extends React.Component {
   state = {
-    currentPassword: "",
-    newPassword: ""
+    currentPassword: ""
   };
 
   reauthenticate = currentPassword => {
@@ -16,46 +15,40 @@ class UpdatePassword extends React.Component {
     return user.reauthenticateWithCredential(credential);
   };
 
-  changePassword = () => {
+  removeAccount = () => {
     const user = firebase.auth().currentUser;
     this.reauthenticate(this.state.currentPassword)
       .then(() => {
         user
-          .updatePassword(this.state.newPassword)
+          .delete()
           .then(() => {
-            console.log("zmieniono hasło");
+            console.log('usunięto profil');
           })
           .catch(error => {
-            console.log('nie zmieniono hasła' + error.message);
+            console.log('nie usunięto profilu' + error.message);
           });
       })
       .catch(error => {
         console.log(error.message);
       });
   };
+
+  
   render() {
     return (
-      <div style={{padding: '60px'}}>
+      <div style={{ padding: "60px" }}>
         <input
           type="password"
           value={this.state.currentPassword}
           onChange={e => {
             this.setState({ currentPassword: e.target.value });
           }}
-          placeholder="obecne hasło"
+          placeholder="wpisz hasło"
         />
-        <input
-          type="password"
-          value={this.state.newPassword}
-          onChange={e => {
-            this.setState({ newPassword: e.target.value });
-          }}
-          placeholder="nowe hasło"
-        />
-        <button onClick={this.changePassword}>zmień hasło</button>
+        <button onClick={this.removeAccount}>usuń konto</button>
       </div>
     );
   }
 }
 
-export default UpdatePassword;
+export default RemoveAccount;

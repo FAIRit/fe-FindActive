@@ -6,6 +6,8 @@ import styles from "../styles/UserProfile.module.css";
 import "firebase/storage";
 import { useAuth } from "../hooks/useAuth";
 import UpdatePassword from './UpdatePassword'
+import RemoveAccount from './RemoveAccount'
+
 
 const UserProfile = () => {
   const user = firebase.auth().currentUser;
@@ -101,6 +103,7 @@ const UserProfile = () => {
             </form>{" "}
           </div>{" "}
               <UpdatePassword/>
+              <RemoveAccount/>
         </div>
       ) : (
         ""
