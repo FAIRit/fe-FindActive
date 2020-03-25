@@ -1,12 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
+import { Redirect } from 'react-router-dom';
 import firebase from "../firebase/firebase";
 
-class RemoveAccount extends React.Component {
-  state = {
-    currentPassword: ""
-  };
+const RemoveAccount = () => {
+  const [currentPassword, setCurrentPassword] = useState("");
 
-  reauthenticate = currentPassword => {
+  const reauthenticate = currentPassword => {
     const user = firebase.auth().currentUser;
     const credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
@@ -15,17 +14,17 @@ class RemoveAccount extends React.Component {
     return user.reauthenticateWithCredential(credential);
   };
 
-  removeAccount = () => {
+  const removeAccount = () => {
     const user = firebase.auth().currentUser;
-    this.reauthenticate(this.state.currentPassword)
+    reauthenticate(currentPassword)
       .then(() => {
         user
           .delete()
           .then(() => {
-            console.log('usunięto profil');
+            console.log("usunięto profil");
           })
           .catch(error => {
-            console.log('nie usunięto profilu' + error.message);
+            console.log("nie usunięto profilu" + error.message);
           });
       })
       .catch(error => {
@@ -33,22 +32,21 @@ class RemoveAccount extends React.Component {
       });
   };
 
-  
-  render() {
-    return (
-      <div style={{ padding: "60px" }}>
-        <input
-          type="password"
-          value={this.state.currentPassword}
-          onChange={e => {
-            this.setState({ currentPassword: e.target.value });
-          }}
-          placeholder="wpisz hasło"
-        />
-        <button onClick={this.removeAccount}>usuń konto</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      style={{
+        padding: "60px"
+      }}
+    >
+      <input
+        type="password"
+        value={currentPassword}
+        onChange={e => setCurrentPassword(e.target.value)}
+        placeholder="wpisz hasło"
+      />
+      <button onClick={removeAccount}> usuń konto </button>{" "}
+    </div>
+  );
+};
 
 export default RemoveAccount;
