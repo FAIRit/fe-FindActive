@@ -18,11 +18,31 @@ const SignupSchema = Yup.object().shape({
 const LoginForm = () => {
   const [message, setMessage] = useState(null);
   const [forgotPassword, displayForgotPassword] = useState(false);
+  const [mail, setValue] = useState("");
 
   return forgotPassword ? (
     <div>
-      {" "}
-      <Formik
+      <form
+        onSubmit={() => {
+          const auth = firebase.auth();
+          auth
+            .sendPasswordResetEmail(mail)
+            .then(() => {
+              console.log("email sent");
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }}
+      >
+        <input
+          type="email"
+          value={mail}
+          onChange={e => setValue(e.target.value)}
+        />
+        <button type="submit">wyślij</button>
+      </form>{" "}
+      {/* <Formik
         initialValues={{ email: "" }}
         validationSchema={SignupSchema}
         onSubmit={
@@ -39,7 +59,7 @@ const LoginForm = () => {
           //     })
 
           // }
-          console.log("fffff")
+          console.log('sssss')
         }
       >
         {({
@@ -48,10 +68,10 @@ const LoginForm = () => {
           touched,
           handleChange,
           handleBlur,
-          handleeSubmit
+          handleSubmit
         }) => (
           <div>
-            <form onSubmit={handleeSubmit} className={styles.loginInputs}>
+            <form onSubmit={handleSubmit} className={styles.loginInputs}>
               <h2>Nie pamiętasz hasła?</h2>
               <span>
                 Podaj swój adres mailowy, a wyślemy Ci linka do zmiany hasła.
@@ -76,7 +96,7 @@ const LoginForm = () => {
             </form>
           </div>
         )}
-      </Formik>
+      </Formik> */}
     </div>
   ) : (
     <div className={styles.loginFormContainer}>
