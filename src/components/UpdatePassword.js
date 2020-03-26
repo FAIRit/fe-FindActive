@@ -34,6 +34,7 @@ const UpdatePassword = () => {
 
   return (
     <div style={{ padding: "60px" }}>
+      <h1>ZMIANA HASŁA</h1>
       <input
         type="password"
         value={currentPassword}

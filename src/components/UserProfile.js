@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import firebase from "../firebase/firebase";
-import Navbar from "../layouts/Navbar";
-import LoggedNavbar from "../layouts/LoggedNavbar";
 import styles from "../styles/UserProfile.module.css";
 import "firebase/storage";
 import { useAuth } from "../hooks/useAuth";
-import UpdatePassword from './UpdatePassword'
-import RemoveAccount from './RemoveAccount'
-
+import Navbar from "../layouts/Navbar";
+import LoggedNavbar from "../layouts/LoggedNavbar";
+import UpdatePassword from "./UpdatePassword";
+import RemoveAccount from "./RemoveAccount";
+import SearchBar from "./SearchBar";
 
 const UserProfile = () => {
   const user = firebase.auth().currentUser;
   const storage = firebase.storage();
   const isLoggedIn = useAuth();
-
 
   const allInputs = {
     imgUrl: ""
@@ -62,25 +61,14 @@ const UserProfile = () => {
     );
   };
 
-  // const removeProfile = () => {
-  //   const user = firebase.auth().currentUser;
-  //   const credential = firebase.auth.EmailAuthProvider.credential(
-  //       user.email
-  //   );
-  //   user.reauthenticateWithCredential(credential);
-  //   console.log(credential)
-  // }
-
-
-
-
   return (
     <div className={styles.userProfile}>
       {" "}
-      {isLoggedIn ? <LoggedNavbar /> : <Navbar />}{" "}
+      {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
+      <SearchBar />
       {isLoggedIn ? (
         <div>
-          <div> Witaj, {user.displayName}! </div> 
+          <div> Witaj, {user.displayName}! </div>
           <img
             src={
               imageAsUrl.imgUrl ||
@@ -102,8 +90,8 @@ const UserProfile = () => {
               <button>zmień zdjęcie</button>{" "}
             </form>{" "}
           </div>{" "}
-              <UpdatePassword/>
-              <RemoveAccount/>
+          <UpdatePassword />
+          <RemoveAccount />
         </div>
       ) : (
         ""

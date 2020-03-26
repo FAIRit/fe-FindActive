@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { Redirect } from 'react-router-dom';
 import firebase from "../firebase/firebase";
 
 const RemoveAccount = () => {
@@ -38,6 +37,7 @@ const RemoveAccount = () => {
         padding: "60px"
       }}
     >
+      <h1>USUWANIE KONTA</h1>
       <input
         type="password"
         value={currentPassword}
