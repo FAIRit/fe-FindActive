@@ -18,9 +18,14 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const [message, setMessage] = useState(null);
+  const [forgotPassword, displayForgotPassword] = useState(false)
 
 
-  return (
+
+
+  return forgotPassword ? <div>tutaj będzie formularz przypominania hasła</div> :  (
+   
+
     <div className={styles.loginFormContainer}>
       <div className={styles.loginForm}>
         <h1>Zaloguj się</h1>
@@ -48,7 +53,7 @@ const LoginForm = () => {
             handleBlur,
             handleSubmit
           }) => (
-            <div>
+          <div>
               <form onSubmit={handleSubmit} className={styles.loginInputs}>
                 <div className={styles.error}>{message}</div>
                 <input
@@ -91,16 +96,18 @@ const LoginForm = () => {
         >
           Kontynuuj z Google
         </button>
-        {/* <button
+        <button
           className={styles.forgotPasswordLink}
-          onClick={displayForgotPasswordModal}
+          onClick={() => displayForgotPassword(true)}
         >
           Nie pamiętasz hasła?
-        </button> */}
-        <ForgotPassword/>
+        </button>
       </div>
     </div>
-  );
+                
+  ) 
 };
 
 export default LoginForm;
+
+
