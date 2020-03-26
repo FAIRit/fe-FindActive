@@ -46,7 +46,6 @@ export default function MenuListComposition() {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -101,7 +100,12 @@ export default function MenuListComposition() {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose}>
-                      <NavLink to="/profile">Mój profil</NavLink>
+                      <NavLink
+                        to="/profile"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        Mój profil
+                      </NavLink>
                     </MenuItem>
                     <MenuItem onClick={signOut}>Wyloguj się</MenuItem>
                   </MenuList>

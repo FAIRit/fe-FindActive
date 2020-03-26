@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import firebase from "../../firebase/firebase";
 import styles from "../../styles/LoginForm.module.css";
-import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import { googleLoginRedirect } from "../../services/AuthService";
+import ForgotPassword from "./ForgotPassword";
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -18,6 +18,7 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const [message, setMessage] = useState(null);
+
 
   return (
     <div className={styles.loginFormContainer}>
@@ -45,8 +46,7 @@ const LoginForm = () => {
             touched,
             handleChange,
             handleBlur,
-            handleSubmit,
-            isSubmitting
+            handleSubmit
           }) => (
             <div>
               <form onSubmit={handleSubmit} className={styles.loginInputs}>
@@ -77,14 +77,7 @@ const LoginForm = () => {
                   <div className={styles.error}>{errors.password}</div>
                 ) : null}
 
-                <NavLink className={styles.forgotPasswordLink} to="#">
-                  Nie pamiętasz hasła?
-                </NavLink>
-                <button
-                  type="submit"
-                  className={styles.loginConfirmBtn}
-                  disabled={isSubmitting}
-                >
+                <button type="submit" className={styles.loginConfirmBtn}>
                   Zaloguj się
                 </button>
               </form>
@@ -98,6 +91,13 @@ const LoginForm = () => {
         >
           Kontynuuj z Google
         </button>
+        {/* <button
+          className={styles.forgotPasswordLink}
+          onClick={displayForgotPasswordModal}
+        >
+          Nie pamiętasz hasła?
+        </button> */}
+        <ForgotPassword/>
       </div>
     </div>
   );
