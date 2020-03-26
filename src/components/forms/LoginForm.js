@@ -4,7 +4,6 @@ import firebase from "../../firebase/firebase";
 import styles from "../../styles/LoginForm.module.css";
 import * as Yup from "yup";
 import { googleLoginRedirect } from "../../services/AuthService";
-import ForgotPassword from "./ForgotPassword";
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -18,14 +17,68 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const [message, setMessage] = useState(null);
-  const [forgotPassword, displayForgotPassword] = useState(false)
+  const [forgotPassword, displayForgotPassword] = useState(false);
 
+  return forgotPassword ? (
+    <div>
+      {" "}
+      <Formik
+        initialValues={{ email: "" }}
+        validationSchema={SignupSchema}
+        onSubmit={
+          //   values => {
+          //   const auth = firebase.auth();
+          //   const email = values.email;
+          //   auth
+          //     .sendPasswordResetEmail(email)
+          //     .then(() => {
+          //       console.log('email sent')
+          //     })
+          //     .catch((error) => {
+          //       console.log(error)
+          //     })
 
+          // }
+          console.log("fffff")
+        }
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleeSubmit
+        }) => (
+          <div>
+            <form onSubmit={handleeSubmit} className={styles.loginInputs}>
+              <h2>Nie pamiętasz hasła?</h2>
+              <span>
+                Podaj swój adres mailowy, a wyślemy Ci linka do zmiany hasła.
+              </span>
+              <div className={styles.error}>{message}</div>
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                className={styles.loginInput}
+                placeholder="e-mail"
+              />
+              {errors.email && touched.email ? (
+                <div className={styles.error}>{errors.email}</div>
+              ) : null}
 
-
-  return forgotPassword ? <div>tutaj będzie formularz przypominania hasła</div> :  (
-   
-
+              <button type="submit" className={styles.loginConfirmBtn}>
+                Wyślij
+              </button>
+            </form>
+          </div>
+        )}
+      </Formik>
+    </div>
+  ) : (
     <div className={styles.loginFormContainer}>
       <div className={styles.loginForm}>
         <h1>Zaloguj się</h1>
@@ -53,7 +106,7 @@ const LoginForm = () => {
             handleBlur,
             handleSubmit
           }) => (
-          <div>
+            <div>
               <form onSubmit={handleSubmit} className={styles.loginInputs}>
                 <div className={styles.error}>{message}</div>
                 <input
@@ -104,10 +157,7 @@ const LoginForm = () => {
         </button>
       </div>
     </div>
-                
-  ) 
+  );
 };
 
 export default LoginForm;
-
-
