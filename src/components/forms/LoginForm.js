@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import firebase from "../../firebase/firebase";
 import styles from "../../styles/LoginForm.module.css";
-import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import { googleLoginRedirect } from "../../services/AuthService";
 
@@ -18,8 +17,88 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const [message, setMessage] = useState(null);
+  const [forgotPassword, displayForgotPassword] = useState(false);
+  const [mail, setValue] = useState("");
 
-  return (
+  return forgotPassword ? (
+    <div>
+      <form
+        onSubmit={() => {
+          const auth = firebase.auth();
+          auth
+            .sendPasswordResetEmail(mail)
+            .then(() => {
+              console.log("email sent");
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }}
+      >
+        <input
+          type="email"
+          value={mail}
+          onChange={e => setValue(e.target.value)}
+        />
+        <button type="submit">wyślij</button>
+      </form>{" "}
+      {/* <Formik
+        initialValues={{ email: "" }}
+        validationSchema={SignupSchema}
+        onSubmit={
+          //   values => {
+          //   const auth = firebase.auth();
+          //   const email = values.email;
+          //   auth
+          //     .sendPasswordResetEmail(email)
+          //     .then(() => {
+          //       console.log('email sent')
+          //     })
+          //     .catch((error) => {
+          //       console.log(error)
+          //     })
+
+          // }
+          console.log('sssss')
+        }
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit
+        }) => (
+          <div>
+            <form onSubmit={handleSubmit} className={styles.loginInputs}>
+              <h2>Nie pamiętasz hasła?</h2>
+              <span>
+                Podaj swój adres mailowy, a wyślemy Ci linka do zmiany hasła.
+              </span>
+              <div className={styles.error}>{message}</div>
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                className={styles.loginInput}
+                placeholder="e-mail"
+              />
+              {errors.email && touched.email ? (
+                <div className={styles.error}>{errors.email}</div>
+              ) : null}
+
+              <button type="submit" className={styles.loginConfirmBtn}>
+                Wyślij
+              </button>
+            </form>
+          </div>
+        )}
+      </Formik> */}
+    </div>
+  ) : (
     <div className={styles.loginFormContainer}>
       <div className={styles.loginForm}>
         <h1>Zaloguj się</h1>
@@ -45,8 +124,7 @@ const LoginForm = () => {
             touched,
             handleChange,
             handleBlur,
-            handleSubmit,
-            isSubmitting
+            handleSubmit
           }) => (
             <div>
               <form onSubmit={handleSubmit} className={styles.loginInputs}>
@@ -77,14 +155,7 @@ const LoginForm = () => {
                   <div className={styles.error}>{errors.password}</div>
                 ) : null}
 
-                <NavLink className={styles.forgotPasswordLink} to="#">
-                  Nie pamiętasz hasła?
-                </NavLink>
-                <button
-                  type="submit"
-                  className={styles.loginConfirmBtn}
-                  disabled={isSubmitting}
-                >
+                <button type="submit" className={styles.loginConfirmBtn}>
                   Zaloguj się
                 </button>
               </form>
@@ -97,6 +168,12 @@ const LoginForm = () => {
           className={styles.loginWithGoogleBtn}
         >
           Kontynuuj z Google
+        </button>
+        <button
+          className={styles.forgotPasswordLink}
+          onClick={() => displayForgotPassword(true)}
+        >
+          Nie pamiętasz hasła?
         </button>
       </div>
     </div>

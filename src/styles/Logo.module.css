@@ -1,19 +1,18 @@
 .logo {
-    color: white;
-    display: flex;
-    align-items: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .logoText {
-    font-size: 20px;
-    font-weight: bold;
-    padding-left: 3px;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 3px;
 }
 
-
-@media (min-width: 768px){
-    .logoText{
-        font-size: 24px;
-    }
+@media (min-width: 768px) {
+  .logoText {
+    font-size: 24px;
   }
-  
+}
