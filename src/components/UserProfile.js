@@ -75,7 +75,7 @@ const UserProfile = () => {
               "https://semantic-ui.com/images/wireframe/image.png"
             }
             className={styles.profileImg}
-            alt="user photo"
+            alt="user profile"
           />
           <div>
             <form onSubmit={handleFirebaseUpload}>

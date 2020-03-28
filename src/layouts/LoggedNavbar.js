@@ -7,17 +7,13 @@ import MenuListComposition from "../components/btns/ProfileBtn";
 class LoggedNavbar extends React.Component {
   render() {
     return (
-      <div>
-        <div className={styles.navbarContainer}>
-          <div className={styles.navbar}>
-            <Logo />
-            <div className={styles.navLinks}>
-              <MenuListComposition />
-              <FavoritesBtn />
-            </div>
+        <div className={styles.navbar}>
+          <Logo />
+          <div className={styles.navLinks}>
+            <MenuListComposition />
+            <FavoritesBtn />
           </div>
         </div>
-      </div>
     );
   }
 }

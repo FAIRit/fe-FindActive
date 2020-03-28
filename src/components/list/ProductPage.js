@@ -43,7 +43,7 @@ class ProductPage extends React.Component {
   render() {
     const { name, type, location, description, photo } = this.state.product;
     return (
-      <div>
+      <div style={{width: '95%'}}>
         {this.state.isLoggedIn ? <LoggedNavbar /> : <Navbar />}
         <SearchBar />
         <div className={styles.singleProductContainer}>

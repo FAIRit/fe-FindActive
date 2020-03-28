@@ -5,8 +5,12 @@ import ProductListPage from "../components/list/ProductListPage";
 import Faq from "../components/Faq";
 import PrivacyPolicy from "../components/PrivacyPolicy";
 import TermsAndConditions from "../components/TermsAndConditions";
-import ProductPage from '../components/list/ProductPage'
-import UserProfile from '../components/UserProfile'
+import ProductPage from '../components/list/ProductPage';
+import UserProfile from '../components/UserProfile';
+import AddProduct from "../components/AddProduct";
+
+
+
 const AppRouter = () => (
     <BrowserRouter>
     <Switch>
@@ -17,6 +21,7 @@ const AppRouter = () => (
       <Route path="/privacy" component={PrivacyPolicy} exact />
       <Route path="/terms" component={TermsAndConditions} exact />
       <Route path="/profile" component={UserProfile} exact />
+      <Route path="/addproduct" component={AddProduct} exact />
     </Switch>
     </BrowserRouter>
 );

@@ -6,8 +6,9 @@ import Product from "./Product";
 import SearchBar from "../SearchBar";
 import styles from "../../styles/ProductListPage.module.css";
 import LoggedNavbar from "../../layouts/LoggedNavbar";
-import { useAuth } from '../../hooks/useAuth'
-
+import { useAuth } from "../../hooks/useAuth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ProductListPage = () => {
   const isLoggedIn = useAuth();
@@ -36,8 +37,8 @@ const ProductListPage = () => {
   return (
     <div className={styles.productListPage}>
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
-
       <SearchBar />
+      <div className={styles.btnContainer}><Link to='/addproduct' className={styles.addToListBtn} ><FontAwesomeIcon icon={faPlus} size={"3x"} /></Link></div>
       <div className={styles.list}>{list}</div>
     </div>
   );

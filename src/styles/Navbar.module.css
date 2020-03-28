@@ -1,17 +1,10 @@
-.navbarContainer{
-    background: transparent;
-    display: flex;
-    align-items: center;
-}
-
 .navbar{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    width: 100vw;
+    /* align-items: center; */
+    width: 100%;
     position: sticky;
-
+    padding: 1rem
 }
 
 .navLinks{
@@ -24,3 +17,13 @@
     border: none
 }
 
+
+/* background: #333;
+color: white;
+position: sticky;
+width: 100%;
+top: 0;
+display: flex;
+justify-content: space-between;
+z-index: 1;
+padding: 1rem; */

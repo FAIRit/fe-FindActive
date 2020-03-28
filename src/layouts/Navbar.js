@@ -6,7 +6,6 @@ import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <div className={styles.navbarContainer}>
       <div className={styles.navbar}>
         <Logo />
         <div className={styles.navLinks}>
@@ -14,7 +13,6 @@ const Navbar = () => {
           <RegisterBtn />
         </div>
       </div>
-    </div>
   );
 };
 
