@@ -7,7 +7,7 @@
 }
 
 .searchInput{
-    height: 40px;
+    height: 30px;
     width: 70%;
     border: none;
     outline: none;
@@ -16,12 +16,13 @@
 }
 
 .searchButton{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border: none;
     color: #f0f3bd;
     background: #00A5CF;
     cursor: pointer;
+    font-size: 0.5rem;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -46,6 +47,7 @@
     .searchButton{
         height: 55px;
         width: 55px;
+        font-size: 1rem;
     }
 }
 

@@ -1,0 +1,37 @@
+
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.addProductForm{
+    display: flex;
+    flex-direction: column;
+    width: 90%
+}
+
+.formTitle{
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.error{
+  color: red;
+  font-size: 0.8rem
+}
+
+@media (min-width: 768px) {
+  .addProductForm {
+    width: 50%;
+    padding-top: 50px;
+  }
+
+  .formTitle{
+      font-size: 2rem
+  }
+
+
+}

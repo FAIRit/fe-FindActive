@@ -1,7 +1,16 @@
-.profileIcon{
-    color: white
+.profileIcon,
+.favoriteIcon{
+    color: white;
+    font-size: 1.3rem;
 }
 
-.favoriteIcon{
-    color: white
+
+@media (min-width: 768px){
+    .profileIcon,
+    .favoriteIcon{
+        font-size: 2rem
+    }
 }
+
+
+
