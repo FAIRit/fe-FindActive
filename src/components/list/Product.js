@@ -10,6 +10,8 @@ const Product = props => {
           <div className={styles.productName}>{props.name}</div>
           <div className={styles.productType}> {props.type}</div>
           <div className={styles.productLocation}>{props.location}</div>
+          <div className={styles.productLocation}>{props.link}</div>
+
         </div>
       </div>
     </div>

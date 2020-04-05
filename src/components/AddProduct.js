@@ -17,14 +17,15 @@ const SignupSchema = Yup.object().shape({
     .min(3, "Wpisz co najmniej 3 znaki")
     .max(20, "Za długa nazwa")
     .required("Pole wymagane"),
-  type: Yup.string()
-    .min(3, "Wpisz co najmniej 3 znaki")
-    .max(20, "Za długa nazwa")
-    .required("Pole wymagane"),
   description: Yup.string()
     .min(3, "Wpisz co najmniej 3 znaki")
     .max(500, "Za długi opis")
+    .required("Pole wymagane"),
+  link: Yup.string()
+    .min(4, "Wpisz co najmniej 4 znaki")
+    .max(500, "Za długi link")
     .required("Pole wymagane")
+    .url("wprowadź poprawny adres url")
 });
 
 const AddProduct = () => {
@@ -42,6 +43,8 @@ const AddProduct = () => {
             const location = values.location;
             const type = values.type;
             const description = values.description;
+            const link = values.link;
+            const cards = values.cards;
             firebase
               .database()
               .ref("/clubs")
@@ -49,7 +52,9 @@ const AddProduct = () => {
                 name,
                 location,
                 type,
-                description
+                description,
+                link,
+                cards
               });
           }}
         >
@@ -90,42 +95,65 @@ const AddProduct = () => {
               ) : null}
 
               <label for="type">Rodzaj</label>
-              <input
-                type="text"
+
+              <select
                 name="type"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.type}
                 className={styles.addProductInput}
-              />
+              >
+                <option default>wybierz z listy...</option>
+                <option value="crossfit">crossfit</option>
+                <option value="joga">joga</option>
+                <option value="pilates">pilates</option>
+                <option value="plywalnia">pływalnia</option>
+                <option value="pole">pole dance</option>
+                <option value="rehabilitacja">rehabilitacja</option>
+                <option value="silownia">siłownia/klub fitness</option>
+                <option value="sztuki">sztuki walki</option>
+                <option value="taniec">taniec</option>
+              </select>
               {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
               ) : null}
 
-              <label for="type">Akdeptowane karty lojalnościowe</label>
-              <input
-                type="text"
-                name="type"
+              <label for="cards">Akceptowane karty lojalnościowe</label>
+
+              <select
+                name="cards"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.type}
+                value={values.cards}
                 className={styles.addProductInput}
-              />
-              {errors.type && touched.type ? (
-                <div className={styles.error}>{errors.type}</div>
+              >
+                <option default>wybierz z listy...</option>
+                <option value="beactive">BeActive</option>
+                <option value="fitprofit">FitProfit</option>
+                <option value="fitsport">FitSport</option>
+                <option value="multiactive">MultiActive</option>
+                <option value="multiclassic">MultiSport Classic</option>
+                <option value="multiplus">MultiSport Plus</option>
+                <option value="multisenior">MultiSport Senior</option>
+                <option value="mylife">MyLife</option>
+                <option value="oksystem">OK System</option>
+              </select>
+
+              {errors.cards && touched.cards ? (
+                <div className={styles.error}>{errors.cards}</div>
               ) : null}
 
-              <label for="type">Link do strony</label>
+              <label for="link">Link do strony</label>
               <input
-                type="text"
-                name="type"
+                type="url"
+                name="link"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.type}
+                value={values.link}
                 className={styles.addProductInput}
               />
-              {errors.type && touched.type ? (
-                <div className={styles.error}>{errors.type}</div>
+              {errors.link && touched.link ? (
+                <div className={styles.error}>{errors.link}</div>
               ) : null}
 
               <label for="description">Oferta</label>
