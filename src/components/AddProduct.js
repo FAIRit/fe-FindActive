@@ -26,8 +26,15 @@ const SignupSchema = Yup.object().shape({
     .min(4, "Wpisz co najmniej 4 znaki")
     .max(500, "Za długi link")
     .required("Pole wymagane")
-    .url("wprowadź poprawny adres url")
+    .url("błędny adres"),
+  photo: Yup.string()
+    .min(4, "Wpisz co najmniej 4 znaki")
+    .max(300, "Za długi link")
+    .required("Pole wymagane")
+    .url("błędny adres")
 });
+
+const     notify = () => toast("oooo");
 
 const cardOptions = [
   { key: "beactive", text: "BeActive", value: "BeActive" },
@@ -72,11 +79,52 @@ const TypeDropdown = () => (
     selection
     options={typeOptions}
     className={styles.addProductInput}
-    // style={{background: 'red'}}
   />
 );
 
-const AddProduct = props => {
+const voivodeshipOptions = [
+  { key: "dolnoslaskie", text: "dolnośląskie", value: "dolnośląskie" },
+  {
+    key: "kujawsko-pomorskie",
+    text: "kujawsko-pomorskie",
+    value: "kujawsko-pomorskie"
+  },
+  { key: "lubelskie", text: "lubelskie", value: "lubelskie" },
+  { key: "lubuskie", text: "lubuskie", value: "lubuskie" },
+  { key: "lodzkie", text: "łódzkie dance", value: "łódzkie" },
+  { key: "malopolskie", text: "małopolskie", value: "małopolskie" },
+  { key: "mazowieckie", text: "mazowieckie", value: "mazowieckie" },
+  { key: "opolskie", text: "opolskie", value: "opolskie" },
+  { key: "podkarpackie", text: "podkarpackie", value: "podkarpackie" },
+  { key: "podlaskie", text: "podlaskie", value: "podlaskie" },
+  { key: "pomorskie", text: "pomorskie", value: "pomorskie" },
+  { key: "slaskie", text: "śląskie", value: "śląskie" },
+  { key: "swietokrzyskie", text: "świętokrzyskie", value: "świętokrzyskie" },
+  {
+    key: "warminsko",
+    text: "warmińsko-mazurskie",
+    value: "warmińsko-mazurskie"
+  },
+  { key: "wielkopolskie", text: "wielkopolskie", value: "wielkopolskie" },
+  {
+    key: "zachodniopomorskie",
+    text: "zachodniopomorskie",
+    value: "zachodniopomorskie"
+  }
+];
+
+const VoivodeshipDropdown = () => (
+  <Dropdown
+    placeholder="wybierz z listy..."
+    name="voivodeship"
+    fluid
+    selection
+    options={voivodeshipOptions}
+    className={styles.addProductInput}
+  />
+);
+
+const AddProduct = () => {
   return (
     <div className={styles.addProductPage}>
       <LoggedNavbar />
@@ -84,25 +132,37 @@ const AddProduct = props => {
       <div className={styles.formContainer}>
         <span className={styles.formTitle}>Dodaj obiekt sportowy do listy</span>
         <Formik
-          initialValues={{ name: "", location: "", type: "", description: "" }}
+          initialValues={{
+            name: "",
+            location: "",
+            voivodeship: "",
+            type: "",
+            description: "",
+            link: "",
+            photo: ""
+          }}
           validationSchema={SignupSchema}
           onSubmit={values => {
             const name = values.name;
             const location = values.location;
+            const voivodeship = values.voivodeship;
             const type = values.type;
             const description = values.description;
             const link = values.link;
             const cards = values.cards;
+            const photo = values.photo;
             firebase
               .database()
               .ref("/clubs")
               .push({
                 name,
                 location,
+                voivodeship,
                 type,
                 description,
                 link,
-                cards
+                cards,
+                photo
               });
           }}
         >
@@ -116,7 +176,7 @@ const AddProduct = props => {
             isSubmitting
           }) => (
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
-              <label for="name">Nazwa</label>
+              <label htmlFor="name">Nazwa</label>
               <Input
                 type="text"
                 name="name"
@@ -129,7 +189,7 @@ const AddProduct = props => {
                 <div className={styles.error}>{errors.name}</div>
               ) : null}
 
-              <label for="location">Miasto</label>
+              <label htmlFor="location">Miasto</label>
               <Input
                 type="text"
                 name="location"
@@ -142,47 +202,30 @@ const AddProduct = props => {
                 <div className={styles.error}>{errors.location}</div>
               ) : null}
 
-              <label for="type">Rodzaj</label>
-
-              <TypeDropdown
-                value={props.selection}
+              <label htmlFor="voivodeship">Województwo</label>
+              <VoivodeshipDropdown
+                value={values.voivodeship}
                 onChange={handleChange}
               />
+              {errors.voivodeship && touched.voivodeship ? (
+                <div className={styles.error}>{errors.voivodeship}</div>
+              ) : null}
+
+              <label htmlFor="type">Rodzaj</label>
+              <TypeDropdown value={values.type} onChange={handleChange} />
               {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
               ) : null}
 
-              <label for="cards">Akceptowane karty lojalnościowe</label>
+              <label htmlFor="cards">Akceptowane karty lojalnościowe</label>
 
-              {/* <select
-                name="cards"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.cards}
-                className={styles.addProductInput}
-              >
-                <option default>wybierz z listy...</option>
-                <option value="BeActive">BeActive</option>
-                <option value="FitProfit">FitProfit</option>
-                <option value="FitSport">FitSport</option>
-                <option value="MultiActive">MultiActive</option>
-                <option value="MultiSport Classic">MultiSport Classic</option>
-                <option value="MultiSport Plus">MultiSport Plus</option>
-                <option value="MultiSport Senior">MultiSport Senior</option>
-                <option value="MyLife">MyLife</option>
-                <option value="OK System">OK System</option>
-              </select> */}
-
-              <CardDropdown
-                value={props.selection}
-                onChange={handleChange}
-              />
+              <CardDropdown value={values.card} onChange={handleChange} />
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
               ) : null}
 
-              <label for="link">Link do strony</label>
+              <label htmlFor="link">Link do strony</label>
               <Input
                 type="url"
                 name="link"
@@ -195,7 +238,21 @@ const AddProduct = props => {
                 <div className={styles.error}>{errors.link}</div>
               ) : null}
 
-              <label for="description">Oferta</label>
+              <label htmlFor="photo">Zdjęcie</label>
+              <Input
+                type="url"
+                placeholder="adres url zdjęcia"
+                name="photo"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.photo}
+                className={styles.addProductInput}
+              />
+              {errors.photo && touched.photo ? (
+                <div className={styles.error}>{errors.photo}</div>
+              ) : null}
+
+              <label htmlFor="description">Oferta</label>
               <textarea
                 name="description"
                 onChange={handleChange}

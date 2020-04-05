@@ -41,7 +41,7 @@ class ProductPage extends React.Component {
   }
 
   render() {
-    const { name, type, location, description, photo, link, cards } = this.state.product;
+    const { name, type, location, voivodeship, description, photo, link, cards } = this.state.product;
     return (
       <div style={{width: '95%'}}>
         {this.state.isLoggedIn ? <LoggedNavbar /> : <Navbar />}
@@ -52,7 +52,7 @@ class ProductPage extends React.Component {
             <div className={styles.singleProductDetails}>
               <div className={styles.singleProductName}>{name}</div>
               <div className={styles.singleProductType}>{type}</div>
-              <div className={styles.singleProductLocation}>{location}</div>
+              <div className={styles.singleProductLocation}>{location}, {voivodeship}</div>
               <div className={styles.singleProductLocation}>{link}</div>
               <div className={styles.singleProductLocation}>Akceptowane karty lojalnościowe: {cards}</div>
               <div className={styles.singleProductDescription}>
