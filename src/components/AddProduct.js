@@ -5,6 +5,8 @@ import styles from "../styles/AddProductForm.module.css";
 import { Formik } from "formik";
 import firebase from "../firebase/firebase";
 import * as Yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -61,53 +63,89 @@ const AddProduct = () => {
             isSubmitting
           }) => (
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
-              <label htmlFor="name">Nazwa: </label>
-           
+              <label for="name">Nazwa</label>
               <input
                 type="text"
                 name="name"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
+                className={styles.addProductInput}
               />
-                 {errors.name && touched.name ? (
+              {errors.name && touched.name ? (
                 <div className={styles.error}>{errors.name}</div>
               ) : null}
-             
+
+              <label for="location">Miasto</label>
               <input
                 type="text"
                 name="location"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.location}
+                className={styles.addProductInput}
               />
-               {errors.location && touched.location ? (
+              {errors.location && touched.location ? (
                 <div className={styles.error}>{errors.location}</div>
               ) : null}
-             
+
+              <label for="type">Rodzaj</label>
               <input
                 type="text"
                 name="type"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.type}
+                className={styles.addProductInput}
               />
-               {errors.type && touched.type ? (
+              {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
               ) : null}
-              
+
+              <label for="type">Akdeptowane karty lojalnościowe</label>
+              <input
+                type="text"
+                name="type"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.type}
+                className={styles.addProductInput}
+              />
+              {errors.type && touched.type ? (
+                <div className={styles.error}>{errors.type}</div>
+              ) : null}
+
+              <label for="type">Link do strony</label>
+              <input
+                type="text"
+                name="type"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.type}
+                className={styles.addProductInput}
+              />
+              {errors.type && touched.type ? (
+                <div className={styles.error}>{errors.type}</div>
+              ) : null}
+
+              <label for="description">Oferta</label>
               <textarea
                 name="description"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.description}
+                className={styles.addProductTextarea}
               />
               {errors.description && touched.description ? (
                 <div className={styles.error}>{errors.description}</div>
               ) : null}
 
-              <button type="submit" disabled={isSubmitting}>
-                Submit
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={styles.addProductBtn}
+              >
+                Dodaj do listy
               </button>
             </form>
           )}

@@ -1,37 +1,56 @@
-
-
-.formContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
 }
 
-.addProductForm{
-    display: flex;
-    flex-direction: column;
-    width: 90%
+.addProductForm {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
 }
 
-.formTitle{
-    text-align: center;
-    font-size: 1.3rem;
+.formTitle {
+  text-align: center;
+  font-size: 1.3rem;
 }
 
-.error{
+.error {
   color: red;
-  font-size: 0.8rem
+  font-size: 0.8rem;
+}
+
+.addProductInput {
+  height: 35px;
+  border: 1px solid white;
+  border-bottom: 2px solid white;
+  background: rgb(28, 134, 119);
+  color: white;
+  display: flex;
+}
+
+.addProductTextarea {
+  height: 300px;
+  border: 1px solid white;
+  border-bottom: 2px solid white;
+  background: rgb(28, 134, 119);
+  color: white;
 }
 
 @media (min-width: 768px) {
   .addProductForm {
-    width: 50%;
+    width: 30%;
     padding-top: 50px;
   }
 
-  .formTitle{
-      font-size: 2rem
+  .formTitle {
+    font-size: 2rem;
   }
 
-
+  .addProductBtn {
+    width: 40%;
+    font-size: 1rem;
+    margin-top: 30px;
+  }
 }

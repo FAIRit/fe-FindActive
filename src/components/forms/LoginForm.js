@@ -7,7 +7,7 @@ import { googleLoginRedirect } from "../../services/AuthService";
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
-    .min(6, "Hasło musi mieć co najmniej 6 znaków")
+    .min(6, "Za krótkie hasło")
     .max(15, "Za długie hasło")
     .required("Pole wymagane"),
   email: Yup.string()
