@@ -7,6 +7,8 @@ import firebase from "../firebase/firebase";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Dropdown, Input, Form, TextArea } from "semantic-ui-react";
+
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,7 +30,32 @@ const SignupSchema = Yup.object().shape({
     .url("wprowadź poprawny adres url")
 });
 
-const AddProduct = () => {
+const options = [
+  { key: "beactive", text: "BeActive", value: "BeActive" },
+  { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
+  { key: "fitsport", text: "FitSport", value: "FitSport" },
+  { key: "multiactive", text: "MultiActive", value: "MultiActive" },
+  { key: "multiclassic", text: "MultiSport Classic", value: "MultiSport Classic" },
+  { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
+  { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
+  { key: "oksystem", text: "OK System", value: "OK System" },
+
+];
+
+
+
+const DropdownExampleMultipleSelection = () => (
+  <Dropdown
+    placeholder="Skills"
+    name="type"
+    fluid
+    multiple
+    selection
+    options={options}
+  />
+);
+
+const AddProduct = props => {
   return (
     <div className={styles.addProductPage}>
       <LoggedNavbar />
@@ -67,36 +94,35 @@ const AddProduct = () => {
             handleSubmit,
             isSubmitting
           }) => (
-            <form onSubmit={handleSubmit} className={styles.addProductForm}>
+            <Form onSubmit={handleSubmit} className={styles.addProductForm}>
               <label for="name">Nazwa</label>
-              <input
+              <Input 
                 type="text"
                 name="name"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
                 className={styles.addProductInput}
-              />
+              ></Input>
               {errors.name && touched.name ? (
                 <div className={styles.error}>{errors.name}</div>
               ) : null}
 
               <label for="location">Miasto</label>
-              <input
+              <Input
                 type="text"
                 name="location"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.location}
                 className={styles.addProductInput}
-              />
+              ></Input>
               {errors.location && touched.location ? (
                 <div className={styles.error}>{errors.location}</div>
               ) : null}
 
               <label for="type">Rodzaj</label>
-
-              <select
+              <select 
                 name="type"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -116,11 +142,12 @@ const AddProduct = () => {
               </select>
               {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
-              ) : null}
+              ) : null} 
+            
 
               <label for="cards">Akceptowane karty lojalnościowe</label>
 
-              <select
+              {/* <select
                 name="cards"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -128,42 +155,49 @@ const AddProduct = () => {
                 className={styles.addProductInput}
               >
                 <option default>wybierz z listy...</option>
-                <option value="beactive">BeActive</option>
-                <option value="fitprofit">FitProfit</option>
-                <option value="fitsport">FitSport</option>
-                <option value="multiactive">MultiActive</option>
-                <option value="multiclassic">MultiSport Classic</option>
-                <option value="multiplus">MultiSport Plus</option>
-                <option value="multisenior">MultiSport Senior</option>
-                <option value="mylife">MyLife</option>
-                <option value="oksystem">OK System</option>
-              </select>
+                <option value="BeActive">BeActive</option>
+                <option value="FitProfit">FitProfit</option>
+                <option value="FitSport">FitSport</option>
+                <option value="MultiActive">MultiActive</option>
+                <option value="MultiSport Classic">MultiSport Classic</option>
+                <option value="MultiSport Plus">MultiSport Plus</option>
+                <option value="MultiSport Senior">MultiSport Senior</option>
+                <option value="MyLife">MyLife</option>
+                <option value="OK System">OK System</option>
+              </select> */}
+
+              <DropdownExampleMultipleSelection
+                value={props.selection}
+                onChange={handleChange}
+              />
+
+
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
               ) : null}
 
               <label for="link">Link do strony</label>
-              <input
+              <Input
                 type="url"
                 name="link"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.link}
                 className={styles.addProductInput}
-              />
+              ></Input>
               {errors.link && touched.link ? (
                 <div className={styles.error}>{errors.link}</div>
               ) : null}
 
               <label for="description">Oferta</label>
-              <textarea
+              <TextArea
                 name="description"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.description}
                 className={styles.addProductTextarea}
-              />
+              ></TextArea>
               {errors.description && touched.description ? (
                 <div className={styles.error}>{errors.description}</div>
               ) : null}
@@ -175,7 +209,7 @@ const AddProduct = () => {
               >
                 Dodaj do listy
               </button>
-            </form>
+            </Form>
           )}
         </Formik>
       </div>
