@@ -14,8 +14,29 @@ const UserProfile = () => {
   const storage = firebase.storage();
   const isLoggedIn = useAuth();
 
+  const allInputs = {
+    imgUrl: ""
+  };
+
   const [imageAsFile, setImageAsFile] = useState("");
-  const [imageAsUrl, setImageAsUrl] = useState("");
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+  const [currentImage, setCurrentImage] = useState(
+    ""
+  );
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        const id = user.uid;
+        const ref = firebase.database().ref(`/users/${id}/photoURL`);
+        if (ref != null) {
+          ref.on("value", snapshot => {
+            setCurrentImage(snapshot.val());
+          });
+        }
+      }
+    });
+  }, []);
 
   const handleImageAsFile = e => {
     const image = e.target.files[0];
@@ -53,12 +74,11 @@ const UserProfile = () => {
               .database()
               .ref(`/users/${id}/photoURL`)
               .set(firebaseUrl);
+            console.log("to jest url" + firebaseUrl);
           });
       }
     );
   };
-
-  console.log(imageAsUrl);
 
   return (
     <div className={styles.userProfile}>
@@ -70,7 +90,7 @@ const UserProfile = () => {
           <div> Witaj, {user.displayName}! </div>
           <img
             src={
-              imageAsUrl.imgUrl ||
+              currentImage ||
               "https://semantic-ui.com/images/wireframe/image.png"
             }
             className={styles.profileImg}
@@ -100,117 +120,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-// class UserProfile extends React.Component {
-
-// // user = firebase.auth().currentUser;
-
-//   state = {
-//     image: null,
-//     url: ''
-//   }
-
-//   componentDidMount(){
-//     this.checkProfilePicture()
-//   }
-
-//   handleChange = e => {
-//     if(e.target.files[0]){
-//       const image = e.target.files[0]
-//       this.setState({
-//         image
-//       }, () => {
-//         this.handleUpload()
-//         this.setState({
-//           image: null
-//         })
-//       })
-//     }
-//   }
-
-//   handleUpload = () => {
-//     const storage = firebase.storage();
-
-//     const {image} = this.state
-//     if(image){
-//       const uploadTask = storage.ref(`/images/${image.name}`).put(image)
-//       uploadTask.on('state_changed',
-//       (snapshot) => {
-//         console.log(snapshot)
-//       }, error => {
-//         console.log(error)
-//       }, () => {
-//         storage.ref('images').child(image.name).getDownloadURL().then(url => {
-//           console.log(url)
-//           this.setState({url})
-//           this.updateProfilePicture(url)
-
-//         })
-//       })
-//     }
-//   }
-
-//   updateProfilePicture = (url) => {
-//     const currentUser = firebase.auth().currentUser
-//     const id = currentUser.uid
-//     firebase.database().ref(`/users/${id}/profilePicture`).set(url)
-// }
-
-// checkProfilePicture = async () => {
-//   const currentUser = firebase.auth().currentUser
-//   if(currentUser){
-//   const id = currentUser.uid
-//   const dataSnapshot = await firebase.database().ref(`/users/${id}/profilePicture`).once('value')
-//   const profilePictureUrl = dataSnapshot.val()
-//   if (profilePictureUrl) {
-//       this.setState({
-//           url: profilePictureUrl
-//       })
-//   }
-// }
-// }
-
-//   render() {
-//    const user = firebase.auth().currentUser;
-
-//     return (
-//       <div className={styles.userProfile}>
-//         {" "}
-//         {user ? <LoggedNavbar /> : <Navbar />}
-//         <SearchBar />
-//         {user ? (
-//           <div>
-//             <div> Witaj, {user.displayName}! </div>
-//             <img
-//               src={
-//                 this.state.url ||
-//                 "https://semantic-ui.com/images/wireframe/image.png"
-//               }
-//               className={styles.profileImg}
-//               alt="user profile"
-//             />
-//             <div>
-//               <form>
-//                 <label htmlFor="file"> Zmień zdjęcie </label>{" "}
-//                 <input
-//                   type="file"
-//                   name="file"
-//                   id="file"
-//                   accept="image/*"
-//                   onChange={this.handleChange}
-//                 />{" "}
-//                 <button>zmień zdjęcie</button>{" "}
-//               </form>{" "}
-//             </div>{" "}
-//             <UpdatePassword />
-//             <RemoveAccount />
-//           </div>
-//         ) : (
-//           ""
-//         )}{" "}
-//       </div>
-//     );
-//   }
-// }
-
-// export default UserProfile;
