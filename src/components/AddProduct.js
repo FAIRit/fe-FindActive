@@ -7,8 +7,7 @@ import firebase from "../firebase/firebase";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Dropdown, Input, Form, TextArea } from "semantic-ui-react";
-
+import { Dropdown, Input } from "semantic-ui-react";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -30,28 +29,47 @@ const SignupSchema = Yup.object().shape({
     .url("wprowadź poprawny adres url")
 });
 
-const options = [
+const cardOptions = [
   { key: "beactive", text: "BeActive", value: "BeActive" },
   { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
   { key: "fitsport", text: "FitSport", value: "FitSport" },
   { key: "multiactive", text: "MultiActive", value: "MultiActive" },
-  { key: "multiclassic", text: "MultiSport Classic", value: "MultiSport Classic" },
+  { key: "pole", text: "MultiSport Classic", value: "MultiSport Classic" },
   { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
   { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
-  { key: "oksystem", text: "OK System", value: "OK System" },
-
+  { key: "oksystem", text: "OK System", value: "OK System" }
 ];
 
-
-
-const DropdownExampleMultipleSelection = () => (
+const CardDropdown = () => (
   <Dropdown
-    placeholder="Skills"
-    name="type"
+    placeholder="wybierz z listy..."
+    name="card"
     fluid
     multiple
     selection
-    options={options}
+    options={cardOptions}
+  />
+);
+
+const typeOptions = [
+  { key: "crossfit", text: "crossfit", value: "crossfit" },
+  { key: "joga", text: "joga", value: "joga" },
+  { key: "pilates", text: "pilates", value: "pilates" },
+  { key: "pływalnia", text: "pływalnia", value: "pływalnia" },
+  { key: "pole", text: "pole dance", value: "pole dance" },
+  { key: "rehabilitacja", text: "rehabilitacja", value: "rehabilitacja" },
+  { key: "siłownia", text: "siłownia", value: "siłownia" },
+  { key: "sztuki walki", text: "sztuki walki", value: "sztuki walki" },
+  { key: "taniec", text: "taniec", value: "taniec" }
+];
+
+const TypeDropdown = () => (
+  <Dropdown
+    placeholder="wybierz z listy..."
+    name="type"
+    fluid
+    selection
+    options={typeOptions}
   />
 );
 
@@ -94,9 +112,9 @@ const AddProduct = props => {
             handleSubmit,
             isSubmitting
           }) => (
-            <Form onSubmit={handleSubmit} className={styles.addProductForm}>
+            <form onSubmit={handleSubmit} className={styles.addProductForm}>
               <label for="name">Nazwa</label>
-              <Input 
+              <Input
                 type="text"
                 name="name"
                 onChange={handleChange}
@@ -122,28 +140,11 @@ const AddProduct = props => {
               ) : null}
 
               <label for="type">Rodzaj</label>
-              <select 
-                name="type"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.type}
-                className={styles.addProductInput}
-              >
-                <option default>wybierz z listy...</option>
-                <option value="crossfit">crossfit</option>
-                <option value="joga">joga</option>
-                <option value="pilates">pilates</option>
-                <option value="plywalnia">pływalnia</option>
-                <option value="pole">pole dance</option>
-                <option value="rehabilitacja">rehabilitacja</option>
-                <option value="silownia">siłownia/klub fitness</option>
-                <option value="sztuki">sztuki walki</option>
-                <option value="taniec">taniec</option>
-              </select>
+
+              <TypeDropdown value={props.selection} onChange={handleChange} />
               {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
-              ) : null} 
-            
+              ) : null}
 
               <label for="cards">Akceptowane karty lojalnościowe</label>
 
@@ -166,12 +167,7 @@ const AddProduct = props => {
                 <option value="OK System">OK System</option>
               </select> */}
 
-              <DropdownExampleMultipleSelection
-                value={props.selection}
-                onChange={handleChange}
-              />
-
-
+              <CardDropdown value={props.selection} onChange={handleChange} />
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
@@ -191,13 +187,13 @@ const AddProduct = props => {
               ) : null}
 
               <label for="description">Oferta</label>
-              <TextArea
+              <textarea
                 name="description"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.description}
                 className={styles.addProductTextarea}
-              ></TextArea>
+              ></textarea>
               {errors.description && touched.description ? (
                 <div className={styles.error}>{errors.description}</div>
               ) : null}
@@ -209,7 +205,7 @@ const AddProduct = props => {
               >
                 Dodaj do listy
               </button>
-            </Form>
+            </form>
           )}
         </Formik>
       </div>
