@@ -44,6 +44,7 @@ const CardDropdown = () => (
   <Dropdown
     placeholder="wybierz z listy..."
     name="card"
+    className={styles.addProductInput}
     fluid
     multiple
     selection
@@ -70,6 +71,8 @@ const TypeDropdown = () => (
     fluid
     selection
     options={typeOptions}
+    className={styles.addProductInput}
+    // style={{background: 'red'}}
   />
 );
 
@@ -121,7 +124,7 @@ const AddProduct = props => {
                 onBlur={handleBlur}
                 value={values.name}
                 className={styles.addProductInput}
-              ></Input>
+              />
               {errors.name && touched.name ? (
                 <div className={styles.error}>{errors.name}</div>
               ) : null}
@@ -134,14 +137,17 @@ const AddProduct = props => {
                 onBlur={handleBlur}
                 value={values.location}
                 className={styles.addProductInput}
-              ></Input>
+              />
               {errors.location && touched.location ? (
                 <div className={styles.error}>{errors.location}</div>
               ) : null}
 
               <label for="type">Rodzaj</label>
 
-              <TypeDropdown value={props.selection} onChange={handleChange} />
+              <TypeDropdown
+                value={props.selection}
+                onChange={handleChange}
+              />
               {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
               ) : null}
@@ -167,7 +173,10 @@ const AddProduct = props => {
                 <option value="OK System">OK System</option>
               </select> */}
 
-              <CardDropdown value={props.selection} onChange={handleChange} />
+              <CardDropdown
+                value={props.selection}
+                onChange={handleChange}
+              />
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
@@ -181,7 +190,7 @@ const AddProduct = props => {
                 onBlur={handleBlur}
                 value={values.link}
                 className={styles.addProductInput}
-              ></Input>
+              />
               {errors.link && touched.link ? (
                 <div className={styles.error}>{errors.link}</div>
               ) : null}
