@@ -8,6 +8,7 @@ import LoggedNavbar from "../layouts/LoggedNavbar";
 import UpdatePassword from "./UpdatePassword";
 import RemoveAccount from "./RemoveAccount";
 import SearchBar from "./SearchBar";
+import { Input, Button } from "semantic-ui-react";
 
 const UserProfile = () => {
   const user = firebase.auth().currentUser;
@@ -84,7 +85,7 @@ const UserProfile = () => {
       {" "}
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
       <SearchBar />
-      {isLoggedIn ? (
+      {isLoggedIn && (
         <div className={styles.userFeatures}>
           <div className={styles.userData}>
             <h2> Witaj, {user.displayName}! </h2>
@@ -97,37 +98,51 @@ const UserProfile = () => {
               alt="user profile"
             />
           </div>
+          <div className={styles.userProfileBtns}>
+            <Button
+              basic
+              color="black"
+              onClick={() => showChangePhotoForm(!changePhotoForm)}
+            >
+              Zmień zdjęcie
+            </Button>{" "}
+            <Button
+              basic
+              color="black"
+              onClick={() => showUpdatePasswordForm(!updatePasswordForm)}
+            >
+              Zmień hasło
+            </Button>{" "}
+            <Button
+              basic
+              color="black"
+              onClick={() => showRemoveAccountForm(!removeAccountForm)}
+            >
+              Usuń konto
+            </Button>{" "}
+          </div>
           <form
             className={styles.changePhotoForm}
             onSubmit={handleFirebaseUpload}
           >
-            <button onClick={() => showChangePhotoForm(!changePhotoForm)}>
-              Zmień zdjęcie
-            </button>{" "}
             {changePhotoForm && (
               <>
-                <input
+                <Input
                   type="file"
                   name="file"
                   id="file"
                   accept="image/*"
                   onChange={handleImageAsFile}
                 />
-                <button>zmień zdjęcie</button>{" "}
+                <Button basic color="black">
+                  zmień
+                </Button>{" "}
               </>
             )}
           </form>
-          <button onClick={() => showUpdatePasswordForm(!updatePasswordForm)}>
-            Zmień hasło
-          </button>{" "}
           {updatePasswordForm && <UpdatePassword />}
-          <button onClick={() => showRemoveAccountForm(!removeAccountForm)}>
-            Usuń konto
-          </button>{" "}
           {removeAccountForm && <RemoveAccount />}
         </div>
-      ) : (
-        ""
       )}{" "}
     </div>
   );

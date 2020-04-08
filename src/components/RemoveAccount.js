@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import firebase from "../firebase/firebase";
+import { Input, Button } from "semantic-ui-react";
+import style from "../styles/RemoveAccount.module.css";
 
 const RemoveAccount = () => {
   const [currentPassword, setCurrentPassword] = useState("");
 
-  const reauthenticate = currentPassword => {
+  const reauthenticate = (currentPassword) => {
     const user = firebase.auth().currentUser;
     const credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
@@ -22,29 +24,27 @@ const RemoveAccount = () => {
           .then(() => {
             console.log("usunięto profil");
           })
-          .catch(error => {
+          .catch((error) => {
             console.log("nie usunięto profilu" + error.message);
           });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.message);
       });
   };
 
   return (
-    <div
-      style={{
-        padding: "60px"
-      }}
-    >
-      <h1>USUWANIE KONTA</h1>
-      <input
+    <div className={style.removeAccountContainer}>
+      <Input
         type="password"
         value={currentPassword}
-        onChange={e => setCurrentPassword(e.target.value)}
+        onChange={(e) => setCurrentPassword(e.target.value)}
         placeholder="wpisz hasło"
       />
-      <button onClick={removeAccount}> usuń konto </button>{" "}
+      <Button basic color="black" onClick={removeAccount}>
+        {" "}
+        usuń konto{" "}
+      </Button>{" "}
     </div>
   );
 };

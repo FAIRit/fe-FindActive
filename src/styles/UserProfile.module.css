@@ -15,6 +15,9 @@
     border-radius: 50%
 }
 
+.userProfileBtns{
+    padding-top: 30px;
+}
 
 .userFeatures{
     display: flex;
