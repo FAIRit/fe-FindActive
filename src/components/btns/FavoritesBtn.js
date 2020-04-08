@@ -8,7 +8,6 @@ const FavoritesBtn = () => {
     <div>
       <FontAwesomeIcon
         icon={farFaHeart}
-        size={"2x"}
         className={styles.favoriteIcon}
       />
     </div>

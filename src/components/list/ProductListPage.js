@@ -38,7 +38,15 @@ const ProductListPage = () => {
     <div className={styles.productListPage}>
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
       <SearchBar />
-      <div className={styles.btnContainer}><Link to='/addproduct' className={styles.addToListBtn} ><FontAwesomeIcon icon={faPlus} size={"3x"} /></Link></div>
+      {isLoggedIn ? (
+        <div className={styles.btnContainer}>
+          <Link to="/addproduct" className={styles.addToListBtn}>
+            <FontAwesomeIcon icon={faPlus} size={"3x"} />
+          </Link>
+        </div>
+      ) : (
+        ""
+      )}
       <div className={styles.list}>{list}</div>
     </div>
   );

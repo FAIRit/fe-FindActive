@@ -73,7 +73,6 @@ export default function MenuListComposition() {
         >
           <FontAwesomeIcon
             icon={farFaUser}
-            size={"2x"}
             className={styles.profileIcon}
           />
         </Button>

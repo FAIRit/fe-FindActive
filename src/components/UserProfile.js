@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "../firebase/firebase";
 import styles from "../styles/UserProfile.module.css";
 import "firebase/storage";
@@ -17,8 +17,26 @@ const UserProfile = () => {
   const allInputs = {
     imgUrl: ""
   };
+
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+  const [currentImage, setCurrentImage] = useState(
+    ""
+  );
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        const id = user.uid;
+        const ref = firebase.database().ref(`/users/${id}/photoURL`);
+        if (ref != null) {
+          ref.on("value", snapshot => {
+            setCurrentImage(snapshot.val());
+          });
+        }
+      }
+    });
+  }, []);
 
   const handleImageAsFile = e => {
     const image = e.target.files[0];
@@ -56,6 +74,7 @@ const UserProfile = () => {
               .database()
               .ref(`/users/${id}/photoURL`)
               .set(firebaseUrl);
+            console.log("to jest url" + firebaseUrl);
           });
       }
     );
@@ -71,7 +90,7 @@ const UserProfile = () => {
           <div> Witaj, {user.displayName}! </div>
           <img
             src={
-              imageAsUrl.imgUrl ||
+              currentImage ||
               "https://semantic-ui.com/images/wireframe/image.png"
             }
             className={styles.profileImg}

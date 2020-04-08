@@ -9,7 +9,6 @@ const Logo = () => {
     <NavLink to="/" className={styles.logo}>
       <FontAwesomeIcon
         icon={faDumbbell}
-        size={"2x"}
         className={styles.dumbbell}
       />
       <span className={styles.logoText}>FindActive</span>

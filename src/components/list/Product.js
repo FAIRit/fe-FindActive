@@ -5,11 +5,13 @@ const Product = props => {
   return (
     <div className={styles.productContainer}>
       <div className={styles.product}>
-        <img src={props.photo} alt="product"/>
+        <img src={props.photo} alt="product" />
         <div className={styles.productDescription}>
           <div className={styles.productName}>{props.name}</div>
           <div className={styles.productType}> {props.type}</div>
-          <div className={styles.productLocation}>{props.location}</div>
+          <div className={styles.productLocation}>{props.location}, {props.voivodeship}</div>
+          <div className={styles.productLocation}>{props.link}</div>
+          <div className={styles.productLocation}>{props.cards}</div>
         </div>
       </div>
     </div>

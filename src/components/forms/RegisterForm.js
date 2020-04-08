@@ -36,7 +36,7 @@ class RegisterForm extends React.Component {
                 const user = firebase.auth().currentUser;
                 user
                   .updateProfile({
-                    displayName: name
+                    displayName: name,
                   })
                   .then(() => {
                     firebase
