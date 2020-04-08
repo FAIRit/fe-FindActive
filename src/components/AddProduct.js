@@ -31,33 +31,33 @@ const SignupSchema = Yup.object().shape({
     .min(4, "Wpisz co najmniej 4 znaki")
     .max(300, "Za długi link")
     .required("Pole wymagane")
-    .url("błędny adres")
+    .url("błędny adres"),
 });
 
-const     notify = () => toast("oooo");
+const notify = () => toast("oooo");
 
-const cardOptions = [
-  { key: "beactive", text: "BeActive", value: "BeActive" },
-  { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
-  { key: "fitsport", text: "FitSport", value: "FitSport" },
-  { key: "multiactive", text: "MultiActive", value: "MultiActive" },
-  { key: "pole", text: "MultiSport Classic", value: "MultiSport Classic" },
-  { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
-  { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
-  { key: "oksystem", text: "OK System", value: "OK System" }
-];
+// const cardOptions = [
+//   { key: "beactive", text: "BeActive", value: "BeActive" },
+//   { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
+//   { key: "fitsport", text: "FitSport", value: "FitSport" },
+//   { key: "multiactive", text: "MultiActive", value: "MultiActive" },
+//   { key: "pole", text: "MultiSport Classic", value: "MultiSport Classic" },
+//   { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
+//   { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
+//   { key: "oksystem", text: "OK System", value: "OK System" }
+// ];
 
-const CardDropdown = () => (
-  <Dropdown
-    placeholder="wybierz z listy..."
-    name="card"
-    className={styles.addProductInput}
-    fluid
-    multiple
-    selection
-    options={cardOptions}
-  />
-);
+// const CardDropdown = () => (
+//   <Dropdown
+//     placeholder="wybierz z listy..."
+//     name="card"
+//     className={styles.addProductInput}
+//     fluid
+//     multiple
+//     selection
+//     options={cardOptions}
+//   />
+// );
 
 const typeOptions = [
   { key: "crossfit", text: "crossfit", value: "crossfit" },
@@ -68,7 +68,7 @@ const typeOptions = [
   { key: "rehabilitacja", text: "rehabilitacja", value: "rehabilitacja" },
   { key: "siłownia", text: "siłownia", value: "siłownia" },
   { key: "sztuki walki", text: "sztuki walki", value: "sztuki walki" },
-  { key: "taniec", text: "taniec", value: "taniec" }
+  { key: "taniec", text: "taniec", value: "taniec" },
 ];
 
 const TypeDropdown = () => (
@@ -87,7 +87,7 @@ const voivodeshipOptions = [
   {
     key: "kujawsko-pomorskie",
     text: "kujawsko-pomorskie",
-    value: "kujawsko-pomorskie"
+    value: "kujawsko-pomorskie",
   },
   { key: "lubelskie", text: "lubelskie", value: "lubelskie" },
   { key: "lubuskie", text: "lubuskie", value: "lubuskie" },
@@ -103,26 +103,29 @@ const voivodeshipOptions = [
   {
     key: "warminsko",
     text: "warmińsko-mazurskie",
-    value: "warmińsko-mazurskie"
+    value: "warmińsko-mazurskie",
   },
   { key: "wielkopolskie", text: "wielkopolskie", value: "wielkopolskie" },
   {
     key: "zachodniopomorskie",
     text: "zachodniopomorskie",
-    value: "zachodniopomorskie"
-  }
+    value: "zachodniopomorskie",
+  },
 ];
 
-const VoivodeshipDropdown = () => (
-  <Dropdown
-    placeholder="wybierz z listy..."
-    name="voivodeship"
-    fluid
-    selection
-    options={voivodeshipOptions}
-    className={styles.addProductInput}
-  />
-);
+const VoivodeshipDropdown = () => {
+  return (
+    <Dropdown
+      placeholder="wybierz z listy..."
+      name="voivodeship"
+      fluid
+      selection
+      options={voivodeshipOptions}
+      className={styles.addProductInput}
+    
+    />
+  );
+};
 
 const AddProduct = () => {
   return (
@@ -136,13 +139,14 @@ const AddProduct = () => {
             name: "",
             location: "",
             voivodeship: "",
+            cards: "",
             type: "",
             description: "",
             link: "",
-            photo: ""
+            photo: "",
           }}
           validationSchema={SignupSchema}
-          onSubmit={values => {
+          onSubmit={(values) => {
             const name = values.name;
             const location = values.location;
             const voivodeship = values.voivodeship;
@@ -151,19 +155,16 @@ const AddProduct = () => {
             const link = values.link;
             const cards = values.cards;
             const photo = values.photo;
-            firebase
-              .database()
-              .ref("/clubs")
-              .push({
-                name,
-                location,
-                voivodeship,
-                type,
-                description,
-                link,
-                cards,
-                photo
-              });
+            firebase.database().ref("/clubs").push({
+              name,
+              location,
+              voivodeship,
+              type,
+              description,
+              link,
+              cards,
+              photo,
+            });
           }}
         >
           {({
@@ -173,7 +174,7 @@ const AddProduct = () => {
             handleChange,
             handleBlur,
             handleSubmit,
-            isSubmitting
+            isSubmitting,
           }) => (
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
               <label htmlFor="name">Nazwa</label>
@@ -219,11 +220,11 @@ const AddProduct = () => {
 
               <label htmlFor="cards">Akceptowane karty lojalnościowe</label>
 
-              <CardDropdown value={values.card} onChange={handleChange} />
+              {/* <CardDropdown value={values.card} onChange={handleChange} />
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
-              ) : null}
+              ) : null} */}
 
               <label htmlFor="link">Link do strony</label>
               <Input
