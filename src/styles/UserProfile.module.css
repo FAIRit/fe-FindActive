@@ -1,36 +1,43 @@
-.userProfile{
-    height: 100vh;
+.userProfile {
+  height: 100vh;
 }
 
-.userData{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.userData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.profileImg{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%
+.profileImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }
 
-.userProfileBtns{
-    padding-top: 30px;
+.userProfileBtns {
+  padding-top: 30px;
 }
 
-.userFeatures{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 30px;
+.userFeatures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
 }
 
-.changePhotoForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.changePhotoForm {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 200px;
+  justify-content: space-evenly;
+}
 
+@media (min-width: 768px) {
+  .changePhotoForm {
+    width: 30%;
+  }
 }
