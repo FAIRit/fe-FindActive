@@ -125,7 +125,7 @@ const UserProfile = () => {
             className={styles.changePhotoForm}
             onSubmit={handleFirebaseUpload}
           >
-            {changePhotoForm && (
+            {changePhotoForm && 
               <>
                 <Input
                   type="file"
@@ -138,10 +138,10 @@ const UserProfile = () => {
                   zmień
                 </Button>{" "}
               </>
-            )}
-          </form>
-          {updatePasswordForm && <UpdatePassword />}
-          {removeAccountForm && <RemoveAccount />}
+            }
+          </form> 
+          {updatePasswordForm && <UpdatePassword />} 
+          {removeAccountForm && <RemoveAccount />} 
         </div>
       )}{" "}
     </div>

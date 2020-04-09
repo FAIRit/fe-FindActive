@@ -4,7 +4,9 @@ import styles from "../../styles/ProductPage.module.css";
 import SearchBar from "../SearchBar";
 import Navbar from "../../layouts/Navbar";
 import LoggedNavbar from "../../layouts/LoggedNavbar";
-import firebase from '../../firebase/firebase'
+import firebase from '../../firebase/firebase';
+import { NavLink } from "react-router-dom";
+
 class ProductPage extends React.Component {
   constructor(props) {
     super(props);
@@ -53,7 +55,7 @@ class ProductPage extends React.Component {
               <div className={styles.singleProductName}>{name}</div>
               <div className={styles.singleProductType}>{type}</div>
               <div className={styles.singleProductLocation}>{location}, {voivodeship}</div>
-              <div className={styles.singleProductLocation}>{link}</div>
+              <div className={styles.singleProductLocation}><a className={styles.websiteLink} href={link}>{link}</a></div>
               <div className={styles.singleProductLocation}>Akceptowane karty lojalnościowe: {cards}</div>
               <div className={styles.singleProductDescription}>
                 {description}
