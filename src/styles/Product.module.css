@@ -2,16 +2,15 @@
     display: flex;
     flex-direction: column; 
     justify-content: center;
-    align-items: center
+    align-items: center;
+    height: 100%;
 }
 
 .product{
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    margin-top: 30px;
     font-size: 0.95rem;
-    width: 95%;
     border: 1px solid rgb(19, 112, 98);
     box-shadow: 2px 3px  0.5em rgb(19, 112, 98);
 }
@@ -35,7 +34,15 @@
 .productLocation{
     color: white;
     font-size: 0.95rem;
+}
 
+.favIcon{
+    cursor: pointer;
+}
+
+.favIcon:hover{
+    transform: scale(1.5);
+    transition:  0.3s;
 }
 
 
@@ -53,7 +60,6 @@
         flex-direction: row;
         align-items: center;
         width: 60%;
-        margin-top: 60px
     }
 
     .productDescription{

@@ -10,12 +10,14 @@ import { useAuth } from "../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
+
 const ProductListPage = () => {
   const isLoggedIn = useAuth();
 
   const [clubsFB, setClubsFB] = useState([]);
+
   useEffect(() => {
-    displayClubs(clubsFB => {
+    displayClubs((clubsFB) => {
       setClubsFB(clubsFB);
     });
 
@@ -24,14 +26,16 @@ const ProductListPage = () => {
     };
   }, []);
 
-  const list = clubsFB.map(product => (
-    <Link
-      to={`/product/${product.id}`}
-      className={styles.listLink}
-      key={product.id}
-    >
-      <Product {...product} src={product.imageUrl} />
-    </Link>
+  const list = clubsFB.map((product) => (
+    <div style={{ marginTop: "30px" }}>
+      <div
+        className={styles.listLink}
+        key={product.id}
+      >
+        <Product {...product} src={product.imageUrl} />
+      </div>
+
+    </div>
   ));
 
   return (
