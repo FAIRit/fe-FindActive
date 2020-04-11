@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../styles/Product.module.css";
 import { Link } from "react-router-dom";
-import { Icon } from "semantic-ui-react";
+import AddToFav from '../../components/AddToFav'
 
 const Product = (props) => {
-  const [isFav, setIsFav] = useState(false);
   return (
     <div className={styles.productContainer}>
       <div className={styles.product}>
@@ -24,15 +23,16 @@ const Product = (props) => {
           </a>
           <div className={styles.productLocation}>{props.cards}</div>
         </div>
-        <Icon
-          onClick={() => setIsFav(!isFav)}
-          name={isFav ? "heart" : "heart outline"}
-          className={styles.favIcon}
-          size="large"
-        />
+        <AddToFav />
       </div>
     </div>
   );
 };
 
 export default Product;
+
+
+// onClick={() => addToFav(firebase.auth().currentUser)}
+
+// import { addToFav } from '../../services/AddToFavService';
+// import firebase from '../../firebase/firebase'

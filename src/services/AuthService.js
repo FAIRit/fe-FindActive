@@ -6,7 +6,7 @@ export const googleLoginRedirect = () => {
   firebase
     .auth()
     .signInWithPopup(provider)
-    .then(function(result) {
+    .then(function (result) {
       const user = result.user;
       const database = firebase.database();
 
@@ -14,4 +14,3 @@ export const googleLoginRedirect = () => {
       database.ref(`/users/${user.uid}/email`).set(user.email);
     });
 };
-
