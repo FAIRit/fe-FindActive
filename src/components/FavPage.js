@@ -7,7 +7,7 @@ import { displayClubs, stopClubs } from "../services/ClubService";
 import AddToFav from "./AddToFav";
 import { addToFav } from "../services/AddToFavService";
 import { Link } from "react-router-dom";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 
 class FavPage extends Component {
   state = {
@@ -44,6 +44,8 @@ class FavPage extends Component {
   componentWillUnmount() {
     stopClubs();
   }
+  
+
 
   loop() {
     const { productList, favorites } = this.state;
@@ -64,31 +66,31 @@ class FavPage extends Component {
     }
     return output.map((product) => {
       return (
-        <Card>
-          <Link to={`/product/${product.id}`}>
-            <Image src={product.photo}
-             wrapped 
-             />
-          </Link>
-          <Card.Content>
-            <Card.Header>{product.name}</Card.Header>
-            <Card.Meta>
-              <span className="date">
-                {product.location}, {product.voivodeship}
-              </span>
-            </Card.Meta>
-            {product.type}
-          </Card.Content>
-          <Card.Content extra>
-            <AddToFav
-              id={product.id}
-              isFavorites={this.state.favorites[product.id]}
-              onClick={() => {
-                addToFav(product.id, firebase.auth().currentUser);
-              }}
-            />
-          </Card.Content>
-        </Card>
+        <div className={styles.favContainer}>
+          <Card>
+            <Link to={`/product/${product.id}`}>
+              <Image src={product.photo} wrapped />
+            </Link>
+            <Card.Content>
+              <Card.Header>{product.name}</Card.Header>
+              {product.type}
+              <Card.Meta>
+                <span className="date">
+                  {product.location}, {product.voivodeship}
+                </span>
+              </Card.Meta>
+            </Card.Content>
+            <Card.Content extra>
+              <AddToFav
+                id={product.id}
+                isInFavorites={this.state.favorites[product.id]}
+                onClick={() => {
+                  addToFav(product.id, firebase.auth().currentUser);
+                }}
+              />
+            </Card.Content>
+          </Card>
+        </div>
       );
     });
   }
