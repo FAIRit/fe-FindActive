@@ -1,9 +1,43 @@
-.userProfile{
-    height: 100vh;
+.userProfile {
+  height: 100vh;
 }
 
-.profileImg{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%
+.userData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.userProfileBtns {
+  padding-top: 30px;
+}
+
+.userFeatures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.changePhotoForm {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 200px;
+  justify-content: space-evenly;
+}
+
+@media (min-width: 768px) {
+  .changePhotoForm {
+    width: 30%;
+  }
 }

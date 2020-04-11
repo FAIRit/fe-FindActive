@@ -42,61 +42,6 @@ const LoginForm = () => {
         />
         <button type="submit">wyślij</button>
       </form>{" "}
-      {/* <Formik
-        initialValues={{ email: "" }}
-        validationSchema={SignupSchema}
-        onSubmit={
-          //   values => {
-          //   const auth = firebase.auth();
-          //   const email = values.email;
-          //   auth
-          //     .sendPasswordResetEmail(email)
-          //     .then(() => {
-          //       console.log('email sent')
-          //     })
-          //     .catch((error) => {
-          //       console.log(error)
-          //     })
-
-          // }
-          console.log('sssss')
-        }
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit
-        }) => (
-          <div>
-            <form onSubmit={handleSubmit} className={styles.loginInputs}>
-              <h2>Nie pamiętasz hasła?</h2>
-              <span>
-                Podaj swój adres mailowy, a wyślemy Ci linka do zmiany hasła.
-              </span>
-              <div className={styles.error}>{message}</div>
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                className={styles.loginInput}
-                placeholder="e-mail"
-              />
-              {errors.email && touched.email ? (
-                <div className={styles.error}>{errors.email}</div>
-              ) : null}
-
-              <button type="submit" className={styles.loginConfirmBtn}>
-                Wyślij
-              </button>
-            </form>
-          </div>
-        )}
-      </Formik> */}
     </div>
   ) : (
     <div className={styles.loginFormContainer}>

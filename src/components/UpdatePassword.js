@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import firebase from "../firebase/firebase";
+import { Input, Button } from "semantic-ui-react";
+import style from '../styles/UpdatePassword.module.css';
+import {Formik} from 'formik'
+
 
 const UpdatePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+
 
   const reauthenticate = currentPassword => {
     const user = firebase.auth().currentUser;
@@ -13,6 +18,8 @@ const UpdatePassword = () => {
     );
     return user.reauthenticateWithCredential(credential);
   };
+
+
 
   const changePassword = () => {
     const user = firebase.auth().currentUser;
@@ -24,32 +31,33 @@ const UpdatePassword = () => {
             console.log("zmieniono hasło");
           })
           .catch(error => {
-            console.log("nie zmieniono hasła" + error.message);
+            console.log(error)
           });
       })
       .catch(error => {
-        console.log(error.message);
+        console.log(error)
       });
   };
 
   return (
-    <div style={{ padding: "60px" }}>
-      <h1>ZMIANA HASŁA</h1>
-      <input
+    <div className={style.changePasswordContainer}>
+      <Input
         type="password"
         value={currentPassword}
         onChange={e => setCurrentPassword(e.target.value)}
         placeholder="obecne hasło"
       />
-      <input
+      <Input
         type="password"
         value={newPassword}
         onChange={e => setNewPassword(e.target.value)}
         placeholder="nowe hasło"
       />
-      <button onClick={changePassword}>zmień hasło</button>
+      <Button basic color="black" onClick={changePassword}>zmień hasło</Button>
     </div>
   );
 };
 
 export default UpdatePassword;
+
+

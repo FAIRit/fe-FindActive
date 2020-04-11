@@ -8,7 +8,8 @@ import TermsAndConditions from "../components/TermsAndConditions";
 import ProductPage from '../components/list/ProductPage';
 import UserProfile from '../components/UserProfile';
 import AddProduct from "../components/AddProduct";
-
+import NotFoundPage from '../components/NotFoundPage';
+import useAuth from '../hooks/useAuth'
 
 
 const AppRouter = () => (
@@ -22,6 +23,7 @@ const AppRouter = () => (
       <Route path="/terms" component={TermsAndConditions} exact />
       <Route path="/profile" component={UserProfile} exact />
       <Route path="/addproduct" component={AddProduct} exact />
+      <Route path="*" component={NotFoundPage} />
     </Switch>
     </BrowserRouter>
 );
