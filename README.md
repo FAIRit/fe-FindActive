@@ -6,9 +6,8 @@ This app will allow user to search for any kind of sport facilities in Poland. U
 
 ## Tools and technologies
 * React
-* Redux
 * Firebase
-* React frameworks (Yup, Formik, Material-UI)
+* React frameworks (Yup, Formik, Semantic-UI)
 
 ## User can: 
 * Login/register
