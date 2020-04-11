@@ -7,7 +7,6 @@ import Navbar from "../layouts/Navbar";
 import LoggedNavbar from "../layouts/LoggedNavbar";
 import UpdatePassword from "./UpdatePassword";
 import RemoveAccount from "./RemoveAccount";
-import SearchBar from "./SearchBar";
 import { Input, Button } from "semantic-ui-react";
 
 const UserProfile = () => {
@@ -84,7 +83,6 @@ const UserProfile = () => {
     <div className={styles.userProfile}>
       {" "}
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
-      <SearchBar />
       {isLoggedIn && (
         <div className={styles.userFeatures}>
           <div className={styles.userData}>
