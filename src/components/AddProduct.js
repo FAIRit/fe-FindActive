@@ -177,7 +177,7 @@ const AddProduct = () => {
             isSubmitting,
           }) => (
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
-              <label htmlFor="name">Nazwa</label>
+              <label>Nazwa</label>
               <Input
                 type="text"
                 name="name"

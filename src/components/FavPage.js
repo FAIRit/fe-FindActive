@@ -4,9 +4,10 @@ import LoggedNavbar from "../layouts/LoggedNavbar";
 import Navbar from "../layouts/Navbar";
 import styles from "../styles/FavPage.module.css";
 import { displayClubs, stopClubs } from "../services/ClubService";
-import AddToFav from './AddToFav';
-import { addToFav}from '../services/AddToFavService';
-import {Link} from 'react-router-dom'
+import AddToFav from "./AddToFav";
+import { addToFav } from "../services/AddToFavService";
+import { Link } from "react-router-dom";
+import { Card, Icon, Image } from "semantic-ui-react";
 
 class FavPage extends Component {
   state = {
@@ -33,63 +34,64 @@ class FavPage extends Component {
       }
     });
 
-    displayClubs(productList => {
-        this.setState({
-            productList
-        })
-    })
+    displayClubs((productList) => {
+      this.setState({
+        productList,
+      });
+    });
   }
 
   componentWillUnmount() {
     stopClubs();
   }
 
-
-
-
-
-
   loop() {
     const { productList, favorites } = this.state;
-    const arrayOfFavorites = Object.keys(favorites)
-    const output = []
-    productList.filter(item => {
-        arrayOfFavorites.forEach(element => {
-            if (element === item.id) {
-                output.push(item)
-                return output
-            } else { return }
-        })
-    })
+    const arrayOfFavorites = Object.keys(favorites);
+    const output = [];
+    productList.filter((item) => {
+      arrayOfFavorites.forEach((element) => {
+        if (element === item.id) {
+          output.push(item);
+          return output;
+        } else {
+          return;
+        }
+      });
+    });
     if (output == undefined || output == 0) {
-        return ['Lista ulubionych jest pusta']
+      return ["Lista ulubionych jest pusta"];
     }
-    return output.map((product, index) => {
-        return (
-            <div>
-                <Link to={`/product/${product.id}`}  >
-                 <div>{product.name}</div>
-                 <div>{product.location}</div>
-                </Link>
-                <div className={styles.like}>
-                    <AddToFav id={product.id} isFavorites={this.state.favorites[product.id]}
-                        onClick={() => {
-                            addToFav(product.id, firebase.auth().currentUser)
-                        }
-                        } />
-                </div>
-            </div>
-        )
-    }
-    )
-}
-
-
-
-
-
-
-
+    return output.map((product) => {
+      return (
+        <Card>
+          <Link to={`/product/${product.id}`}>
+            <Image src={product.photo}
+             wrapped 
+             />
+          </Link>
+          <Card.Content>
+            <Card.Header>{product.name}</Card.Header>
+            <Card.Meta>
+              <span className="date">
+                {product.location}, {product.voivodeship}
+              </span>
+            </Card.Meta>
+            {product.type}
+          </Card.Content>
+          <Card.Content extra>
+            <AddToFav
+              id={product.id}
+              isFavorites={this.state.favorites[product.id]}
+              onClick={() => {
+                addToFav(product.id, firebase.auth().currentUser);
+              }}
+            />
+          </Card.Content>
+        </Card>
+      );
+    });
+  }
 
   render() {
     return (
