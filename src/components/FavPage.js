@@ -44,10 +44,8 @@ class FavPage extends Component {
   componentWillUnmount() {
     stopClubs();
   }
-  
 
-
-  loop() {
+  displayFavorites() {
     const { productList, favorites } = this.state;
     const arrayOfFavorites = Object.keys(favorites);
     const output = [];
@@ -66,21 +64,32 @@ class FavPage extends Component {
     }
     return output.map((product) => {
       return (
-        <div className={styles.favContainer}>
-          <Card>
+        <div
+          style={{
+            padding: "15px 0 15px 0",
+          }}
+        >
+          <Card style={{ width: "300px", height: "350px" }}>
             <Link to={`/product/${product.id}`}>
               <Image src={product.photo} wrapped />
             </Link>
             <Card.Content>
               <Card.Header>{product.name}</Card.Header>
-              {product.type}
               <Card.Meta>
                 <span className="date">
                   {product.location}, {product.voivodeship}
                 </span>
+                <div style={{ color: "black" }}>{product.type}</div>
               </Card.Meta>
             </Card.Content>
-            <Card.Content extra>
+            <Card.Content
+              extra
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
               <AddToFav
                 id={product.id}
                 isInFavorites={this.state.favorites[product.id]}
@@ -97,9 +106,10 @@ class FavPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.favPage}>
         {this.state.isLoggedIn ? <LoggedNavbar /> : <Navbar />}
-        {this.loop()}
+        <h2>ULUBIONE</h2>
+        <div className={styles.favPageContainer}>{this.displayFavorites()}</div>
       </div>
     );
   }
