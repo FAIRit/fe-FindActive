@@ -9,13 +9,15 @@ import LoggedNavbar from "../../layouts/LoggedNavbar";
 import { useAuth } from "../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
-
+import Pagination from '../Pagination'
 
 const ProductListPage = () => {
   const isLoggedIn = useAuth();
 
   const [clubsFB, setClubsFB] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(3);
+
 
   useEffect(() => {
     displayClubs((clubsFB) => {
@@ -27,17 +29,24 @@ const ProductListPage = () => {
     };
   }, []);
 
-  const list = clubsFB.map(product => (
-    <div style={{ marginTop: "30px" }}>
-      <div
-        className={styles.listLink}
-        key={product.id}
-      >
-        <Product  {...product} src={product.imageUrl} />
-      </div>
 
-    </div>
-  ));
+
+    const list = clubsFB.map((product) => (
+      <div style={{ marginTop: "30px" }}>
+        <div className={styles.listLink} key={product.id}>
+          <Product {...product} src={product.imageUrl}  />
+        </div>
+      </div>
+    ))
+
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = list.slice(indexOfFirstPost, indexOfLastPost)
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
+
 
   return (
     <div className={styles.productListPage}>
@@ -52,9 +61,12 @@ const ProductListPage = () => {
       ) : (
         ""
       )}
-      <div className={styles.list}>{list}</div>
+      <div className={styles.list}>
+       {currentPosts}
+      </div>
+      <Pagination postsPerPage={postsPerPage} totalPosts={clubsFB.length} paginate={paginate}/>
     </div>
-  );
+  )
 };
 
 export default ProductListPage;
