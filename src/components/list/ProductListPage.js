@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 
+
 const ProductListPage = () => {
   const isLoggedIn = useAuth();
 
@@ -26,13 +27,13 @@ const ProductListPage = () => {
     };
   }, []);
 
-  const list = clubsFB.map((product) => (
+  const list = clubsFB.map(product => (
     <div style={{ marginTop: "30px" }}>
       <div
         className={styles.listLink}
         key={product.id}
       >
-        <Product {...product} src={product.imageUrl} />
+        <Product  {...product} src={product.imageUrl} />
       </div>
 
     </div>

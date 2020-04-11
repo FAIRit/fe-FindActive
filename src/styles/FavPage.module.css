@@ -1,0 +1,23 @@
+.favPageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  top: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.favPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+@media (min-width: 768px) {
+  .favPageContainer {
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-around;
+  }
+}
