@@ -13,6 +13,31 @@
     align-items: center;
 }
 
+.favIcon{
+  cursor: pointer;
+}
+
+.favIcon:hover{
+  transform: scale(1.5);
+  transition:  0.3s;
+}
+
+.productLink,
+.productTitle{
+    color: #9000b3
+}
+
+.productLink:hover,
+.productTitle:hover{
+    color: #5c164e
+}
+
+.productTitle{
+    color: black;
+    font-weight: bold;
+}
+
+
 
 @media (min-width: 768px) {
   .favPageContainer {

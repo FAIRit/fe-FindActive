@@ -17,7 +17,7 @@ const ProductListPage = () => {
 
   const [clubsFB, setClubsFB] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const [postsPerPage] = useState(12);
 
   useEffect(() => {
     displayClubs((clubsFB) => {

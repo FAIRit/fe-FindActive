@@ -1,16 +1,23 @@
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    position: sticky;
-    padding: 0.5rem 1rem
+.transparent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: sticky;
+  padding: 0.5rem 1rem;
+  background: transparent;
 }
 
-.navLinks{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: sticky;
+  padding: 0.5rem 1rem;
+  background: #5c164e;
 }
 
-
-
+.navLinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

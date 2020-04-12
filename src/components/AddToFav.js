@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
-import styles from "../styles/Product.module.css";
+import styles from "../styles/FavPage.module.css";
 
 
 const AddToFav = props => {

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import styles from "../../styles/Product.module.css";
 import { Link } from "react-router-dom";
 import AddToFav from "../../components/AddToFav";
 import { addToFav } from "../../services/AddToFavService";
 import firebase from "../../firebase/firebase";
 import { Card, Image } from "semantic-ui-react";
+import styles from '../../styles/Product.module.css'
 
 class Product extends Component {
   state = {
@@ -43,21 +43,21 @@ class Product extends Component {
       location,
     } = this.props;
     return (
-      <Card style={{width: '350px'}}>
+      <Card style={{width: '350px',  height: "430px", background: '#f0b4e4', margin: '0 15px 0 15px'}}>
         <Link to={`/product/${id}`}>
           <Image src={photo} wrapped />
         </Link>
         <Card.Content>
           <Link to={`/product/${id}`}>
-            <Card.Header>{name}</Card.Header>
+            <Card.Header><div className={styles.productTitle}>{name}</div></Card.Header>
           </Link>
           <Card.Meta>{type}</Card.Meta>
           <Card.Description>
            <div> {location}, {voivodeship} </div>
-           <div><a href={link}>{link}</a></div>
+           <div><a href={link} className={styles.productLink}>{link}</a></div>
           </Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content extra style={{background: '#f0b4e4'}}>
           <AddToFav
             onClick={() => {
               addToFav(this.props.id, firebase.auth().currentUser);
