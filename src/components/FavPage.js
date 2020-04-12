@@ -69,7 +69,7 @@ class FavPage extends Component {
             padding: "15px 0 15px 0",
           }}
         >
-          <Card style={{ width: "300px", height: "350px" }}>
+          <Card style={{ width: "300px", height: "350px", background: '#f0b4e4' }}>
             <Link to={`/product/${product.id}`}>
               <Image src={product.photo} wrapped />
             </Link>

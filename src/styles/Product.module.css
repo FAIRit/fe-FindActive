@@ -22,17 +22,17 @@
 }
 
 .productName{
-    color: white;
+    color: black;
     font-weight: bold;
 }
 
 .productType{
-    color: white;
+    color: black;
     font-size: 0.95em;
 }
 
 .productLocation{
-    color: white;
+    color: black;
     font-size: 0.95rem;
 }
 
@@ -45,6 +45,13 @@
     transition:  0.3s;
 }
 
+.productLink{
+    color: #9000b3;
+}
+
+.productLink:hover{
+    text-decoration: underline;
+}
 
 
 @media (min-width: 1100px){

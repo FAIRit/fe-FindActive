@@ -3,37 +3,8 @@ import styles from "../../styles/Product.module.css";
 import { Link } from "react-router-dom";
 import AddToFav from "../../components/AddToFav";
 import { addToFav } from "../../services/AddToFavService";
-import firebase from '../../firebase/firebase'
-
-// const Product = (props) => {
-//   return (
-//     <div className={styles.productContainer}>
-//       <div className={styles.product}>
-//         <Link to={`/product/${props.id}`}>
-//           <img src={props.photo} alt="product" />
-//         </Link>
-//         <div className={styles.productDescription}>
-//           <Link to={`/product/${props.id}`}>
-//             <div className={styles.productName}>{props.name}</div>
-//           </Link>
-//           <div className={styles.productType}> {props.type}</div>
-//           <div className={styles.productLocation}>
-//             {props.location}, {props.voivodeship}
-//           </div>
-//           <a href={props.link}>
-//             <div className={styles.productLocation}>{props.link}</div>
-//           </a>
-//           <div className={styles.productLocation}>{props.cards}</div>
-//         </div>
-//         <AddToFav
-//           onClick={() => {
-//             addToFav(props.id, firebase.auth().currentUser);
-//           }}
-//         />
-//       </div>
-//     </div>
-//   );
-// };
+import firebase from "../../firebase/firebase";
+import { Card, Image } from "semantic-ui-react";
 
 class Product extends Component {
   state = {
@@ -72,38 +43,30 @@ class Product extends Component {
       location,
     } = this.props;
     return (
-      <div className={styles.productContainer}>
-        <div className={styles.product}>
+      <Card style={{width: '350px'}}>
+        <Link to={`/product/${id}`}>
+          <Image src={photo} wrapped />
+        </Link>
+        <Card.Content>
           <Link to={`/product/${id}`}>
-            <img src={photo} alt="product" />
+            <Card.Header>{name}</Card.Header>
           </Link>
-          <div className={styles.productDescription}>
-            <Link to={`/product/${id}`}>
-              <div className={styles.productName}>{name}</div>
-            </Link>
-            <div className={styles.productType}> {type}</div>
-            <div className={styles.productLocation}>
-              {location}, {voivodeship}
-            </div>
-            <a href={link}>
-              <div className={styles.productLocation}>{link}</div>
-            </a>
-            <div className={styles.productLocation}>{cards}</div>
-          </div>
+          <Card.Meta>{type}</Card.Meta>
+          <Card.Description>
+           <div> {location}, {voivodeship} </div>
+           <div><a href={link}>{link}</a></div>
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
           <AddToFav
-          onClick={() => {
-            addToFav(this.props.id, firebase.auth().currentUser);
-          }}
+            onClick={() => {
+              addToFav(this.props.id, firebase.auth().currentUser);
+            }}
           />
-        </div>
-      </div>
+        </Card.Content>
+      </Card>
     );
   }
 }
 
 export default Product;
-
-// onClick={() => addToFav(firebase.auth().currentUser)}
-
-// import { addToFav } from '../../services/AddToFavService';
-// import firebase from '../../firebase/firebase'
