@@ -9,7 +9,8 @@ import LoggedNavbar from "../../layouts/LoggedNavbar";
 import { useAuth } from "../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import Paginationn from "../Pagination";
+import Pagination from "../Pagination";
+import { Icon } from "semantic-ui-react";
 
 const ProductListPage = () => {
   const isLoggedIn = useAuth();
@@ -29,10 +30,14 @@ const ProductListPage = () => {
   }, []);
 
   const list = clubsFB.map((product) => (
-    <div style={{ marginTop: "30px" }}>
+    <div
+      style={{
+        marginTop: "30px",
+      }}
+    >
       <div className={styles.listLink} key={product.id}>
-        <Product {...product} src={product.imageUrl} />
-      </div>
+        <Product {...product} src={product.imageUrl} />{" "}
+      </div>{" "}
     </div>
   ));
 
@@ -50,48 +55,49 @@ const ProductListPage = () => {
     pageNumbers.push(i);
   }
 
-
   return (
     <div className={styles.productListPage}>
-      {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
-      <SearchBar />
+      {" "}
+      {isLoggedIn ? <LoggedNavbar /> : <Navbar />} <SearchBar />{" "}
       {isLoggedIn ? (
         <div className={styles.btnContainer}>
           <Link to="/addproduct" className={styles.addToListBtn}>
-            <FontAwesomeIcon icon={faPlus} size={"3x"} />
-          </Link>
+            <FontAwesomeIcon icon={faPlus} size={"3x"} />{" "}
+          </Link>{" "}
         </div>
       ) : (
         ""
-      )}
-      <div className={styles.list}>{currentPosts}</div>
-      <button
-        onClick={() => {
-          if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-          } else {
-            return null;
-          }
-        }}
-      >
-        prev
-      </button>
-      <Paginationn
-        postsPerPage={postsPerPage}
-        totalPosts={clubsFB.length}
-        paginate={paginate}
-      />
-      <button
-        onClick={() => {
-          if (currentPage < pageNumbers.length) {
-            setCurrentPage(currentPage + 1);
-          } else {
-            return null;
-          }
-        }}
-      >
-        next
-      </button>
+      )}{" "}
+      <div className={styles.list}> {currentPosts} </div>{" "}
+      <div className={styles.pagination}>
+        <Icon
+          name="chevron left"
+          className={styles.paginationIcon}
+          onClick={() => {
+            if (currentPage > 1) {
+              setCurrentPage(currentPage - 1);
+            } else {
+              return null;
+            }
+          }}
+        />{" "}
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={clubsFB.length}
+          paginate={paginate}
+        />{" "}
+        <Icon
+          name="chevron right"
+          className={styles.paginationIcon}
+          onClick={() => {
+            if (currentPage < pageNumbers.length) {
+              setCurrentPage(currentPage + 1);
+            } else {
+              return null;
+            }
+          }}
+        />
+      </div>
     </div>
   );
 };

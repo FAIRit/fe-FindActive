@@ -21,3 +21,30 @@
   padding: 6px 12px;
   border-radius: 5px;
 }
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
+}
+
+.paginationNumbers{
+  display: flex;
+  width: 30%;
+  justify-content: space-evenly;
+}
+
+.paginationNumber{
+  cursor: pointer
+}
+
+.paginationIcon{
+  cursor: pointer;
+}
+
+@media (min-width: 768px){
+  .paginationNumbers{
+    width: 15%
+  }
+}
+

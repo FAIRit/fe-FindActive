@@ -1,7 +1,7 @@
 import React from "react";
+import styles from "../styles/ProductListPage.module.css";
 
-
-const Paginationn = ({ postsPerPage, totalPosts, paginate }) => {
+const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -9,24 +9,19 @@ const Paginationn = ({ postsPerPage, totalPosts, paginate }) => {
   }
 
   return (
-    <div>
-      <ul>
-        {pageNumbers.map((number) => (
-          <li key={number}>
-            <div
-              onClick={() => 
-                paginate(number)
-              }
-              style={{ color: "white" }}
-            >
-              {number}
-
-            </div>
-          </li>
-        ))}
-      </ul>
+    <div className={styles.paginationNumbers}>
+      {pageNumbers.map((number) => (
+        <div
+        className={styles.paginationNumber}
+          key={number}
+          onClick={() => paginate(number)}
+          style={{ color: "white" }}
+        >
+          {number}
+        </div>
+      ))}
     </div>
   );
 };
 
-export default Paginationn;
+export default Pagination;
