@@ -40,13 +40,13 @@
     }
 
     .searchInput{
-        width: 40vw;
-        height: 55px;
+        width: 35vw;
+        height: 43px;
     }
 
     .searchButton{
-        height: 55px;
-        width: 55px;
+        height: 43px;
+        width: 43px;
         font-size: 1rem;
     }
 }
