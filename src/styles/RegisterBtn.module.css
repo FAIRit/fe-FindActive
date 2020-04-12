@@ -1,13 +1,13 @@
 .registerBtn {
   background-color: Transparent;
   background-repeat: no-repeat;
-  border: 2px solid #f0f3bd;
+  border: 2px solid white;
   cursor: pointer;
   overflow: hidden;
   outline: none;
   font-size: 10px;
   font-weight: bold;
-  color: #f0f3bd;
+  color: white;
   width: 80px;
   height: 32px;
   border-radius: 5px;
@@ -15,8 +15,8 @@
 
 .registerBtn:hover {
   transition: 0.5s;
-  color: #9FFFCB;
-  border: 2px solid #9FFFCB;
+  color: #f0b4e4;
+  border: 2px solid #f0b4e4;
 }
 
 @media (min-width: 768px) {

@@ -11,7 +11,7 @@
     width: 70%;
     border: none;
     outline: none;
-    background: #f0f3bd;
+    background: #ebe9e9;
     font-size: 1.3rem;
 }
 
@@ -19,8 +19,8 @@
     width: 30px;
     height: 30px;
     border: none;
-    color: #f0f3bd;
-    background: #00A5CF;
+    color: #ebe9e9;
+    background: #9000b3;
     cursor: pointer;
     font-size: 0.5rem;
     border-top-right-radius: 5px;
@@ -29,9 +29,9 @@
 
 .searchButton:hover{
     border: none;
-    color: #00A5CF;
-    background: #9FFFCB;
-    transition: 0.5s;
+    color: #5c164e;
+    background: #ebe9e9;
+    transition: 0.6s;
 }
 
 @media (min-width: 768px){

@@ -19,10 +19,10 @@ const Showcase = () => {
           {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
           <span className={styles.title}>
             {" "}
-            Search for sports clubs. Get that workout in, wherever you are.{" "}
+            Wyszukuj obiektów sportowych. Zrób trening, gdziekolwiek jesteś.{" "}
           </span>
           <span className={styles.secondTitle}>
-            Working out has never been easier.
+            Trenowanie nigdy nie było łatwiejsze.
           </span>
           <SearchBar />
         </div>

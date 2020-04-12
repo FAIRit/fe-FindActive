@@ -1,23 +1,24 @@
 .loginBtn {
   background-color: Transparent;
   background-repeat: no-repeat;
-  border: 2px solid #f0f3bd;
+  border: 2px solid white;
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  color: #f0f3bd;
+  color: wite;
   font-size: 10px;
   font-weight: bold;
   margin-right: 15px;
   width: 80px;
   height: 32px;
   border-radius: 5px;
+  color: white
 }
 
 .loginBtn:hover{
-  color: #9FFFCB;
+  color: #f0b4e4;
   transition: 0.5s;
-  border: 2px solid #9FFFCB;
+  border: 2px solid #f0b4e4;
 }
 
 @media (min-width: 768px){

@@ -32,7 +32,7 @@ export default class CenterMode extends Component {
       };
       return (
         <div className={styles.topCategorieContainer}>
-          <h2 className={styles.title}>Najpopularniejsze kategorie</h2>
+          <h1 className={styles.title}>Najpopularniejsze kategorie</h1>
           <div className={styles.topCategories}>
             <Slider className={styles.slider} {...settings}>
               <div>

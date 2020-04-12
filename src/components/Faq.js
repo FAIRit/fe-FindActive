@@ -25,10 +25,10 @@ const data = {
 };
 
 const styles = {
-  titleTextColor: "#004E64",
-  rowTitleColor: "#004E64",
-  rowContentColor: "#004E64",
-  bgColor: "#9FFFCB"
+  titleTextColor: "#5c164e",
+  rowTitleColor: "black",
+  rowContentColor: "black",
+  bgColor: "#ebe9e9"
 };
 
 export default class App extends React.Component {

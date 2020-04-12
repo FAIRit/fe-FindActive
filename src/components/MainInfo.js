@@ -4,9 +4,9 @@ import styles from "../styles/MainInfo.module.css";
 const MainInfo = () => {
   return (
     <div className={styles.mainInfo}>
-      <h2>What is FindActive?</h2>
-      <div className={styles.mainInfoText}>FindActive is first Polish search engine for sports objects. Search for any categorie you want. Find fitness classess anywhere, anytime. </div>
-      <button className={styles.mainInfoButton}>Sign up for free</button>
+      <h1 className={styles.mainInfoTitle}>Czym jest FindActive?</h1>
+      <div className={styles.mainInfoText}>FindActive to wyszukiwarka obiektów sportowych w Polsce. Wyszukuj po kategoriach. Masz teraz łatwy dostęp do obiektów sportowych, gdziekolwiek jesteś! </div>
+      <button className={styles.mainInfoButton}>Zarejestruj się za darmo</button>
     </div>
   );
 };

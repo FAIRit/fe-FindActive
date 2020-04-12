@@ -27,14 +27,14 @@
 .registerPasswordInput {
   width: 80vw;
   height: 50px;
-  border: 1px solid #00a5cf;
-  border-bottom: 2px solid #00a5cf;
+  border: 1px solid #9000b3;
+  border-bottom: 2px solid #9000b3;
   margin-top: 20px;
 }
 
 .registerConfirmBtn {
   border: none;
-  background: #00a5cf;
+  background: #9000b3;
   color: white;
   margin-top: 35px;
   width: 80vw;
@@ -45,7 +45,7 @@
 .nameInput::placeholder,
 .registerEmailInput::placeholder,
 .registerPasswordInput::placeholder {
-  color: #00a5cf;
+  color: #9000b3;
   font-size: 1.2rem;
   padding-left: 10px;
 }
@@ -55,7 +55,7 @@
 }
 
 .registerConfirmBtn:hover {
-  background: #004e64;
+  background: #5c164e;
   transition: 0.5s;
 }
 
