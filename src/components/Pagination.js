@@ -1,6 +1,7 @@
 import React from "react";
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+
+const Paginationn = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -19,6 +20,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
               style={{ color: "white" }}
             >
               {number}
+
             </div>
           </li>
         ))}
@@ -27,4 +29,4 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   );
 };
 
-export default Pagination;
+export default Paginationn;
