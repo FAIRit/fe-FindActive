@@ -16,9 +16,9 @@
   background: #9000b3;
   outline: none;
   border: none;
-  width: 210px;
-  height: 90px;
-  font-size: 1.5rem;
+  width: 180px;
+  height: 60px;
+  font-size: 1rem;
   margin-top: 20px;
   border-radius: 50px;
   cursor: pointer
@@ -31,4 +31,13 @@
 
 .mainInfoTitle{
   color: #5c164e
+}
+
+@media (min-width: 768px){
+  .mainInfoButton{
+    width: 260px;
+    height: 80px;
+    font-size: 1.3rem;
+    margin-top: 35px
+  }
 }
