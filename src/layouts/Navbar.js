@@ -7,9 +7,8 @@ import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   let location = useLocation();
-  let locationPath = location.pathname;
   return (
-    <div className={locationPath === "/" ? styles.transparent : styles.navbar}>
+    <div className={location.pathname === "/" ? styles.transparent : styles.navbar}>
       <Logo />
       <div className={styles.navLinks}>
         <LoginBtn />

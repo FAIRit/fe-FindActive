@@ -60,10 +60,12 @@ const ProductListPage = () => {
       {" "}
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />} <SearchBar />{" "}
       {isLoggedIn ? (
-        <div className={styles.btnContainer}>
+        <div
+          className={styles.addToListBtnContainer}
+        >
           <Link to="/addproduct" className={styles.addToListBtn}>
-            <FontAwesomeIcon icon={faPlus} size={"3x"} />{" "}
-          </Link>{" "}
+            <FontAwesomeIcon icon={faPlus} size={"3x"} />
+          </Link>
         </div>
       ) : (
         ""

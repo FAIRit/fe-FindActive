@@ -1,17 +1,15 @@
 import React from "react";
 import styles from "../styles/Showcase.module.css";
 import Navbar from "../layouts/Navbar";
+import LoggedNavbar from "../layouts/LoggedNavbar";
 import MainInfo from "./MainInfo";
 import Faq from "./Faq";
 import CenterMode from "./slider/CenterMode";
 import SearchBar from "./SearchBar";
-import LoggedNavbar from "../layouts/LoggedNavbar";
-import { useAuth } from '../hooks/useAuth'
-
+import { useAuth } from "../hooks/useAuth";
 
 const Showcase = () => {
   const isLoggedIn = useAuth();
-  
   return (
     <div>
       <div className={styles.container}>
@@ -38,4 +36,3 @@ const Showcase = () => {
 };
 
 export default Showcase;
-

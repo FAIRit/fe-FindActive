@@ -1,53 +1,58 @@
-
-.list{
+.list {
   display: flex;
   flex-wrap: wrap;
   top: 0;
   justify-content: center;
   align-items: center;
-
 }
 
-.listLink{
+.listLink {
   text-decoration: none;
 }
 
-.btnContainer{
+.btnContainer {
   padding-top: 30px;
   display: flex;
   justify-content: flex-end;
 }
 
-.addToListBtn{
-  text-decoration: none;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 5px;
+.addToListBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 45px 0 0;
 }
 
-.pagination{
+.addToListBtn {
+  text-decoration: none;
+  color: black;
+}
+
+.addToListBtn:hover {
+  color: #9000b3;
+}
+
+.pagination {
   display: flex;
   justify-content: center;
-  margin: 20px 0 20px 0;
+  margin: 30px 0 30px 0;
 }
 
-.paginationNumbers{
+.paginationNumbers {
   display: flex;
   width: 30%;
   justify-content: space-evenly;
 }
 
-.paginationNumber{
-  cursor: pointer
-}
-
-.paginationIcon{
+.paginationNumber {
   cursor: pointer;
 }
 
-@media (min-width: 768px){
-  .paginationNumbers{
-    width: 15%
-  }
+.paginationIcon {
+  cursor: pointer;
 }
 
+@media (min-width: 768px) {
+  .paginationNumbers {
+    width: 15%;
+  }
+}
