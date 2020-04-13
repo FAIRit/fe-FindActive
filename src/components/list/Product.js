@@ -5,12 +5,13 @@ import { addToFav } from "../../services/AddToFavService";
 import firebase from "../../firebase/firebase";
 import { Card, Image } from "semantic-ui-react";
 import styles from '../../styles/Product.module.css';
-import { Rating } from 'semantic-ui-react'
-
+import Rat from '../../components/Rating'
 
 class Product extends Component {
+  
   state = {
     favorites: {},
+    rating: ''
   };
 
   componentDidMount() {
@@ -43,6 +44,7 @@ class Product extends Component {
       voivodeship,
       photo,
       location,
+      rating
     } = this.props;
     return (
       <Card style={{width: '350px',  height: "430px", background: '#f0b4e4', margin: '0 15px 0 15px'}}>
@@ -58,8 +60,13 @@ class Product extends Component {
            <div> {location}, {voivodeship} </div>
            <div><a href={link} className={styles.productLink}>{link}</a></div>
           </Card.Description>
-          <Rating icon='star' defaultRating={3} maxRating={5} />
-Ocena: 5
+          {/* <Rating icon='star' defaultRating={3}  maxRating={5} onRate={this.setState({
+            rating
+          })
+          } />
+           */}
+           <Rat/>
+          Ocena: 
         </Card.Content>
         <Card.Content extra style={{background: '#f0b4e4'}}>
           <AddToFav
