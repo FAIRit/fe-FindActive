@@ -1,5 +1,6 @@
 import React from "react";
 import { Rating } from "semantic-ui-react";
+import firebase from '../firebase/firebase'
 
 class Rat extends React.Component {
   state = {
@@ -19,7 +20,7 @@ class Rat extends React.Component {
           onRate={this.handleRate}
           disabled={this.state.disabled}
         />
-        Ocena: {this.state.rating}
+        Ocena: {this.state.rating} {this.props.id}
       </>
     );
   }
