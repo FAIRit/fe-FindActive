@@ -28,22 +28,23 @@ class Rat extends React.Component {
       .ref(`/clubs/${this.props.id}/rating`)
      .on('value', el => {
          el.forEach(val => {
-             val.forEach(ee => {
+             val.filter(ee => {
                 //  console.log(ee.val())
                 //  arr.push(ee.val())
                 //  console.log(arr)
-                return (ee.val())
+                console.log (ee.val())
              })
          })
      })
   };
 
-  displayName = () => {
-    const nejm =  firebase.database().ref(`/clubs/${this.props.id}/name`).on('value', el => {
-         return (el.val())
-      })
-      return nejm
-  }
+
+// displayRating = () => {
+//     firebase.database().ref(`/clubs/${this.props.id}/rating`).on('value', el =>{
+//         console.log(el)
+//     })
+// }
+
 
   //   var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
   // starCountRef.on('value', function(snapshot) {
@@ -62,7 +63,7 @@ class Rat extends React.Component {
           disabled={this.state.disabled}
           onClick={this.displayRating}
         />
-        Ocena: {this.displayRating} {this.displayName} {this.props.id}
+        Ocena: {this.displayRating}  {this.props.id}
       </>
     );
   }
