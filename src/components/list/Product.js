@@ -4,7 +4,9 @@ import AddToFav from "../../components/AddToFav";
 import { addToFav } from "../../services/AddToFavService";
 import firebase from "../../firebase/firebase";
 import { Card, Image } from "semantic-ui-react";
-import styles from '../../styles/Product.module.css'
+import styles from '../../styles/Product.module.css';
+import { Rating } from 'semantic-ui-react'
+
 
 class Product extends Component {
   state = {
@@ -56,6 +58,8 @@ class Product extends Component {
            <div> {location}, {voivodeship} </div>
            <div><a href={link} className={styles.productLink}>{link}</a></div>
           </Card.Description>
+          <Rating icon='star' defaultRating={3} maxRating={5} />
+Ocena: 5
         </Card.Content>
         <Card.Content extra style={{background: '#f0b4e4'}}>
           <AddToFav
