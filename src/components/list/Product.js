@@ -60,13 +60,7 @@ class Product extends Component {
            <div> {location}, {voivodeship} </div>
            <div><a href={link} className={styles.productLink}>{link}</a></div>
           </Card.Description>
-          {/* <Rating icon='star' defaultRating={3}  maxRating={5} onRate={this.setState({
-            rating
-          })
-          } />
-           */}
            <Rat/>
-          Ocena: 
         </Card.Content>
         <Card.Content extra style={{background: '#f0b4e4'}}>
           <AddToFav

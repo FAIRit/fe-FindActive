@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Rating } from "semantic-ui-react";
 
 class Rat extends React.Component {
-  state = {};
+  state = {
+    disabled: false,
+  };
 
-  handleRate = (e, { rating }) => this.setState({ rating });
+  handleRate = (e, { rating }) => this.setState({ rating, disabled: true });
 
   render() {
     return (
@@ -15,8 +17,9 @@ class Rat extends React.Component {
           defaultRating={3}
           maxRating={5}
           onRate={this.handleRate}
+          disabled={this.state.disabled}
         />
-        <div>{this.state.rating}</div>
+        Ocena: {this.state.rating}
       </>
     );
   }
