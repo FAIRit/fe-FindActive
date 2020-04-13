@@ -1,5 +1,5 @@
 .mainInfo {
-  background: rgb(184, 253, 215);
+  background: #ebe9e9;
   text-align: center;
   padding: 40px 0 40px 0;
   width: 70%;
@@ -12,20 +12,32 @@
 }
 
 .mainInfoButton{
-  color: #9FFFCB;
-  background: #004E64;
+  color: #ebe9e9;
+  background: #9000b3;
   outline: none;
   border: none;
-  width: 170px;
-  height: 70px;
-  font-size: 1.5rem;
+  width: 180px;
+  height: 60px;
+  font-size: 1rem;
   margin-top: 20px;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer
 }
 
 .mainInfoButton:hover{
-  background: #25A18E;
-  color: #9FFFCB;
+  background: #5c164e;
   transition: 0.5s
+}
+
+.mainInfoTitle{
+  color: #5c164e
+}
+
+@media (min-width: 768px){
+  .mainInfoButton{
+    width: 260px;
+    height: 80px;
+    font-size: 1.3rem;
+    margin-top: 35px
+  }
 }

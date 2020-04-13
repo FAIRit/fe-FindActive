@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import firebase from "../firebase/firebase";
 import { Input, Button } from "semantic-ui-react";
 import style from '../styles/UpdatePassword.module.css';
-import {Formik} from 'formik'
-
 
 const UpdatePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");

@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin-bottom: 30px
+  margin-bottom: 30px;
+  justify-content: center;
 }
 
 .formTitle {
@@ -27,21 +28,33 @@
 .addProductInput {
   height: 30px;
   display: flex;
-  margin-bottom: 5px
+  margin-bottom: 5px;
 }
 
 .addProductTextarea {
   height: 120px;
-  border: 1px solid grey;
   border-radius: 5px;
   background: white;
   color: grey;
+  outline: none
 }
 
 .addProductBtn{
   margin-top: 20px;
-  padding: 10px 0;
-  border-radius: 5px
+  padding: 15px 0;
+  width: 100px;
+  border-radius: 40px;
+  background: #5c164e;
+  color: #ebe9e9;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.addProductBtn:hover{
+  transition: 0.5s;
+  background: #3d0e34
 }
 
 @media (min-width: 768px) {

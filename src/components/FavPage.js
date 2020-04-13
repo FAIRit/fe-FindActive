@@ -8,12 +8,13 @@ import AddToFav from "./AddToFav";
 import { addToFav } from "../services/AddToFavService";
 import { Link } from "react-router-dom";
 import { Card, Image } from "semantic-ui-react";
+import Pagination from './Pagination'
 
 class FavPage extends Component {
   state = {
     isLoggedIn: false,
     favorites: {},
-    productList: [],
+    productList: []
   };
 
   componentDidMount() {
@@ -59,37 +60,33 @@ class FavPage extends Component {
         }
       });
     });
-    if (output == undefined || output == 0) {
+    if (output === undefined || output === 0) {
       return ["Lista ulubionych jest pusta"];
     }
     return output.map((product) => {
       return (
-        <div
-          style={{
-            padding: "15px 0 15px 0",
-          }}
-        >
-          <Card style={{ width: "300px", height: "350px" }}>
+          <Card
+            style={{ width: "300px", height: "400px", background: "#f0b4e4", margin: "15px 0 15px 0" }}
+          >
             <Link to={`/product/${product.id}`}>
               <Image src={product.photo} wrapped />
             </Link>
             <Card.Content>
-              <Card.Header>{product.name}</Card.Header>
-              <Card.Meta>
-                <span className="date">
-                  {product.location}, {product.voivodeship}
-                </span>
-                <div style={{ color: "black" }}>{product.type}</div>
-              </Card.Meta>
+              <Link to={`/product/${product.id}`}>
+                <Card.Header><div className={styles.productTitle}>{product.name}</div></Card.Header>
+              </Link>
+              <Card.Meta>{product.type}</Card.Meta>
+              <Card.Description>
+                <div>
+                  {" "}
+                  {product.location}, {product.voivodeship}{" "}
+                </div>
+                <div style={{fontSize: '0.8rem'}}>
+                  <a href={product.link} className={styles.productLink}>{product.link}</a>
+                </div>
+              </Card.Description>
             </Card.Content>
-            <Card.Content
-              extra
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
+            <Card.Content extra style={{ background: "#f0b4e4" }}>
               <AddToFav
                 id={product.id}
                 isInFavorites={this.state.favorites[product.id]}
@@ -99,7 +96,6 @@ class FavPage extends Component {
               />
             </Card.Content>
           </Card>
-        </div>
       );
     });
   }

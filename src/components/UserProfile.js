@@ -82,7 +82,7 @@ const UserProfile = () => {
   return (
     <div className={styles.userProfile}>
       {" "}
-      {isLoggedIn ? <LoggedNavbar /> : <Navbar />}
+      {isLoggedIn ? <LoggedNavbar style={{backgroundColor: 'red'}}/> : <Navbar />}
       {isLoggedIn && (
         <div className={styles.userFeatures}>
           <div className={styles.userData}>

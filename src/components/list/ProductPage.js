@@ -5,7 +5,6 @@ import SearchBar from "../SearchBar";
 import Navbar from "../../layouts/Navbar";
 import LoggedNavbar from "../../layouts/LoggedNavbar";
 import firebase from '../../firebase/firebase';
-import { NavLink } from "react-router-dom";
 
 class ProductPage extends React.Component {
   constructor(props) {

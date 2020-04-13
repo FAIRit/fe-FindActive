@@ -17,7 +17,7 @@ const ProductListPage = () => {
 
   const [clubsFB, setClubsFB] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const [postsPerPage] = useState(12);
 
   useEffect(() => {
     displayClubs((clubsFB) => {
@@ -60,10 +60,12 @@ const ProductListPage = () => {
       {" "}
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />} <SearchBar />{" "}
       {isLoggedIn ? (
-        <div className={styles.btnContainer}>
+        <div
+          className={styles.addToListBtnContainer}
+        >
           <Link to="/addproduct" className={styles.addToListBtn}>
-            <FontAwesomeIcon icon={faPlus} size={"3x"} />{" "}
-          </Link>{" "}
+            <FontAwesomeIcon icon={faPlus} size={"3x"} />
+          </Link>
         </div>
       ) : (
         ""

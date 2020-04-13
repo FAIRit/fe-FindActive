@@ -36,28 +36,28 @@ const SignupSchema = Yup.object().shape({
 
 const notify = () => toast("oooo");
 
-// const cardOptions = [
-//   { key: "beactive", text: "BeActive", value: "BeActive" },
-//   { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
-//   { key: "fitsport", text: "FitSport", value: "FitSport" },
-//   { key: "multiactive", text: "MultiActive", value: "MultiActive" },
-//   { key: "pole", text: "MultiSport Classic", value: "MultiSport Classic" },
-//   { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
-//   { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
-//   { key: "oksystem", text: "OK System", value: "OK System" }
-// ];
+const cardOptions = [
+  { key: "beactive", text: "BeActive", value: "BeActive" },
+  { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
+  { key: "fitsport", text: "FitSport", value: "FitSport" },
+  { key: "multiactive", text: "MultiActive", value: "MultiActive" },
+  { key: "pole", text: "MultiSport Classic", value: "MultiSport Classic" },
+  { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
+  { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
+  { key: "oksystem", text: "OK System", value: "OK System" }
+];
 
-// const CardDropdown = () => (
-//   <Dropdown
-//     placeholder="wybierz z listy..."
-//     name="card"
-//     className={styles.addProductInput}
-//     fluid
-//     multiple
-//     selection
-//     options={cardOptions}
-//   />
-// );
+const CardDropdown = () => (
+  <Dropdown
+    placeholder="wybierz z listy..."
+    name="card"
+    className={styles.addProductInput}
+    fluid
+    multiple
+    selection
+    options={cardOptions}
+  />
+);
 
 const typeOptions = [
   { key: "crossfit", text: "crossfit", value: "crossfit" },
@@ -220,11 +220,11 @@ const AddProduct = () => {
 
               <label htmlFor="cards">Akceptowane karty lojalnościowe</label>
 
-              {/* <CardDropdown value={values.card} onChange={handleChange} />
+              <CardDropdown value={values.card} onChange={handleChange} />
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
-              ) : null} */}
+              ) : null}
 
               <label htmlFor="link">Link do strony</label>
               <Input
@@ -242,7 +242,7 @@ const AddProduct = () => {
               <label htmlFor="photo">Zdjęcie</label>
               <Input
                 type="url"
-                placeholder="adres url zdjęcia"
+                placeholder="wklej adres url..."
                 name="photo"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -264,7 +264,6 @@ const AddProduct = () => {
               {errors.description && touched.description ? (
                 <div className={styles.error}>{errors.description}</div>
               ) : null}
-
               <button
                 type="submit"
                 disabled={isSubmitting}

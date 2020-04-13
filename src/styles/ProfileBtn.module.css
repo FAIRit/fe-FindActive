@@ -4,6 +4,11 @@
     font-size: 1.3rem;
 }
 
+.profileIcon:hover,
+.favoriteIcon:hover{
+    color: #9000b3;
+    transition: 0.5s;
+}
 
 @media (min-width: 768px){
     .profileIcon,

@@ -26,57 +26,60 @@
 .passwordInput {
   width: 80vw;
   height: 50px;
-  border: 1px solid #00a5cf;
-  border-bottom: 2px solid #00a5cf;
+  border: 1px solid #9000b3;
+  border-bottom: 2px solid #9000b3;
   margin-top: 20px;
 }
 
 .loginConfirmBtn {
   border: none;
-  background: #00a5cf;
+  background: #9000b3;
   color: white;
   margin-top: 35px;
   width: 80vw;
   height: 50px;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .loginInput::placeholder,
 .passwordInput::placeholder {
-  color: #00a5cf;
+  color: #9000b3;
   font-size: 1.2rem;
   padding-left: 10px;
 }
 
 .loginWithGoogleBtn {
   border: none;
-  background: rgb(4, 131, 163);
+  background: #5c164e;
   color: white;
   margin-top: 20px;
   width: 80vw;
   height: 50px;
   font-size: 1.2rem;
+  cursor: pointer
 }
 
 .forgotPasswordLink {
   text-decoration: none;
-  color: #00a5cf;
+  color: #9000b3;
   padding: 15px 0;
   border: none;
   background: white;
   font-size: 1rem;
   display: flex;
-  outline: none
+  outline: none;
+  cursor: pointer;
 }
 
 .forgotPasswordLink:hover {
-  color: #004e64;
+  color: #5c164e;
   transition: 0.5s;
 }
 
 .loginConfirmBtn:hover,
 .loginWithGoogleBtn:hover {
-  background: #004e64;
+  background: #501243;
   transition: 0.5s;
 }
 

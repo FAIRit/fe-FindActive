@@ -26,12 +26,12 @@ img {
 
 
 .websiteLink{
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
 .websiteLink:hover{
-    color: blue
+    color: #9000b3
 }
 
 @media (min-width: 1100px){
@@ -53,7 +53,7 @@ img {
 
     .singleProductDetails{
         padding-left: 50px;
-        color: white
+        color: black
     }
 
     .singleProductName{

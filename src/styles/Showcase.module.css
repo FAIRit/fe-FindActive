@@ -21,7 +21,7 @@
 
 .title{
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #f0f3bd;
     font-weight: bold;
     margin-top: 180px;
@@ -30,12 +30,12 @@
 .secondTitle{
     font-size: 1.3rem;
     color: #f0f3bd;
-    margin-top: 20px;
+    margin: 20px 0 10px 0;
 }
 
 @media (min-width: 768px){
     .title{
-        font-size: 2.5rem;
+        font-size: 2.3rem;
         width: 70%;
         padding-top: 200px;
         margin: 0 auto;

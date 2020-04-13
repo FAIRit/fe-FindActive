@@ -5,6 +5,11 @@
   text-decoration: none;
 }
 
+.logo:hover {
+  color: white;
+  transition: 0.5s;
+}
+
 .logoText {
   font-size: 14px;
   font-weight: bold;
@@ -12,11 +17,11 @@
 }
 
 @media (min-width: 768px) {
-  .logo{
+  .logo {
     font-size: 2rem;
   }
-  
+
   .logoText {
-    font-size: 24px
+    font-size: 24px;
   }
 }

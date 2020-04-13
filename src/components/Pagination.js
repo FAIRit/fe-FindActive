@@ -12,10 +12,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     <div className={styles.paginationNumbers}>
       {pageNumbers.map((number) => (
         <div
-        className={styles.paginationNumber}
+          className={styles.paginationNumber}
           key={number}
           onClick={() => paginate(number)}
-          style={{ color: "white" }}
         >
           {number}
         </div>
