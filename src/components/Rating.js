@@ -4,20 +4,21 @@ import firebase from "../firebase/firebase";
 
 class Rat extends React.Component {
   state = {
-    disabled: false,
-    avg1: ''
+    avgRounded: "",
   };
 
   handleRate = (e, { rating }) => {
     this.setState({
       rating,
+      aa: 4,
     });
     firebase.database().ref(`/clubs/${this.props.id}/rating`).push({ rating });
+    // firebase.auth().onAuthStateChanged((user) => {
+    //  const ref = firebase.database().ref(`/clubs/${this.props.id}/ratedBy`).set(user.uid)
+    // })
   };
 
   componentDidMount() {
-
-
     firebase
       .database()
       .ref(`/clubs/${this.props.id}/rating`)
@@ -28,13 +29,12 @@ class Rat extends React.Component {
           values.length === 0
             ? 0
             : values.reduce((result, next) => result + next, 0) / values.length;
-        const avg1 = Math.round(avg * 10)/10
+        const avgRounded = Math.round(avg * 10) / 10;
         this.setState({
-          avg1
-        })
+          avgRounded,
+        });
       });
-
-}
+  }
 
   render() {
     return (
@@ -42,12 +42,12 @@ class Rat extends React.Component {
         {" "}
         <Rating
           icon="star"
-          defaultRating={3}
+          defaultRating={5}
           maxRating={5}
           onRate={this.handleRate}
           disabled={this.state.disabled}
         />
-        Ocena: {this.state.avg1} 
+        Ocena: {this.state.avgRounded}
       </>
     );
   }

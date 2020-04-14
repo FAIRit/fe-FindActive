@@ -73,7 +73,6 @@ const UserProfile = () => {
             const id = currentUser.uid;
 
             firebase.database().ref(`/users/${id}/photoURL`).set(firebaseUrl);
-            console.log("to jest url" + firebaseUrl);
           });
       }
     );
