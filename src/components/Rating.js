@@ -14,42 +14,22 @@ class Rat extends React.Component {
     firebase.database().ref(`/clubs/${this.props.id}/rating`).push({ rating });
   };
 
-  //   displayRating = () => {
-  //     firebase.database().ref(`/clubs/${this.props.id}/rating`).once('value', function(snapshot) {
-  //        return snapshot
-  //     })
-
-  //   }
-
   displayRating = () => {
-      const arr = []
- firebase
+    firebase
       .database()
       .ref(`/clubs/${this.props.id}/rating`)
-     .on('value', el => {
-         el.forEach(val => {
-             val.filter(ee => {
-                //  console.log(ee.val())
-                //  arr.push(ee.val())
-                //  console.log(arr)
-                console.log (ee.val())
-             })
-         })
-     })
+      .on("value", (el) => {
+        const rating = el.val();
+        const values = Object.values(rating || {}).map((v) => v.rating);
+        const avg =
+          values.length === 0
+            ? 0
+            : values.reduce((result, next) => result + next, 0) / values.length;
+        const avg1 = Math.round(avg * 10)/10
+        console.log(avg1)
+        console.log(avg1)
+      });
   };
-
-
-// displayRating = () => {
-//     firebase.database().ref(`/clubs/${this.props.id}/rating`).on('value', el =>{
-//         console.log(el)
-//     })
-// }
-
-
-  //   var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
-  // starCountRef.on('value', function(snapshot) {
-  //   updateStarCount(postElement, snapshot.val());
-  // });
 
   render() {
     return (
@@ -63,7 +43,7 @@ class Rat extends React.Component {
           disabled={this.state.disabled}
           onClick={this.displayRating}
         />
-        Ocena: {this.displayRating}  {this.props.id}
+        Ocena: {this.props.id}
       </>
     );
   }

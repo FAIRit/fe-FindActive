@@ -60,7 +60,7 @@ class Product extends Component {
            <div> {location}, {voivodeship} </div>
            <div><a href={link} className={styles.productLink}>{link}</a></div>
           </Card.Description>
-           <Rat id={id}/>
+           <Rat id={id} name={name}/>
         </Card.Content>
         <Card.Content extra style={{background: '#f0b4e4'}}>
           <AddToFav
