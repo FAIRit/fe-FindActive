@@ -5,6 +5,7 @@ import firebase from "../firebase/firebase";
 class Rat extends React.Component {
   state = {
     disabled: false,
+    avg1: ''
   };
 
   handleRate = (e, { rating }) => {
@@ -14,7 +15,9 @@ class Rat extends React.Component {
     firebase.database().ref(`/clubs/${this.props.id}/rating`).push({ rating });
   };
 
-  displayRating = () => {
+  componentDidMount() {
+
+
     firebase
       .database()
       .ref(`/clubs/${this.props.id}/rating`)
@@ -26,10 +29,12 @@ class Rat extends React.Component {
             ? 0
             : values.reduce((result, next) => result + next, 0) / values.length;
         const avg1 = Math.round(avg * 10)/10
-        console.log(avg1)
-        console.log(avg1)
+        this.setState({
+          avg1
+        })
       });
-  };
+
+}
 
   render() {
     return (
@@ -41,9 +46,8 @@ class Rat extends React.Component {
           maxRating={5}
           onRate={this.handleRate}
           disabled={this.state.disabled}
-          onClick={this.displayRating}
         />
-        Ocena: {this.props.id}
+        Ocena: {this.state.avg1} 
       </>
     );
   }
