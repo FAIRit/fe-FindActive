@@ -18,10 +18,12 @@ const ProductListPage = () => {
   const [clubsFB, setClubsFB] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(12);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     displayClubs((clubsFB) => {
       setClubsFB(clubsFB);
+      console.log(clubsFB);
     });
 
     return () => {
@@ -32,9 +34,10 @@ const ProductListPage = () => {
   const list = clubsFB.map((product) => (
     <div
       style={{
-        marginTop: "30px"
+        marginTop: "30px",
       }}
       key={product.id}
+      name={product.name}
     >
       <div className={styles.listLink}>
         <Product {...product} src={product.imageUrl} />{" "}
@@ -42,9 +45,26 @@ const ProductListPage = () => {
     </div>
   ));
 
+
+
+   const filteredClubs = clubsFB.filter(el => {
+     return el.name.toLowerCase().includes(inputValue.toLowerCase())
+   })
+
+  console.log(filteredClubs);
+
+  // const names=filteredClubs.map(el => {
+  //   return el.name
+  // })
+
+  // console.log(names)
+
+
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = list.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPostsFiltered = filteredClubs.slice(indexOfFirstPost, indexOfLastPost)
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -60,10 +80,15 @@ const ProductListPage = () => {
     <div className={styles.productListPage}>
       {" "}
       {isLoggedIn ? <LoggedNavbar /> : <Navbar />} <SearchBar />{" "}
+      <form>
+        <input type="text" value={inputValue} onChange={e =>{setInputValue(e.target.value)
+        console.log(inputValue)}
+        
+        
+        } />
+      </form>
       {isLoggedIn ? (
-        <div
-          className={styles.addToListBtnContainer}
-        >
+        <div className={styles.addToListBtnContainer}>
           <Link to="/addproduct" className={styles.addToListBtn}>
             <FontAwesomeIcon icon={faPlus} size={"3x"} />
           </Link>
