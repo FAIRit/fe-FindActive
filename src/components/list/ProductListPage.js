@@ -32,10 +32,11 @@ const ProductListPage = () => {
   const list = clubsFB.map((product) => (
     <div
       style={{
-        marginTop: "30px",
+        marginTop: "30px"
       }}
+      key={product.id}
     >
-      <div className={styles.listLink} key={product.id}>
+      <div className={styles.listLink}>
         <Product {...product} src={product.imageUrl} />{" "}
       </div>{" "}
     </div>
