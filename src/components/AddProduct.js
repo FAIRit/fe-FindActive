@@ -5,8 +5,6 @@ import styles from "../styles/AddProductForm.module.css";
 import { Formik } from "formik";
 import firebase from "../firebase/firebase";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Dropdown, Input } from "semantic-ui-react";
 
 const SignupSchema = Yup.object().shape({
@@ -34,7 +32,6 @@ const SignupSchema = Yup.object().shape({
     .url("błędny adres"),
 });
 
-const notify = () => toast("oooo");
 
 const cardOptions = [
   { key: "beactive", text: "BeActive", value: "BeActive" },
