@@ -114,7 +114,6 @@ const ProductListPage = () => {
         ""
       )}{" "}
       <div className={styles.list}>
-        {" "}
         {inputValue ? filteredClubList : currentPosts}{" "}
       </div>{" "}
       <div className={styles.pagination}>
