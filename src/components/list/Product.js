@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import AddToFav from "../../components/AddToFav";
 import { addToFav } from "../../services/AddToFavService";
 import firebase from "../../firebase/firebase";
 import { Card, Image } from "semantic-ui-react";
-import styles from '../../styles/Product.module.css';
-import Rat from '../../components/Rating'
+import styles from "../../styles/Product.module.css";
+import Rat from "../../components/Rating";
+import { Icon } from "semantic-ui-react";
 
 class Product extends Component {
-  
   state = {
     favorites: {},
-    rating: ''
+    rating: "",
   };
 
   componentDidMount() {
@@ -23,7 +22,7 @@ class Product extends Component {
           .child(user.uid)
           .on("value", (value) => {
             this.setState({
-              favs: value.val() || {},
+              favorites: value.val() || {},
             });
           });
       }
@@ -44,29 +43,48 @@ class Product extends Component {
       voivodeship,
       photo,
       location,
-      rating
+      rating,
     } = this.props;
     return (
-      <Card style={{width: '350px',  height: "430px", background: '#f0b4e4', margin: '0 15px 0 15px'}}>
+      <Card
+        style={{
+          width: "350px",
+          height: "430px",
+          background: "#f0b4e4",
+          margin: "0 15px 0 15px",
+        }}
+      >
         <Link to={`/product/${id}`}>
           <Image src={photo} wrapped />
         </Link>
         <Card.Content>
           <Link to={`/product/${id}`}>
-            <Card.Header><div className={styles.productTitle}>{name}</div></Card.Header>
+            <Card.Header>
+              <div className={styles.productTitle}>{name}</div>
+            </Card.Header>
           </Link>
           <Card.Meta>{type}</Card.Meta>
           <Card.Description>
-           <div> {location}, {voivodeship} </div>
-           <div><a href={link} className={styles.productLink}>{link}</a></div>
+            <div>
+              {" "}
+              {location}, {voivodeship}{" "}
+            </div>
+            <div>
+              <a href={link} className={styles.productLink}>
+                {link}
+              </a>
+            </div>
           </Card.Description>
-           <Rat id={id} name={name}/>
+          <Rat id={id} name={name} />
         </Card.Content>
-        <Card.Content extra style={{background: '#f0b4e4'}}>
-          <AddToFav
+        <Card.Content extra style={{ background: "#f0b4e4" }}>
+          <Icon
             onClick={() => {
               addToFav(this.props.id, firebase.auth().currentUser);
             }}
+            name={this.state.favorites[id] ? "heart outline" : "heart"}
+            className={styles.favProductIcon}
+            size="large"
           />
         </Card.Content>
       </Card>
