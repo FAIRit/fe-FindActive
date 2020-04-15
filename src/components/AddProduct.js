@@ -144,6 +144,7 @@ const AddProduct = () => {
             description: "",
             link: "",
             photo: "",
+            rating: ''
           }}
           validationSchema={SignupSchema}
           onSubmit={(values) => {
@@ -155,6 +156,7 @@ const AddProduct = () => {
             const link = values.link;
             const cards = values.cards;
             const photo = values.photo;
+            const rating = ''
             firebase.database().ref("/clubs").push({
               name,
               location,
@@ -164,6 +166,7 @@ const AddProduct = () => {
               link,
               cards,
               photo,
+              rating
             });
           }}
         >
