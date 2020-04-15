@@ -1,14 +1,23 @@
 .productLink,
-.productTitle{
-    color: #9000b3
+.productTitle {
+  color: #9000b3;
 }
 
 .productLink:hover,
-.productTitle:hover{
-    color: #5c164e
+.productTitle:hover {
+  color: #5c164e;
 }
 
-.productTitle{
-    color: black;
-    font-weight: bold;
+.productTitle {
+  color: black;
+  font-weight: bold;
+}
+
+.favProductIcon {
+  cursor: pointer;
+}
+
+.favProductIcon:hover {
+  transform: scale(1.5);
+  transition: 0.3s;
 }

@@ -81,7 +81,11 @@ const UserProfile = () => {
   return (
     <div className={styles.userProfile}>
       {" "}
-      {isLoggedIn ? <LoggedNavbar style={{backgroundColor: 'red'}}/> : <Navbar />}
+      {isLoggedIn ? (
+        <LoggedNavbar style={{ backgroundColor: "red" }} />
+      ) : (
+        <Navbar />
+      )}
       {isLoggedIn && (
         <div className={styles.userFeatures}>
           <div className={styles.userData}>
@@ -99,30 +103,43 @@ const UserProfile = () => {
             <Button
               basic
               color="black"
-              onClick={() => showChangePhotoForm(!changePhotoForm)}
+              onClick={() => {
+                showChangePhotoForm(!changePhotoForm);
+                showUpdatePasswordForm(false);
+                showRemoveAccountForm(false);
+              }}
             >
               Zmień zdjęcie
             </Button>{" "}
             <Button
               basic
               color="black"
-              onClick={() => showUpdatePasswordForm(!updatePasswordForm)}
+              onClick={() => {
+                showUpdatePasswordForm(!updatePasswordForm);
+                showChangePhotoForm(false);
+                showRemoveAccountForm(false);
+              }}
             >
               Zmień hasło
             </Button>{" "}
             <Button
               basic
               color="black"
-              onClick={() => showRemoveAccountForm(!removeAccountForm)}
+              onClick={() => {
+                showRemoveAccountForm(!removeAccountForm);
+                showUpdatePasswordForm(false);
+                showChangePhotoForm(false);
+              }}
             >
               Usuń konto
             </Button>{" "}
           </div>
+          {changePhotoForm && (
           <form
             className={styles.changePhotoForm}
             onSubmit={handleFirebaseUpload}
           >
-            {changePhotoForm && 
+         
               <>
                 <Input
                   type="file"
@@ -135,10 +152,11 @@ const UserProfile = () => {
                   zmień
                 </Button>{" "}
               </>
-            }
-          </form> 
-          {updatePasswordForm && <UpdatePassword />} 
-          {removeAccountForm && <RemoveAccount />} 
+            
+          </form>
+          )}
+          {updatePasswordForm && <UpdatePassword />}
+          {removeAccountForm && <RemoveAccount />}
         </div>
       )}{" "}
     </div>

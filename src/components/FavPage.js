@@ -8,13 +8,12 @@ import AddToFav from "./AddToFav";
 import { addToFav } from "../services/AddToFavService";
 import { Link } from "react-router-dom";
 import { Card, Image } from "semantic-ui-react";
-import Pagination from './Pagination'
 
 class FavPage extends Component {
   state = {
     isLoggedIn: false,
     favorites: {},
-    productList: []
+    productList: [],
   };
 
   componentDidMount() {
