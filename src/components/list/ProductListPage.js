@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../layouts/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { displayClubs, stopClubs } from "../../services/ClubService";
 import Product from "./Product";
-import SearchBar from "../SearchBar";
 import styles from "../../styles/ProductListPage.module.css";
 import LoggedNavbar from "../../layouts/LoggedNavbar";
 import { useAuth } from "../../hooks/useAuth";
@@ -11,9 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../Pagination";
 import { Icon } from "semantic-ui-react";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+
 
 const ProductListPage = () => {
   const isLoggedIn = useAuth();
+  const location = useLocation();
 
   const [clubsFB, setClubsFB] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,6 +56,20 @@ const ProductListPage = () => {
 
   console.log(filteredClubs);
 
+  const filteredClubList = filteredClubs.map((product) => (
+    <div
+    style={{
+      marginTop: "30px",
+    }}
+    key={product.id}
+    name={product.name}
+  >
+    <div className={styles.listLink}>
+      <Product {...product} src={product.imageUrl} />{" "}
+    </div>{" "}
+  </div>
+  ))
+
   // const names=filteredClubs.map(el => {
   //   return el.name
   // })
@@ -64,7 +81,7 @@ const ProductListPage = () => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = list.slice(indexOfFirstPost, indexOfLastPost);
-  const currentPostsFiltered = filteredClubs.slice(indexOfFirstPost, indexOfLastPost)
+  const currentPostsFiltered = filteredClubList.slice(indexOfFirstPost, indexOfLastPost)
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -79,14 +96,43 @@ const ProductListPage = () => {
   return (
     <div className={styles.productListPage}>
       {" "}
-      {isLoggedIn ? <LoggedNavbar /> : <Navbar />} <SearchBar />{" "}
-      <form>
-        <input type="text" value={inputValue} onChange={e =>{setInputValue(e.target.value)
-        console.log(inputValue)}
-        
-        
-        } />
+      {isLoggedIn ? <LoggedNavbar /> : <Navbar />}   
+      
+   
+ 
+ <div>
+      <form className={styles.formContainer}>
+        <input
+          type="text"
+          value={inputValue} onChange={e =>{setInputValue(e.target.value)
+            console.log(inputValue)}
+     }
+          className={
+            location.pathname === "/"
+              ? styles.searchInput
+              : styles.searchColorInput
+          }
+          />
+        <button className={styles.searchButton}>
+          {" "}
+          <FontAwesomeIcon icon={faSearch} size={"2x"} />
+        </button>
       </form>
+    </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ {" "}
+
       {isLoggedIn ? (
         <div className={styles.addToListBtnContainer}>
           <Link to="/addproduct" className={styles.addToListBtn}>
@@ -96,7 +142,7 @@ const ProductListPage = () => {
       ) : (
         ""
       )}{" "}
-      <div className={styles.list}> {currentPosts} </div>{" "}
+      <div className={styles.list}> {inputValue ? currentPostsFiltered : currentPosts} </div>{" "}
       <div className={styles.pagination}>
         <Icon
           name="chevron left"

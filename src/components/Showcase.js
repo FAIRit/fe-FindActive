@@ -5,8 +5,8 @@ import LoggedNavbar from "../layouts/LoggedNavbar";
 import MainInfo from "./MainInfo";
 import Faq from "./Faq";
 import CenterMode from "./slider/CenterMode";
-import SearchBar from "./SearchBar";
 import { useAuth } from "../hooks/useAuth";
+import { NavLink } from "react-router-dom";
 
 const Showcase = () => {
   const isLoggedIn = useAuth();
@@ -22,7 +22,7 @@ const Showcase = () => {
           <span className={styles.secondTitle}>
             Trenowanie nigdy nie było łatwiejsze.
           </span>
-          <SearchBar />
+          <NavLink to="/products"><button>Wyszukaj</button></NavLink>
         </div>
       </div>
       <MainInfo />
