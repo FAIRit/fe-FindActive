@@ -1,46 +1,66 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .container {
-    height: 100vh;
-    background: rgba(0, 0, 0, .4) url('../img/sport1.jpg') no-repeat center center/cover;
-    background-blend-mode: darken;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4) url("../img/sport1.jpg") no-repeat center
+    center/cover;
+  background-blend-mode: darken;
 }
 
 .showcase {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
-    align-items:  center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  align-items: center;
 }
 
-.title{
-    display: inline-block;
-    font-size: 1.5rem;
-    color: #f0f3bd;
-    font-weight: bold;
-    margin-top: 180px;
+.title {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #f0f3bd;
+  font-weight: bold;
+  margin-top: 180px;
 }
 
-.secondTitle{
-    font-size: 1.3rem;
-    color: #f0f3bd;
-    margin: 20px 0 10px 0;
+.secondTitle {
+  font-size: 1.3rem;
+  color: #f0f3bd;
+  margin: 20px 0 10px 0;
 }
 
-@media (min-width: 768px){
-    .title{
-        font-size: 2.3rem;
-        width: 70%;
-        padding-top: 200px;
-        margin: 0 auto;
-    }
+.showcaseBtn {
+  padding: 15px 25px;
+  background: #9000b3;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  margin-top: 20px
 }
 
+.showcaseBtn:hover {
+  background: #5c164e;
+  transition: 0.5s;
+}
 
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.3rem;
+    width: 70%;
+    padding-top: 200px;
+    margin: 0 auto;
+  }
 
+  .showcaseBtn {
+    padding: 20px 35px;
+    font-size: 1.4rem;
+  }
+}
