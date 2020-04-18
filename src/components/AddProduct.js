@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import firebase from "../firebase/firebase";
 import * as Yup from "yup";
 import { Dropdown, Input } from "semantic-ui-react";
+import {cardOptions, typeOptions, voivodeshipOptions} from '../data/FormData'
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -18,7 +19,7 @@ const SignupSchema = Yup.object().shape({
     .required("Pole wymagane"),
   description: Yup.string()
     .min(3, "Wpisz co najmniej 3 znaki")
-    .max(500, "Za długi opis")
+    .max(800, "Za długi opis")
     .required("Pole wymagane"),
   link: Yup.string()
     .min(4, "Wpisz co najmniej 4 znaki")
@@ -32,18 +33,7 @@ const SignupSchema = Yup.object().shape({
     .url("błędny adres"),
 });
 
-const cardOptions = [
-  { key: "beactive", text: "BeActive", value: "BeActive" },
-  { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
-  { key: "fitsport", text: "FitSport", value: "FitSport" },
-  { key: "multiactive", text: "MultiActive", value: "MultiActive" },
-  { key: "pole", text: "MultiSport Classic", value: "MultiSport Classic" },
-  { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
-  { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
-  { key: "oksystem", text: "OK System", value: "OK System" },
-];
-
-const CardDropdown = () => (
+const CardDropdown = ({onChange}) => (
   <Dropdown
     placeholder="wybierz z listy..."
     name="card"
@@ -52,22 +42,11 @@ const CardDropdown = () => (
     multiple
     selection
     options={cardOptions}
+    onChange={onChange}
   />
 );
 
-const typeOptions = [
-  { key: "crossfit", text: "crossfit", value: "crossfit" },
-  { key: "joga", text: "joga", value: "joga" },
-  { key: "pilates", text: "pilates", value: "pilates" },
-  { key: "pływalnia", text: "pływalnia", value: "pływalnia" },
-  { key: "pole", text: "pole dance", value: "pole dance" },
-  { key: "rehabilitacja", text: "rehabilitacja", value: "rehabilitacja" },
-  { key: "siłownia", text: "siłownia", value: "siłownia" },
-  { key: "sztuki walki", text: "sztuki walki", value: "sztuki walki" },
-  { key: "taniec", text: "taniec", value: "taniec" },
-];
-
-const TypeDropdown = () => (
+const TypeDropdown = ({onChange}) => (
   <Dropdown
     placeholder="wybierz z listy..."
     name="type"
@@ -75,41 +54,11 @@ const TypeDropdown = () => (
     selection
     options={typeOptions}
     className={styles.addProductInput}
+    onChange={onChange}
   />
 );
 
-const voivodeshipOptions = [
-  { key: "dolnoslaskie", text: "dolnośląskie", value: "dolnośląskie" },
-  {
-    key: "kujawsko-pomorskie",
-    text: "kujawsko-pomorskie",
-    value: "kujawsko-pomorskie",
-  },
-  { key: "lubelskie", text: "lubelskie", value: "lubelskie" },
-  { key: "lubuskie", text: "lubuskie", value: "lubuskie" },
-  { key: "lodzkie", text: "łódzkie dance", value: "łódzkie" },
-  { key: "malopolskie", text: "małopolskie", value: "małopolskie" },
-  { key: "mazowieckie", text: "mazowieckie", value: "mazowieckie" },
-  { key: "opolskie", text: "opolskie", value: "opolskie" },
-  { key: "podkarpackie", text: "podkarpackie", value: "podkarpackie" },
-  { key: "podlaskie", text: "podlaskie", value: "podlaskie" },
-  { key: "pomorskie", text: "pomorskie", value: "pomorskie" },
-  { key: "slaskie", text: "śląskie", value: "śląskie" },
-  { key: "swietokrzyskie", text: "świętokrzyskie", value: "świętokrzyskie" },
-  {
-    key: "warminsko",
-    text: "warmińsko-mazurskie",
-    value: "warmińsko-mazurskie",
-  },
-  { key: "wielkopolskie", text: "wielkopolskie", value: "wielkopolskie" },
-  {
-    key: "zachodniopomorskie",
-    text: "zachodniopomorskie",
-    value: "zachodniopomorskie",
-  },
-];
-
-const VoivodeshipDropdown = () => {
+const VoivodeshipDropdown = ({ onChange }) => {
   return (
     <Dropdown
       placeholder="wybierz z listy..."
@@ -118,6 +67,7 @@ const VoivodeshipDropdown = () => {
       selection
       options={voivodeshipOptions}
       className={styles.addProductInput}
+      onChange={onChange}
     />
   );
 };
@@ -173,6 +123,7 @@ const AddProduct = () => {
             handleBlur,
             handleSubmit,
             isSubmitting,
+            setFieldValue,
           }) => (
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
               <label>Nazwa</label>
@@ -204,21 +155,29 @@ const AddProduct = () => {
               <label htmlFor="voivodeship">Województwo</label>
               <VoivodeshipDropdown
                 value={values.voivodeship}
-                onChange={handleChange}
+                onChange={(event, data) =>
+                  setFieldValue("voivodeship", data.value)
+                }
               />
               {errors.voivodeship && touched.voivodeship ? (
                 <div className={styles.error}>{errors.voivodeship}</div>
               ) : null}
 
               <label htmlFor="type">Rodzaj</label>
-              <TypeDropdown value={values.type} onChange={handleChange} />
+              <TypeDropdown
+                value={values.type}
+                onChange={(event, data) => setFieldValue("type", data.value)}
+              />
               {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
               ) : null}
 
               <label htmlFor="cards">Akceptowane karty lojalnościowe</label>
 
-              <CardDropdown value={values.card} onChange={handleChange} />
+              <CardDropdown
+                value={values.card}
+                onChange={(event, data) => setFieldValue("card", data.value)}
+              />
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
