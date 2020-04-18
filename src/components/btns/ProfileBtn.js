@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser as farFaUser } from "@fortawesome/free-regular-svg-icons";
 import styles from "../../styles/ProfileBtn.module.css";
 import firebase from "../../firebase/firebase";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,6 +26,8 @@ export default function MenuListComposition() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+  const history = useHistory();
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen);
@@ -57,7 +59,7 @@ export default function MenuListComposition() {
   const auth = firebase.auth();
   const signOut = () => {
     auth.signOut().then(() => {
-      console.log("signed out");
+      history.push("/");
     });
   };
 

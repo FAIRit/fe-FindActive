@@ -4,21 +4,22 @@ import firebase from "../../firebase/firebase";
 import styles from "../../styles/LoginForm.module.css";
 import * as Yup from "yup";
 import { googleLoginRedirect } from "../../services/AuthService";
+import { useHistory } from "react-router-dom";
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, "Za krótkie hasło")
     .max(15, "Za długie hasło")
     .required("Pole wymagane"),
-  email: Yup.string()
-    .email("Błędny adres e-mail")
-    .required("Pole wymagane")
+  email: Yup.string().email("Błędny adres e-mail").required("Pole wymagane"),
 });
 
 const LoginForm = () => {
   const [message, setMessage] = useState(null);
   const [forgotPassword, displayForgotPassword] = useState(false);
   const [mail, setValue] = useState("");
+
+  const history = useHistory();
 
   return forgotPassword ? (
     <div>
@@ -30,7 +31,7 @@ const LoginForm = () => {
             .then(() => {
               console.log("email sent");
             })
-            .catch(error => {
+            .catch((error) => {
               console.log(error);
             });
         }}
@@ -38,7 +39,7 @@ const LoginForm = () => {
         <input
           type="email"
           value={mail}
-          onChange={e => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
         />
         <button type="submit">wyślij</button>
       </form>{" "}
@@ -50,17 +51,20 @@ const LoginForm = () => {
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={SignupSchema}
-          onSubmit={values => {
+          onSubmit={(values) => {
             const auth = firebase.auth();
             const email = values.email;
             const password = values.password;
-            auth.signInWithEmailAndPassword(email, password).catch(error => {
-              if (error.code === "auth/wrong-password") {
-                setMessage("Błędny login lub hasło");
-              } else if (error.code === "auth/user-not-found") {
-                setMessage("Błędny login lub hasło");
-              }
-            });
+            auth
+              .signInWithEmailAndPassword(email, password)
+              .then(history.push("/"))
+              .catch((error) => {
+                if (error.code === "auth/wrong-password") {
+                  setMessage("Błędny login lub hasło");
+                } else if (error.code === "auth/user-not-found") {
+                  setMessage("Błędny login lub hasło");
+                }
+              });
           }}
         >
           {({
@@ -69,7 +73,7 @@ const LoginForm = () => {
             touched,
             handleChange,
             handleBlur,
-            handleSubmit
+            handleSubmit,
           }) => (
             <div>
               <form onSubmit={handleSubmit} className={styles.loginInputs}>
