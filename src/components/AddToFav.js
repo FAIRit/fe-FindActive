@@ -7,7 +7,7 @@ const AddToFav = props => {
   return (
     <Icon
       onClick={props.onClick}
-      name={props.isInFavorites ? "heart outline" : "heart"} 
+      name={props.isInFavorites ? "heart" : "heart outline"} 
       className={styles.favIcon}
       size="large"
     />

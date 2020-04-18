@@ -82,7 +82,7 @@ class Product extends Component {
             onClick={() => {
               addToFav(this.props.id, firebase.auth().currentUser);
             }}
-            name={this.state.favorites[id] ? "heart outline" : "heart"}
+            name={this.state.favorites[id] ? "heart" : "heart outline"}
             className={styles.favProductIcon}
             size="large"
           />

@@ -32,7 +32,6 @@ const SignupSchema = Yup.object().shape({
     .url("błędny adres"),
 });
 
-
 const cardOptions = [
   { key: "beactive", text: "BeActive", value: "BeActive" },
   { key: "fitprofit", text: "FitProfit", value: "FitProfit" },
@@ -41,7 +40,7 @@ const cardOptions = [
   { key: "pole", text: "MultiSport Classic", value: "MultiSport Classic" },
   { key: "multiplus", text: "MultiSport Plus", value: "MultiSport Plus" },
   { key: "multisenior", text: "MultiSenior", value: "MultiSenior" },
-  { key: "oksystem", text: "OK System", value: "OK System" }
+  { key: "oksystem", text: "OK System", value: "OK System" },
 ];
 
 const CardDropdown = () => (
@@ -119,7 +118,6 @@ const VoivodeshipDropdown = () => {
       selection
       options={voivodeshipOptions}
       className={styles.addProductInput}
-    
     />
   );
 };
@@ -141,7 +139,7 @@ const AddProduct = () => {
             description: "",
             link: "",
             photo: "",
-            rating: ''
+            rating: "",
           }}
           validationSchema={SignupSchema}
           onSubmit={(values) => {
@@ -153,7 +151,7 @@ const AddProduct = () => {
             const link = values.link;
             const cards = values.cards;
             const photo = values.photo;
-            const rating = ''
+            const rating = "";
             firebase.database().ref("/clubs").push({
               name,
               location,
@@ -163,7 +161,7 @@ const AddProduct = () => {
               link,
               cards,
               photo,
-              rating
+              rating,
             });
           }}
         >
