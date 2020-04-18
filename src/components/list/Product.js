@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { addToFav } from "../../services/AddToFavService";
 import firebase from "../../firebase/firebase";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
 import styles from "../../styles/Product.module.css";
 import Rat from "../../components/Rating";
-import { Icon } from "semantic-ui-react";
 
 class Product extends Component {
   state = {
@@ -48,11 +47,13 @@ class Product extends Component {
     return (
       <Card
         style={{
-          width: "350px",
-          height: "430px",
+          width: "320px",
+          height: "450px",
           background: "#f0b4e4",
           margin: "0 15px 0 15px",
         }}
+        maxWidth={300}
+
       >
         <Link to={`/product/${id}`}>
           <Image src={photo} wrapped />
