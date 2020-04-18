@@ -18,7 +18,7 @@ const SignupSchema = Yup.object().shape({
     .required("Pole wymagane"),
   description: Yup.string()
     .min(3, "Wpisz co najmniej 3 znaki")
-    .max(500, "Za długi opis")
+    .max(800, "Za długi opis")
     .required("Pole wymagane"),
   link: Yup.string()
     .min(4, "Wpisz co najmniej 4 znaki")
@@ -43,7 +43,7 @@ const cardOptions = [
   { key: "oksystem", text: "OK System", value: "OK System" },
 ];
 
-const CardDropdown = () => (
+const CardDropdown = ({onChange}) => (
   <Dropdown
     placeholder="wybierz z listy..."
     name="card"
@@ -52,6 +52,7 @@ const CardDropdown = () => (
     multiple
     selection
     options={cardOptions}
+    onChange={onChange}
   />
 );
 
@@ -67,7 +68,7 @@ const typeOptions = [
   { key: "taniec", text: "taniec", value: "taniec" },
 ];
 
-const TypeDropdown = () => (
+const TypeDropdown = ({onChange}) => (
   <Dropdown
     placeholder="wybierz z listy..."
     name="type"
@@ -75,6 +76,7 @@ const TypeDropdown = () => (
     selection
     options={typeOptions}
     className={styles.addProductInput}
+    onChange={onChange}
   />
 );
 
@@ -87,7 +89,7 @@ const voivodeshipOptions = [
   },
   { key: "lubelskie", text: "lubelskie", value: "lubelskie" },
   { key: "lubuskie", text: "lubuskie", value: "lubuskie" },
-  { key: "lodzkie", text: "łódzkie dance", value: "łódzkie" },
+  { key: "lodzkie", text: "łódzkie", value: "łódzkie" },
   { key: "malopolskie", text: "małopolskie", value: "małopolskie" },
   { key: "mazowieckie", text: "mazowieckie", value: "mazowieckie" },
   { key: "opolskie", text: "opolskie", value: "opolskie" },
@@ -109,7 +111,7 @@ const voivodeshipOptions = [
   },
 ];
 
-const VoivodeshipDropdown = () => {
+const VoivodeshipDropdown = ({ onChange }) => {
   return (
     <Dropdown
       placeholder="wybierz z listy..."
@@ -118,6 +120,7 @@ const VoivodeshipDropdown = () => {
       selection
       options={voivodeshipOptions}
       className={styles.addProductInput}
+      onChange={onChange}
     />
   );
 };
@@ -173,6 +176,7 @@ const AddProduct = () => {
             handleBlur,
             handleSubmit,
             isSubmitting,
+            setFieldValue,
           }) => (
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
               <label>Nazwa</label>
@@ -204,21 +208,29 @@ const AddProduct = () => {
               <label htmlFor="voivodeship">Województwo</label>
               <VoivodeshipDropdown
                 value={values.voivodeship}
-                onChange={handleChange}
+                onChange={(event, data) =>
+                  setFieldValue("voivodeship", data.value)
+                }
               />
               {errors.voivodeship && touched.voivodeship ? (
                 <div className={styles.error}>{errors.voivodeship}</div>
               ) : null}
 
               <label htmlFor="type">Rodzaj</label>
-              <TypeDropdown value={values.type} onChange={handleChange} />
+              <TypeDropdown
+                value={values.type}
+                onChange={(event, data) => setFieldValue("type", data.value)}
+              />
               {errors.type && touched.type ? (
                 <div className={styles.error}>{errors.type}</div>
               ) : null}
 
               <label htmlFor="cards">Akceptowane karty lojalnościowe</label>
 
-              <CardDropdown value={values.card} onChange={handleChange} />
+              <CardDropdown
+                value={values.card}
+                onChange={(event, data) => setFieldValue("card", data.value)}
+              />
 
               {errors.cards && touched.cards ? (
                 <div className={styles.error}>{errors.cards}</div>
