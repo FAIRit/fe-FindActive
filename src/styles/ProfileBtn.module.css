@@ -1,19 +1,31 @@
 .profileIcon,
-.favoriteIcon{
+.favoriteIcon,
+.searchIcon{
     color: white;
     font-size: 1.3rem;
 }
 
 .profileIcon:hover,
-.favoriteIcon:hover{
+.favoriteIcon:hover,
+.searchIcon:hover{
     color: #9000b3;
     transition: 0.5s;
 }
 
+.searchIcon{
+    margin: 0 20px 0 0
+}
+
+
 @media (min-width: 768px){
     .profileIcon,
-    .favoriteIcon{
+    .favoriteIcon,
+    .searchIcon{
         font-size: 2rem
+    }
+
+    .searchIcon{
+        margin: 0 20px 0 5px;
     }
 }
 

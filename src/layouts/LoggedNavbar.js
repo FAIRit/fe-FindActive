@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../components/Logo";
 import styles from "../styles/Navbar.module.css";
 import FavoritesBtn from "../components/btns/FavoritesBtn";
+import SearchBtn from '../components/btns/SearchBtn'
 import MenuListComposition from "../components/btns/ProfileBtn";
 import { useLocation } from "react-router-dom";
 
@@ -14,6 +15,7 @@ const LoggedNavbar = () => {
         <Logo />
         <div className={styles.navLinks}>
           <MenuListComposition />
+          <SearchBtn />
           <FavoritesBtn />
         </div>{" "}
       </div>{" "}
