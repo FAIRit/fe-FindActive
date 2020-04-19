@@ -176,7 +176,7 @@ const AddProduct = () => {
 
               <CardDropdown
                 value={values.card}
-                onChange={(event, data) => setFieldValue("card", data.value)}
+                onChange={(event, data) => setFieldValue("cards", data.value)}
               />
 
               {errors.cards && touched.cards ? (

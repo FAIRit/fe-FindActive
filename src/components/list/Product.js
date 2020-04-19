@@ -38,7 +38,6 @@ class Product extends Component {
       name,
       type,
       link,
-      cards,
       voivodeship,
       photo,
       location,
