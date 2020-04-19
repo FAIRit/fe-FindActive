@@ -1,5 +1,7 @@
 # FindActive
 
+You can see this app here: https://find-active.web.app/
+
 ## Search for sports clubs. Get that workout in, wherever you are.
 
 This app will allow user to search for any kind of sport facilities in Poland. User can search by name, type of sport, city, voivodeship. It will make use of sport facilities easier.
