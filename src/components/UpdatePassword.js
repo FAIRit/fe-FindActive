@@ -44,12 +44,14 @@ const UpdatePassword = () => {
         value={currentPassword}
         onChange={e => setCurrentPassword(e.target.value)}
         placeholder="obecne hasło"
+        className={style.updatePasswordInput}
       />
       <Input
         type="password"
         value={newPassword}
         onChange={e => setNewPassword(e.target.value)}
         placeholder="nowe hasło"
+        className={style.updatePasswordInput}
       />
       <Button basic color="black" onClick={changePassword}>zmień hasło</Button>
     </div>

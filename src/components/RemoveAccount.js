@@ -40,6 +40,7 @@ const RemoveAccount = () => {
         value={currentPassword}
         onChange={(e) => setCurrentPassword(e.target.value)}
         placeholder="wpisz hasło"
+        className={style.removeAccountInput}
       />
       <Button basic color="black" onClick={removeAccount}>
         {" "}
