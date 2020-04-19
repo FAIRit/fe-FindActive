@@ -7,6 +7,8 @@ import firebase from "../firebase/firebase";
 import * as Yup from "yup";
 import { Dropdown, Input } from "semantic-ui-react";
 import {cardOptions, typeOptions, voivodeshipOptions} from '../data/FormData'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -73,6 +75,7 @@ const VoivodeshipDropdown = ({ onChange }) => {
 };
 
 const AddProduct = () => {
+
   return (
     <div className={styles.addProductPage}>
       <LoggedNavbar />
@@ -92,7 +95,7 @@ const AddProduct = () => {
             rating: "",
           }}
           validationSchema={SignupSchema}
-          onSubmit={(values) => {
+          onSubmit={(values, {resetForm}) => {
             const name = values.name;
             const location = values.location;
             const voivodeship = values.voivodeship;
@@ -112,7 +115,8 @@ const AddProduct = () => {
               cards,
               photo,
               rating,
-            });
+            }).then(() => toast('Dodano do listy!'))
+            .then(() => {resetForm()})
           }}
         >
           {({
@@ -126,6 +130,7 @@ const AddProduct = () => {
             setFieldValue,
           }) => (
             <form onSubmit={handleSubmit} className={styles.addProductForm}>
+              <ToastContainer/>
               <label>Nazwa</label>
               <Input
                 type="text"
@@ -176,7 +181,7 @@ const AddProduct = () => {
 
               <CardDropdown
                 value={values.card}
-                onChange={(event, data) => setFieldValue("card", data.value)}
+                onChange={(event, data) => setFieldValue("cards", data.value)}
               />
 
               {errors.cards && touched.cards ? (
