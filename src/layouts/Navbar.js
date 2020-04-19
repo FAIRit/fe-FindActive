@@ -8,12 +8,16 @@ import { useLocation } from "react-router-dom";
 const Navbar = () => {
   let location = useLocation();
   return (
-    <div className={location.pathname === "/" ? styles.transparent : styles.navbar}>
+    <div
+      className={location.pathname === "/" ? styles.transparent : styles.navbar}
+    >
+      <div className={styles.navbarContainer}>
       <Logo />
       <div className={styles.navLinks}>
         <LoginBtn />
         <RegisterBtn />
       </div>
+    </div>
     </div>
   );
 };
