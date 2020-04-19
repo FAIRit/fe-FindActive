@@ -95,7 +95,7 @@ const AddProduct = () => {
             rating: "",
           }}
           validationSchema={SignupSchema}
-          onSubmit={(values) => {
+          onSubmit={(values, {resetForm}) => {
             const name = values.name;
             const location = values.location;
             const voivodeship = values.voivodeship;
@@ -116,6 +116,7 @@ const AddProduct = () => {
               photo,
               rating,
             }).then(() => toast('Dodano do listy!'))
+            .then(() => {resetForm()})
           }}
         >
           {({
